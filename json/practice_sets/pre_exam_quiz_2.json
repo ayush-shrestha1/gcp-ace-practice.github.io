@@ -1,0 +1,242 @@
+[
+  {
+    "id": "1",
+    "question": "You are running multiple microservices in a Kubernetes Engine cluster. One microservice is rendering images. The microservice responsible for the image rendering requires a large amount of CPU time compared to the memory it requires. The other microservices are workloads that are optimized for n1-standard machine types. You need to optimize your cluster so that all workloads are using resources as efficiently as possible. What should you do?",
+    "options": [
+      "Assign the pods of the image rendering microservice a higher pod priority than the other microservices.",
+      "Create a node pool with compute-optimized machine type nodes for the image rendering microservice. Use the node pool with general-purpose machine type nodes for the other microservices.",
+      "Use the node pool with general-purpose machine type nodes for the image rendering microservice. Create a node pool with compute-optimized machine type nodes for the other microservices.",
+      "Configure the required amount of CPU and memory in the resource requests specification of the image rendering microservice deployment. Keep the resource requests for the other microservices at the default."
+    ],
+    "correct": 1,
+    "explanation": "Compute-optimized machine types (such as C2) offer high compute performance per core ideal for CPU-intensive rendering tasks, while general-purpose node pools (N1) serve balanced microservice workloads efficiently."
+  },
+  {
+    "id": "2",
+    "question": "Your project has all its Compute Engine resources in the europe-west1 region. You want to set europe-west1 as the default region for gcloud commands. What should you do?",
+    "options": [
+      "Use Cloud Shell instead of the command line interface of your device. Launch Cloud Shell after you navigate to a resource in the europe-west1 region. The europe-west1 region will automatically become the default region.",
+      "Use “gcloud config set compute/region europe-west1” to set the default region for future gcloud commands.",
+      "Use “gcloud config set compute/zone europe-west1” to set the default region for future gcloud commands.",
+      "Create a VPN from on-premises to a subnet in europe-west1, and use that connection when executing gcloud commands."
+    ],
+    "correct": 1,
+    "explanation": "Executing `gcloud config set compute/region europe-west1` sets the default region configuration property for all subsequent gcloud CLI operations."
+  },
+  {
+    "id": "3",
+    "question": "Your company processes high volumes of IoT data that are time-stamped. The total data volume can be several petabytes. The data needs to be written and changed at a high speed. You want to use the most performant storage option for your data. Which product should you use?",
+    "options": [
+      "Cloud Datastore",
+      "Cloud Storage",
+      "Cloud Bigtable",
+      "BigQuery"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Bigtable is designed for petabyte-scale, high-throughput, low-latency time-series and IoT workloads."
+  },
+  {
+    "id": "4",
+    "question": "The sales team has a project named Sales Data Digest that has the ID acme-data-digest. You need to set up similar Google Cloud resources for the marketing team but their resources must be organized independently of the sales team. What should you do?",
+    "options": [
+      "Grant the Project Editor role to the Marketing team for acme-data-digest.",
+      "Create a Project Lien on acme-data-digest and then grant the Project Editor role to the Marketing team.",
+      "Create another project with the ID acme-marketing-data-digest for the Marketing team and deploy the resources there.",
+      "Create a new project named Marketing Data Digest and use the ID acme-data-digest. Grant the Project Editor role to the Marketing team."
+    ],
+    "correct": 2,
+    "explanation": "Google Cloud Projects provide distinct resource, IAM, and billing boundaries. Creating a separate project ensures independent environment isolation."
+  },
+  {
+    "id": "5",
+    "question": "You are developing a new web application that will be deployed on Google Cloud Platform. As part of your release cycle, you want to test updates to your application on a small portion of real user traffic. The majority of the users should still be directed towards a stable version of your application. What should you do?",
+    "options": [
+      "Deploy the application on App Engine. For each update, create a new version of the same service. Configure traffic splitting to send a small percentage of traffic to the new version.",
+      "Deploy the application on App Engine. For each update, create a new service. Configure traffic splitting to send a small percentage of traffic to the new service.",
+      "Deploy the application on Kubernetes Engine. For a new release, update the deployment to use the new version.",
+      "Deploy the application on Kubernetes Engine. For a new release, create a new deployment for the new version. Update the service to use the new deployment."
+    ],
+    "correct": 0,
+    "explanation": "App Engine natively supports traffic splitting between different versions of the same service for canary testing."
+  },
+  {
+    "id": "6",
+    "question": "You need to create a new Kubernetes Cluster on Google Cloud Platform that can autoscale the number of worker nodes. What should you do?",
+    "options": [
+      "Create a cluster on Kubernetes Engine and enable autoscaling on Kubernetes Engine.",
+      "Create a cluster on Kubernetes Engine and enable autoscaling on the instance group of the cluster.",
+      "Configure a Compute Engine instance as a worker and add it to an unmanaged instance group. Add a load balancer to the instance group and rely on the load balancer to create additional Compute Engine instances when needed.",
+      "Create Compute Engine instances for the workers and the master, and install Kubernetes. Rely on Kubernetes to create additional Compute Engine instances when needed."
+    ],
+    "correct": 0,
+    "explanation": "Enabling cluster autoscaling directly on Google Kubernetes Engine automatically manages node pool provisioning based on pod scheduling demands."
+  },
+  {
+    "id": "7",
+    "question": "You created an update for your application on App Engine. You want to deploy the update without impacting your users. You want to be able to roll back as quickly as possible if it fails. What should you do?",
+    "options": [
+      "Delete the current version of your application. Deploy the update using the same version identifier as the deleted version.",
+      "Notify your users of an upcoming maintenance window. Deploy the update in that maintenance window.",
+      "Deploy the update as the same version that is currently running.",
+      "Deploy the update as a new version. Migrate traffic from the current version to the new version."
+    ],
+    "correct": 3,
+    "explanation": "Deploying updates as new versions alongside active versions enables zero-downtime traffic migration and instant rollback by re-routing traffic if bugs arise."
+  },
+  {
+    "id": "8",
+    "question": "You need to manage a third-party application that will run on a Compute Engine instance. Other Compute Engine instances are already running with default configuration. Application installation files are hosted on Cloud Storage. You need to access these files from the new instance without allowing other virtual machines (VMs) to access these files. What should you do?",
+    "options": [
+      "Create the instance with the default Compute Engine service account. Grant the service account permissions on Cloud Storage.",
+      "Create the instance with the default Compute Engine service account. Add metadata to the objects on Cloud Storage that matches the metadata on the new instance.",
+      "Create a new service account and assign this service account to the new instance. Grant the service account permissions on Cloud Storage.",
+      "Create a new service account and assign this service account to the new instance. Add metadata to the objects on Cloud Storage that matches the metadata on the new instance."
+    ],
+    "correct": 2,
+    "explanation": "Attaching a custom service account to the specific VM and granting bucket permissions to that service account enforces least-privilege security."
+  },
+  {
+    "id": "9",
+    "question": "You have been asked to select the storage system for the click-data of your company’s large portfolio of websites. This data is streamed in from a custom website analytics package at a typical rate of 6,000 clicks per minute. With bursts of up to 8,500 clicks per second. It must have been stored for future analysis by your data science and user experience teams. Which storage infrastructure should you choose?",
+    "options": [
+      "Google Cloud SQL",
+      "Google Cloud Bigtable",
+      "Google Cloud Storage",
+      "Google Cloud Datastore"
+    ],
+    "correct": 1,
+    "explanation": "Cloud Bigtable provides low-latency, high-throughput storage capable of absorbing massive write bursts (8,500+ writes/sec) for analytics data streams."
+  },
+  {
+    "id": "10",
+    "question": "You are managing a project for the Business Intelligence (BI) department in your company. A data pipeline ingests data into BigQuery via streaming. You want the users in the BI department to be able to run the custom SQL queries against the latest data in BigQuery. What should you do?",
+    "options": [
+      "Create a Data Studio dashboard that uses the related BigQuery tables as a source and give the BI team view access to the Data Studio dashboard.",
+      "Create a Service Account for the BI team and distribute a new private key to each member of the BI team.",
+      "Use Cloud Scheduler to schedule a batch Dataflow job to copy the data from BigQuery to the BI team's internal data warehouse.",
+      "Assign the IAM role of BigQuery User to a Google Group that contains the members of the BI team."
+    ],
+    "correct": 3,
+    "explanation": "Assigning `BigQuery User` to a Google Group grants BI team members permissions to execute queries and create jobs in BigQuery."
+  },
+  {
+    "id": "11",
+    "question": "You are about to deploy a new Enterprise Resource Planning (ERP) system on Google Cloud. The application holds the full database in-memory for fast data access, and you need to configure the most appropriate resources on Google Cloud for this application. What should you do?",
+    "options": [
+      "Provision preemptible Compute Engine instances.",
+      "Provision Compute Engine instances with GPUs attached.",
+      "Provision Compute Engine instances with local SSDs attached.",
+      "Provision Compute Engine instances with M1 machine type."
+    ],
+    "correct": 3,
+    "explanation": "Memory-optimized (M1) machine types offer large RAM configurations tailored specifically for massive in-memory databases and enterprise ERP systems like SAP HANA."
+  },
+  {
+    "id": "12",
+    "question": "You want to optimize the performance of an accurate, real-time, weather-charting application. The data comes from 50,000 sensors sending 10 readings a second, in the format of a timestamp and sensor reading. Where should you store the data?",
+    "options": [
+      "Google BigQuery",
+      "Google Cloud SQL",
+      "Google Cloud Bigtable",
+      "Google Cloud Storage"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Bigtable excels at ingesting high-frequency time-series data streams (500,000 writes/second) with low latency."
+  },
+  {
+    "id": "13",
+    "question": "You are asked to set up application performance monitoring on Google Cloud projects A, B, and C as a single pane of glass. You want to monitor CPU, memory, and disk. What should you do?",
+    "options": [
+      "Enable API and then share charts from project A, B, and C.",
+      "Enable API and then give the metrics.reader role to projects A, B, and C.",
+      "Enable API and then use default dashboards to view all projects in sequence.",
+      "Enable API, create a workspace under project A, and then add projects B and C."
+    ],
+    "correct": 3,
+    "explanation": "Cloud Monitoring Workspaces (Metrics Scopes) aggregate performance metrics across multiple Google Cloud projects into unified dashboards."
+  },
+  {
+    "id": "14",
+    "question": "You are working with a Cloud SQL MySQL database at your company. You need to retain a month-end copy of the database for three years for audit purposes. What should you do?",
+    "options": [
+      "Set up an export job for the first of the month. Write the export file to an Archive class Cloud Storage bucket.",
+      "Save the automatic first-of-the-month backup for three years. Store the backup file in an Archive class Cloud Storage bucket.",
+      "Set up an on-demand backup for the first of the month. Write the backup to an Archive class Cloud Storage bucket.",
+      "Convert the automatic first-of-the-month backup to an export file. Write the export file to a Coldline class Cloud Storage bucket."
+    ],
+    "correct": 0,
+    "explanation": "Exporting Cloud SQL database files directly to an Archive class Cloud Storage bucket satisfies long-term compliance and audit requirements at minimal cost."
+  },
+  {
+    "id": "15",
+    "question": "A client of yours want you to migrate its on-premise MySQL data to Google Cloud without any downtime. Which service will you use for migrating SQL data to Cloud?",
+    "options": [
+      "Cloud Migration",
+      "Anthos",
+      "CloudSQL",
+      "Cloud Run"
+    ],
+    "correct": 2,
+    "explanation": "Cloud SQL (via Database Migration Service) supports continuous replication from on-premises MySQL databases for zero-downtime cutover migrations."
+  },
+  {
+    "id": "16",
+    "question": "You are starting to work on a client’s project who is looking for a database service within Google Cloud which is horizontally scalable, supports gigabyte size of relational data and even supports ACID for reliable storage of data. Which service will you recommend?",
+    "options": [
+      "Datastore",
+      "BigQuery",
+      "CloudSQL",
+      "Cloud Spanner"
+    ],
+    "correct": 3,
+    "explanation": "Cloud Spanner provides horizontal scaling, relational SQL queries, and strict global ACID transaction consistency."
+  },
+  {
+    "id": "17",
+    "question": "Your client wants to migrate their 30 TB of Hadoop or Spark cluster from a RHEL 6.5 on-premise servers to Google Cloud Platform. Which of the following service can be used at GCP end?",
+    "options": [
+      "Compute Engine",
+      "App Engine",
+      "Dataproc",
+      "Big Query"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Dataproc is Google Cloud's managed Apache Hadoop and Apache Spark cluster service."
+  },
+  {
+    "id": "18",
+    "question": "You are running a data warehouse on BigQuery. A partner company is offering a recommendation engine based on the data in your data warehouse. The partner company is also running their application on Google Cloud. They manage the resources in their own project, but they need access to the BigQuery dataset in your project. You want to provide the partner company with access to the dataset. What should you do?",
+    "options": [
+      "Create a Service Account in your own project, and grant this Service Account access to BigQuery in your project.",
+      "Create a Service Account in your own project, and ask the partner to grant this Service Account access to BigQuery in their project.",
+      "Ask the partner to create a Service Account in their project, and have them give the Service Account access to BigQuery in their project.",
+      "Ask the partner to create a Service Account in their project, and grant their Service Account access to the BigQuery dataset in your project."
+    ],
+    "correct": 3,
+    "explanation": "Granting IAM permissions directly on your BigQuery dataset to a partner's Service Account enables secure cross-project access."
+  },
+  {
+    "id": "19",
+    "question": "Your company’s finance team needs to back up data on a Cloud Storage bucket for disaster recovery purposes. You want to comply with Google’s recommended practices in implementing the solution for this task. Which storage class do you think would be the best option?",
+    "options": [
+      "Multi-Regional Storage",
+      "Nearline Storage",
+      "Coldline Storage",
+      "Archive Storage"
+    ],
+    "correct": 3,
+    "explanation": "Archive Storage offers the lowest cost per gigabyte for long-term disaster recovery backups accessed less than once a year."
+  },
+  {
+    "id": "20",
+    "question": "Your company has reserved a monthly budget for your project. You want to be informed automatically of your project spend so that you can take action when you approach the limit. What should you do?",
+    "options": [
+      "Link a credit card with a monthly limit equal to your budget.",
+      "Create a budget alert for 50%, 90%, and 100% of your total monthly budget.",
+      "In App Engine Settings, set a daily budget at the rate of 1/30 of your monthly budget.",
+      "In the GCP Console, configure billing export to BigQuery. Create a saved view that queries your total spend."
+    ],
+    "correct": 1,
+    "explanation": "Setting threshold budget alerts (e.g., 50%, 90%, 100%) in Google Cloud Billing sends automated email notifications as spend increases."
+  }
+]

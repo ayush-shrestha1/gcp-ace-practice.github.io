@@ -1,0 +1,408 @@
+[
+  {
+    "id": "1",
+    "question": "Select the most tailor-made role based on IAM in Google cloud.",
+    "options": [
+      "Predefined roles",
+      "Basic roles",
+      "Administrative role",
+      "Custom roles"
+    ],
+    "correct": 3,
+    "explanation": "Custom roles are user-defined and tailored specifically to grant granular permissions when predefined roles do not meet exact security requirements."
+  },
+  {
+    "id": "2",
+    "question": "If a cloud customer wants a fully operational environment with very little maintenance or administration necessary, which cloud service model would probably be best?",
+    "options": [
+      "IaaS",
+      "PaaS",
+      "SaaS",
+      "Hybrid"
+    ],
+    "correct": 2,
+    "explanation": "SaaS (Software as a Service) offers fully managed applications where the cloud vendor manages all underlying infrastructure and maintenance."
+  },
+  {
+    "id": "3",
+    "question": "What are examples of global GCP resources? (choose two)",
+    "options": [
+      "Global Persistent Disks",
+      "Subnets",
+      "Some Load Balancers",
+      "Cloud SQL",
+      "Global GCS Buckets",
+      "VPCs",
+      "Anthos GKE Clusters"
+    ],
+    "correct": [
+      2,
+      5
+    ],
+    "explanation": "VPCs and certain Load Balancers (such as Global External HTTP(S) Load Balancers) are global resources in Google Cloud."
+  },
+  {
+    "id": "4",
+    "question": "What are examples of regional GCP resources? (choose three)?",
+    "options": [
+      "GCE Instances",
+      "IP Address",
+      "All Persistent Disks",
+      "Regional Persistent Disks",
+      "Regional MIGs",
+      "Zonal GKE clusters"
+    ],
+    "correct": [
+      1,
+      3,
+      4
+    ],
+    "explanation": "Regional IP addresses, Regional Persistent Disks, and Regional Managed Instance Groups (MIGs) are bound to a specific Google Cloud region."
+  },
+  {
+    "id": "5",
+    "question": "A Virtual Private Cloud subnet is?",
+    "options": [
+      "multi-regional",
+      "global",
+      "regional",
+      "zonal"
+    ],
+    "correct": 2,
+    "explanation": "In Google Cloud VPC, subnets are regional resources."
+  },
+  {
+    "id": "6",
+    "question": "In Google Cloud, what is the minimum number of IPs that a VM can have?",
+    "options": [
+      "One: Only an internal IP address",
+      "Two: One internal and one external IP address",
+      "No IP address is required",
+      "Three: One internal, one external and one alias IP address"
+    ],
+    "correct": 0,
+    "explanation": "Every Compute Engine VM instance requires at least one internal IP address, but external IP addresses are optional."
+  },
+  {
+    "id": "7",
+    "question": "You would like to deploy a GCE instance with a GPU attached in your local region, but Cloud Console says this option is not available. How do you deploy such a VM?",
+    "options": [
+      "You need to to it from command line, using \"gcloud compute instances create\"",
+      "You need to contact GCP support to enable GPUs in your projects, since they're normally hidden.",
+      "You need to choose another zone or region, since GPUs are not available in every location.",
+      "You need to purchase a commitment first to deploy GPUs."
+    ],
+    "correct": 2,
+    "explanation": "GPU hardware availability varies across Google Cloud zones and regions; if unavailable in your region, you must select an alternative zone or region."
+  },
+  {
+    "id": "8",
+    "question": "A customer has some non-productive GCE instances that will not be needed for foreseeable future. What actions would you make in order to stop billing for instances and attached disks, without losing data kept on PDs?",
+    "options": [
+      "Stop the VMs for the time being, until they are needed again.",
+      "Drop VMs with PDs and rebuild them when needed.",
+      "Stop VMs, Make snapshots from PDs attached and delete both VMs and PDs.",
+      "Use \"gcloud compute freeze <gce_name> including disks\" command."
+    ],
+    "correct": 2,
+    "explanation": "Stopped VMs still incur storage charges for attached Persistent Disks. Taking snapshots of PDs and deleting both the VMs and PDs stops compute and disk charges while preserving data safely."
+  },
+  {
+    "id": "9",
+    "question": "As part of your backup plan, you want to be able to restore Compute Engine instances using snapshots. How would you do it using fewest steps possible?",
+    "options": [
+      "Export the snapshots to Cloud Storage. Create disks from the exported snapshot files. Create images from the new disks.",
+      "Export the snapshots to Cloud Storage. Create images from the exported snapshot files.",
+      "Use the snapshots to create replacement disks. Use the disks to create instances as needed.",
+      "Use the snapshots to create replacement instances as needed."
+    ],
+    "correct": 3,
+    "explanation": "Google Cloud allows you to directly create new VM instances using existing disk snapshots in a single streamlined workflow."
+  },
+  {
+    "id": "10",
+    "question": "How would you design a GCE-based system that is latency-sensitive and should be resilient up to and including a single GCP zone?",
+    "options": [
+      "Deploy in the same zone, but using multiple GCE instances in case one of them fails.",
+      "Deploy multiple VMs in separate zones in the same region.",
+      "Deploy multiple VMs in separate regions.",
+      "Deploy a single VM and schedule snapshots that can be restored to another zone in case of failure."
+    ],
+    "correct": 1,
+    "explanation": "Deploying across multiple zones within the same region protects against a single zone failure while maintaining low intra-region network latency."
+  },
+  {
+    "id": "11",
+    "question": "You notice that there are problems with I/O throughput on one your machines. It's an n2-standard-2 and you've just increased it's SSD size from 500GB to 1TB, but it still did not help. What can you do to quickly address this issue?",
+    "options": [
+      "Add an Extreme SSD disk that performs even faster.",
+      "Re-size the GCE instance to n2-standard-8.",
+      "Change the processing pattern from smaller to larger file sizes.",
+      "Check if boot disk is not too small."
+    ],
+    "correct": 1,
+    "explanation": "Persistent Disk performance limits scale with both disk size and the number of vCPUs on the VM instance. Upscaling the machine to n2-standard-8 increases maximum IOPS and throughput caps."
+  },
+  {
+    "id": "12",
+    "question": "What are your options to automatically deploy a GCE instance that already contain specific software and configuration? (choose three).",
+    "options": [
+      "Create a custom OS image with all the software installed and deploy a GCE instance using this image.",
+      "Deploy a VM with a public OS image, ssh into it and trigger the configuration from a script.",
+      "Deploy a VM with a public OS image and use startup scripts to install/configure the software.",
+      "Use a specific GCP Marketplace solution."
+    ],
+    "correct": [
+      0,
+      2,
+      3
+    ],
+    "explanation": "Custom OS images, startup scripts, and preconfigured GCP Marketplace solutions allow fully automated deployments with embedded software."
+  },
+  {
+    "id": "13",
+    "question": "How many network interfaces does a GCE instance have?",
+    "options": [
+      "Only one",
+      "One if it has an Internal IP only, two if it has Internal and External IP",
+      "It depends on NIC_NUMBER metadata value.",
+      "One, unless it's deployed in multiple VPCs."
+    ],
+    "correct": 3,
+    "explanation": "By default, a VM instance has a single network interface (nic0), but can have multiple interfaces if attached to multiple Virtual Private Cloud (VPC) networks."
+  },
+  {
+    "id": "14",
+    "question": "How can you optimize the infrastructure costs for your VMs? (choose five)",
+    "options": [
+      "Use Committed Use Discounts.",
+      "Automate shutdowns and startups to reduce the time VMs are up.",
+      "Follow GCP Recommendations for the VM sizing.",
+      "Limit the number of Licenced Users that can login to VMs.",
+      "Use Preemptible Instances.",
+      "Deploy VMs in cheaper regions."
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4,
+      5
+    ],
+    "explanation": "Committed Use Discounts, scheduled run times, right-sizing recommendations, Preemptible/Spot VMs, and selecting lower-cost regions directly reduce Compute Engine infrastructure charges."
+  },
+  {
+    "id": "15",
+    "question": "Which of the below detects unresponsive VM instances at the application level through user-configured health checks. Upon health check failure, failing VMs are automatically recreated, returning MIGs to desired capacity?",
+    "options": [
+      "Autohealing",
+      "Autoscaling",
+      "Load balancing",
+      "MIG"
+    ],
+    "correct": 0,
+    "explanation": "Autohealing in Managed Instance Groups uses application-level health checks to automatically recreate failed or unresponsive VM instances."
+  },
+  {
+    "id": "16",
+    "question": "In which of the below service, you can put code inside a servlet, deploy it to App Engine, and schedule a cron task queue in App Engine to execute the pipeline periodically.",
+    "options": [
+      "Dataflow",
+      "Dataproc",
+      "Database",
+      "Compute Engine"
+    ],
+    "correct": 0,
+    "explanation": "Dataflow pipelines can be triggered programmatically from App Engine servlets scheduled via cron task queues."
+  },
+  {
+    "id": "17",
+    "question": "Cymbal superstore is looking for a infrastructure configuration in which they need a machine type where the team can create their gaming platform that includes AAA gaming, EDA, and HPC. They want it to be high performance from regular CPU. Which of the below should be the best fit for it?",
+    "options": [
+      "Cost-Optimized (E2)",
+      "General Purpose (N2 and N2D)",
+      "Compute-Optimized (C2, C2D)",
+      "Accelerator-Optimized (A2)"
+    ],
+    "correct": 2,
+    "explanation": "Compute-Optimized (C2, C2D) machine types offer high compute performance per core, ideal for compute-intensive workloads like gaming, EDA, and HPC."
+  },
+  {
+    "id": "18",
+    "question": "In which of the below MIGs state, each server retains information about it’s client sessions, such as the current state of an application or the content of a user shopping cart?",
+    "options": [
+      "Stateful",
+      "Stateless"
+    ],
+    "correct": 0,
+    "explanation": "Stateful Managed Instance Groups preserve instance names, attached disks, and session metadata across instance updates or restarts."
+  },
+  {
+    "id": "19",
+    "question": "Due to some compliance regulations, the Cymbal superstore wants a dedicated hardware for their system for deplying their VMs with the GCP. Which of the below will fulfill this requirements?",
+    "options": [
+      "Sole-Tenant Nodes",
+      "Spot (Preemptible) VMs",
+      "Persistent disks",
+      "Regular VMs"
+    ],
+    "correct": 0,
+    "explanation": "Sole-Tenant Nodes provide physical Compute Engine servers dedicated exclusively to hosting your organization's VM instances."
+  },
+  {
+    "id": "20",
+    "question": "This disk is a high-performance and redundant network storage. Each volume is striped across hundreds of physical disks.",
+    "options": [
+      "Persistent Disk",
+      "Hyperdisk",
+      "Local SSD",
+      "All of the mentioned"
+    ],
+    "correct": 0,
+    "explanation": "Persistent Disk is network-attached storage transparently striped across hundreds of physical disks for durability and high redundancy."
+  },
+  {
+    "id": "21",
+    "question": "Which of the below is a Compute Engine resource that stores all the configuration, metadata, permissions, and data from multiple disks of a virtual machine (VM) instance. You can use this in many system maintenance, backup and recovery, and instance cloning scenarios.",
+    "options": [
+      "Machine image",
+      "Persistent disk snapshot",
+      "Custom image",
+      "Instance template"
+    ],
+    "correct": 0,
+    "explanation": "A Machine Image is a Compute Engine resource that stores all configuration, metadata, permissions, and disk data for complete VM instance cloning and backup."
+  },
+  {
+    "id": "22",
+    "question": "Which set of MIG should be created for the below scenario?\n\nYou want to distribute your VMs across multiple zones in a region in order to protect against zonal failure or to automatically find zones with limited resource like Spot VMs.",
+    "options": [
+      "Create a MIG with VMs in multiple zones in a region (regional MIG)",
+      "Create a MIG with VMs in a single zone (zonal MIG)",
+      "Create a MIG with multiple machine types (instance flexibility)",
+      "Create a MIG with stateful configuration"
+    ],
+    "correct": 0,
+    "explanation": "Regional MIGs automatically distribute VM instances across multiple availability zones within a region to ensure high availability."
+  },
+  {
+    "id": "23",
+    "question": "Your organization wants to monitor the health of a fleet of Compute Engine instances by tracking CPU utilization and disk I/O. You need to ensure that the Ops Agent is installed and configured to send these metrics to Cloud Monitoring. Which method is the most efficient way to provision the Ops Agent across multiple existing VM instances?",
+    "options": [
+      "Use the Google Cloud Console to create a 'Managed Instance Group' policy that automatically installs the Ops Agent on all instances.",
+      "Manually SSH into each instance and run the agent installation script.",
+      "Wait for the default Compute Engine monitoring to automatically upgrade itself to the Ops Agent.",
+      "Enable the Cloud Trace API, which automatically triggers the installation of the Ops Agent on all active VMs."
+    ],
+    "correct": 0,
+    "explanation": "Managed Instance Group guest policies or Ops Agent OS policies allow central automated installation and maintenance across VM fleets."
+  },
+  {
+    "id": "24",
+    "question": "You are setting up Cloud Logging for a new project. You need to ensure that logs from a specific VPC network are exported to a BigQuery dataset for long-term security analysis. What is the correct component to configure in Cloud Logging to achieve this?",
+    "options": [
+      "A Log-based Metric",
+      "A Log Router Sink",
+      "An Uptime Check",
+      "A Monitoring Dashboard"
+    ],
+    "correct": 1,
+    "explanation": "A Log Router Sink routes filtered log entries from Cloud Logging to external destinations such as BigQuery, Pub/Sub, or Cloud Storage."
+  },
+  {
+    "id": "25",
+    "question": "Your organization needs to maintain a historical record of all Google Cloud resources and their IAM policy changes for compliance auditing. You decide to use Cloud Asset Inventory. Which configuration allows you to automatically export asset changes to a BigQuery dataset in real-time as they occur?",
+    "options": [
+      "Create a Cloud Asset Feed to Pub/Sub, and use a BigQuery subscription to ingest the data.",
+      "Schedule a recurring 'ExportAssets' job to BigQuery using the Cloud Asset Inventory API.",
+      "Configure a Log Router sink to export 'cloudaudit.googleapis.com' logs to BigQuery.",
+      "Create a Cloud Asset Feed and set the destination to BigQuery."
+    ],
+    "correct": 0,
+    "explanation": "Streaming real-time Cloud Asset Inventory changes to BigQuery is achieved by publishing asset feeds to Pub/Sub and using a Pub/Sub BigQuery subscription."
+  },
+  {
+    "id": "26",
+    "question": "You are managing a complex project with hundreds of idle and over-provisioned VMs. You want to use Gemini Cloud Assist to help identify and remediate these resources. How does Gemini Cloud Assist primarily integrate with Cloud Asset Inventory to provide these insights?",
+    "options": [
+      "By replacing the Cloud Asset Inventory API with a new AI-only monitoring endpoint.",
+      "By automatically deleting any resource that Cloud Asset Inventory marks as 'Insecure' without user intervention.",
+      "By manually uploading a CSV export from Cloud Asset Inventory into the Gemini Chat interface.",
+      "By analyzing the metadata and relationships indexed by Cloud Asset Inventory to provide natural language insights and SQL-based search queries."
+    ],
+    "correct": 3,
+    "explanation": "Gemini Cloud Assist leverages Cloud Asset Inventory's asset metadata and resource relationships to generate natural language insights and execute asset queries."
+  },
+  {
+    "id": "27",
+    "question": "A security auditor requires a point-in-time snapshot of every resource, IAM policy, and VPC firewall rule currently active in your Google Cloud organization to verify compliance with a new regulation. Which Cloud Asset Inventory action is best suited for this requirement?",
+    "options": [
+      "Enabling Cloud Audit Logs for all services.",
+      "Using the Cloud Console search bar to list all resources.",
+      "Creating a real-time Cloud Asset Feed.",
+      "Exporting asset metadata to a Cloud Storage bucket."
+    ],
+    "correct": 3,
+    "explanation": "Exporting asset metadata to Cloud Storage produces a comprehensive, point-in-time inventory snapshot of all active organization assets and IAM policies."
+  },
+  {
+    "id": "28",
+    "question": "You are investigating a connectivity issue where a Compute Engine instance cannot reach an external API. You decide to use Gemini Cloud Assist in the Google Cloud Console. How can Gemini Cloud Assist help you troubleshoot this specific resource issue most effectively?",
+    "options": [
+      "It can analyze the VM's configuration and suggest specific gcloud commands or Console steps to verify firewall rules and routes.",
+      "It replaces the need for VPC Flow Logs by predicting network traffic patterns.",
+      "It can automatically rewrite your application code to bypass the network error.",
+      "It can provision a new VPC network automatically to resolve the conflict without user input."
+    ],
+    "correct": 0,
+    "explanation": "Gemini Cloud Assist analyzes current VM and VPC configurations to offer step-by-step diagnostic advice, gcloud commands, and firewall verification guidance."
+  },
+  {
+    "id": "29",
+    "question": "You want to monitor the CPU usage of a Compute Engine instance and receive an alert if it exceeds 80% for more than 5 minutes. Which Google Cloud Observability tool should you primary use to configure this?",
+    "options": [
+      "Cloud Debugger",
+      "Cloud Logging",
+      "Cloud Trace",
+      "Cloud Monitoring"
+    ],
+    "correct": 3,
+    "explanation": "Cloud Monitoring handles system metric collection, threshold alert policies, and incident notification delivery."
+  },
+  {
+    "id": "30",
+    "question": "When setting up a new Google Cloud project, what is the default behavior for the Cloud Logging 'Default' and '_Required' buckets?",
+    "options": [
+      "They only start ingesting data after a Monitoring Agent is installed on a VM.",
+      "They are only available if the 'Premium' tier of Google Cloud Observability is enabled.",
+      "They must be manually provisioned via the Cloud Console before any logs are stored.",
+      "They are automatically created and begin ingesting logs from the project."
+    ],
+    "correct": 3,
+    "explanation": "The `_Default` and `_Required` log buckets are automatically created by Google Cloud upon project creation."
+  },
+  {
+    "id": "31",
+    "question": "A Cloud Engineer needs to ensure that all system and audit logs for a new Google Cloud project are captured. Which statement best describes the provisioning process for the '_Default' and '_Required' log buckets in Cloud Logging?",
+    "options": [
+      "The buckets are provisioned only when the first Compute Engine instance is deployed.",
+      "The buckets are only provisioned after the Cloud Logging API is manually enabled in the API Library.",
+      "The buckets are automatically provisioned by Google Cloud when the project is created.",
+      "The buckets must be manually created using the gcloud logging buckets create command."
+    ],
+    "correct": 2,
+    "explanation": "Google Cloud automatically provisions the `_Default` and `_Required` system log buckets whenever a project is initialized."
+  },
+  {
+    "id": "32",
+    "question": "You want to view performance metrics such as disk I/O and network traffic for a Compute Engine instance in a dashboard. Which step is required to provision the collection of these system-level metrics?",
+    "options": [
+      "Enable the Cloud Trace API in the instance metadata.",
+      "Install and configure the Ops Agent on the VM instance.",
+      "Configure a VPC Flow Log to capture hardware performance data.",
+      "Link the project to a BigQuery dataset for real-time metric streaming."
+    ],
+    "correct": 1,
+    "explanation": "The Ops Agent gathers deep system-level telemetry (disk I/O, process memory, guest OS metrics) and pushes them to Cloud Monitoring."
+  }
+]

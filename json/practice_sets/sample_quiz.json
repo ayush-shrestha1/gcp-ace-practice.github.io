@@ -1,0 +1,246 @@
+[
+  {
+    "id": "1",
+    "question": "Your organization plans to migrate its financial transaction data to Google Cloud. Auditors need to view the data and run reports in BigQuery, but they are not allowed to modify the data. You want to apply the principle of least privilege and follow Google-recommended practices. What should you do?",
+    "options": [
+      "Assign roles/bigquery.dataViewer to the individual auditors.",
+      "Create a group for auditors and assign roles/viewer to them.",
+      "Create a group for auditors, and assign roles/bigquery.dataViewer to them.",
+      "Assign a custom role to each auditor that allows view-only access to BigQuery."
+    ],
+    "correct": 2,
+    "explanation": "Create a group for auditors, and assign roles/bigquery.dataViewer to them. Google recommended practice is to assign IAM roles to groups rather than individual users, and using predefined roles requires less maintenance than custom roles."
+  },
+  {
+    "id": "2",
+    "question": "You are managing your company’s first Google Cloud project. Project leads, developers, and internal testers will participate in the project, which includes sensitive information. You need to ensure that only specific members of the development team have access to sensitive information. You want to assign the appropriate Identity and Access Management (IAM) roles that also require the least amount of maintenance. What should you do?",
+    "options": [
+      "Assign a basic role to each user.",
+      "Create groups. Assign a basic role to each group, and then assign users to groups.",
+      "Create groups. Assign a Custom role to each group, including those who should have access to sensitive data. Assign users to groups.",
+      "Create groups. Assign an IAM Predefined role to each group as required, including those who should have access to sensitive data. Assign users to groups."
+    ],
+    "correct": 3,
+    "explanation": "Predefined roles are fine-grained enough to set permissions for specific roles requiring sensitive data access. This solution also uses groups, which is the recommended practice for managing permissions for individual roles."
+  },
+  {
+    "id": "3",
+    "question": "You are responsible for monitoring all configuration changes to your Cloud Storage and Firestore resources in real-time. For each change, you need to invoke a security script that will verify the compliance of the change in near real-time. You want to accomplish this with minimal setup. What should you do?",
+    "options": [
+      "Create a logging sink to export the audit logs to BigQuery. Modify the security script to read from BigQuery. Schedule the security script to run in a Cloud Run function daily through Cloud Scheduler.",
+      "Use Cloud Storage and Firestore triggers to invoke the security script hosted in Cloud Run functions.",
+      "Use a Python script to get audit logs from Cloud Logging, analyze them, and invoke the security script.",
+      "Redirect your data-changing queries to an App Engine application that performs all resource changes and call the security script from the application."
+    ],
+    "correct": 1,
+    "explanation": "Using Cloud Storage and Firestore triggers to invoke the security script hosted in Cloud Run functions provides a fast response and requires the minimal amount of setup."
+  },
+  {
+    "id": "4",
+    "question": "Your application needs to process a significant rate of transactions. The rate of transactions exceeds the processing capabilities of a single virtual machine (VM). You want to spread transactions across multiple servers in a managed instance group in real time and in the most cost-effective manner. Which Google Cloud product should the transactions be sent to?",
+    "options": [
+      "BigQuery",
+      "Cloud SQL",
+      "Pub/Sub",
+      "Bigtable"
+    ],
+    "correct": 2,
+    "explanation": "Pub/Sub is a scalable solution that can effectively distribute a large number of tasks among multiple servers at a low cost."
+  },
+  {
+    "id": "5",
+    "question": "Your team needs to directly connect your on-premises servers to several VMs inside of a Virtual Private Cloud (VPC). You want to set up a fast and secure network connection with minimal maintenance and cost. What should you do?",
+    "options": [
+      "Set up Dedicated Interconnect.",
+      "Set up Cloud VPN.",
+      "Assign a public IP address to each VM, and assign a strong password to each one.",
+      "Start a Compute Engine VM, install OpenVPN, and create a direct tunnel to each on-premises server."
+    ],
+    "correct": 1,
+    "explanation": "Cloud VPN is a fast and secure network connection with minimal maintenance and cost."
+  },
+  {
+    "id": "6",
+    "question": "You are implementing Cloud Storage for your organization. You need to follow your organization’s policies, which include:\n1) Archive data older than one year.\n2) Delete data older than 5 years.\n3) Use standard storage for all other data.\n\nYou want to implement these guidelines automatically and in the simplest manner available. What should you do?",
+    "options": [
+      "Set up Object Lifecycle management policies.",
+      "Run a script daily. Copy data that is older than one year to an archival bucket, and delete five-year-old data.",
+      "Run a script daily. Set storage class to ARCHIVE for data that is older than one year, and delete five-year-old data.",
+      "Set up default storage class for three buckets named: STANDARD, ARCHIVE, DELETED. Use a script to move the data in the appropriate bucket when its condition matches your company guidelines."
+    ],
+    "correct": 0,
+    "explanation": "Object Lifecycle allows you to automate the implementation of your organization’s data policy."
+  },
+  {
+    "id": "7",
+    "question": "You are creating an application that requires data storage of up to 10 petabytes (PB). The application must support high-speed, real-time reads and writes of time series data with a schema that may change over time. You want to use the most economical solution for data storage. What should you do?",
+    "options": [
+      "Store the data in Spanner and the changing schema field data in Cloud Storage as JSON files.",
+      "Store the data in Cloud Storage and cache the data with Cloud CDN.",
+      "Store the data in Bigtable.",
+      "Store the data in BigQuery and the changing schema field data in a JSON column."
+    ],
+    "correct": 2,
+    "explanation": "Bigtable provides high-speed reads and writes, accommodates a changing schema, and is cost-effective."
+  },
+  {
+    "id": "8",
+    "question": "You have created two Kubernetes Deployment resources in a Google Kubernetes Engine (GKE) cluster. The first Deployment is a backend service. The second Deployment is a frontend service. You want to ensure that there is no interruption in communication between your frontend and backend Deployment Pods if they are updated or the Deployment is scaled up or down. What should you do?",
+    "options": [
+      "Create a Kubernetes Service that groups the Pods in the backend service, and configure the frontend Pods to communicate through that service.",
+      "Create a DNS entry with a fixed IP address that the frontend service can use to reach the backend service.",
+      "Assign static internal IP addresses that the frontend service can use to reach the backend Pods.",
+      "Assign static external IP addresses that the frontend service can use to reach the backend Pods."
+    ],
+    "correct": 0,
+    "explanation": "Kubernetes Service serves the purpose of providing a destination that can be used when the Pods are moved or restarted."
+  },
+  {
+    "id": "9",
+    "question": "You are responsible for the employee management service for your global company. The service will add, update, delete, and list home addresses. Each of these operations is implemented by a Docker container microservice. The processing load can vary from low to very high. You want to deploy the service on Google Cloud for scalability and minimal administration. What should you do?",
+    "options": [
+      "Deploy your Docker containers on Cloud Run.",
+      "Start each Docker container as a managed instance group.",
+      "Deploy your Docker containers on Google Kubernetes Engine (GKE).",
+      "Combine the four microservices into one Docker image, and deploy it to the App Engine instance."
+    ],
+    "correct": 0,
+    "explanation": "Cloud Run is a managed service that requires minimal administration."
+  },
+  {
+    "id": "10",
+    "question": "You provide a service on the internet. You have a server and an IP address where the application is located. You do not want to have to change the IP address on your DNS server if your server crashes or is replaced. You also want to avoid downtime and deliver a solution for minimal cost and setup. What should you do?",
+    "options": [
+      "Create a script that updates the IP address in the DNS server when the server crashes or is replaced.",
+      "Reserve a static internal IP address, and update the DNS server.",
+      "Reserve a static external IP address, and update the DNS server.",
+      "Use the Bring Your Own IP (BYOIP) method to use your own IP address."
+    ],
+    "correct": 2,
+    "explanation": "External IPs are routable and can be advertised and seen on the internet, and this is also the most cost-effective solution."
+  },
+  {
+    "id": "11",
+    "question": "Your team is building the development, test, and production environments for your application deployment in Google Cloud. You need to efficiently deploy and manage these environments and ensure that they are consistent. You want to follow Google-recommended practices. What should you do?",
+    "options": [
+      "Create a Cloud Shell script that uses gcloud commands to deploy the environments.",
+      "Create one Terraform configuration for all environments. Parameterize the differences between environments.",
+      "For each environment, create a Terraform configuration. Use them for repeated deployment. Reconcile the templates periodically.",
+      "Use the Google Cloud Terraform blueprint modules to create one deployment template that will work for all environments, and deploy with Terraform."
+    ],
+    "correct": 3,
+    "explanation": "The Google Cloud Terraform blueprint modules provides ready-made templates that reflect Google Cloud recommended practices and can be used to automate creation of the environments."
+  },
+  {
+    "id": "12",
+    "question": "You receive an error message when you try to start a new VM: “You have exhausted the IP range in your subnet.” Your network administrator shared that the CIDR prefix length being used in your subnet can be decreased. You want to resolve the error with the least amount of effort. What should you do?",
+    "options": [
+      "Create a new subnet and start your VM there.",
+      "Expand the CIDR range in your subnet, and restart the VM that issued the error.",
+      "Create another subnet, and move several existing VMs into the new subnet.",
+      "Restart the VM using exponential backoff until the VM starts successfully."
+    ],
+    "correct": 1,
+    "explanation": "Once you expand the CIDR range, you can redeploy it, and it will work."
+  },
+  {
+    "id": "13",
+    "question": "You are running several related applications on Compute Engine virtual machine (VM) instances. You want to follow Google-recommended practices and expose each application through a DNS name. What should you do?",
+    "options": [
+      "Use the Compute Engine internal DNS service to assign DNS names to your VM instances, and make the names known to your users.",
+      "Assign each VM instance an alias IP address range, and then make the internal DNS names public.",
+      "Assign Google Cloud routes to your VM instances, assign DNS names to the routes, and make the DNS names public.",
+      "Create A records in Cloud DNS for your VM IP addresses."
+    ],
+    "correct": 3,
+    "explanation": "Cloud DNS is the proper tool for translating domain names into IP addresses."
+  },
+  {
+    "id": "14",
+    "question": "You are charged with optimizing Google Cloud resource consumption. Specifically, you need to investigate the resource consumption charges and present a summary of your findings. You want to do it in the most efficient way possible. What should you do?",
+    "options": [
+      "Rename resources to reflect the owner and purpose. Write a Python script to analyze resource consumption.",
+      "Attach labels to resources to reflect the owner and purpose. Export Cloud Billing data into BigQuery, and analyze it with Looker Studio.",
+      "Rename resources to reflect the owner and purpose. Export Cloud Billing data into BigQuery, and analyze it with Looker Studio.",
+      "Create a script to analyze resource usage based on the project to which the resources belong. In this script, use the IAM accounts and services accounts that control given resources."
+    ],
+    "correct": 1,
+    "explanation": "Attach labels to resources to reflect owner and purpose, export Cloud Billing data into BigQuery, and analyze with Looker Studio. Labels are attached to resources and then propagated into billing items as per Google recommended practice."
+  },
+  {
+    "id": "15",
+    "question": "You are creating an environment for researchers to run ad hoc SQL queries. The researchers work with large quantities of data. Although they will use the environment for an hour a day on average, the researchers need access to the functional environment at any time during the day. You need to deliver a cost-effective solution. What should you do?",
+    "options": [
+      "Store the data in Bigtable, and run SQL queries provided by Bigtable schema.",
+      "Store the data in BigQuery, and run SQL queries in BigQuery.",
+      "Create a Dataproc cluster, store the data in HDFS storage, and run SQL queries in Spark.",
+      "Create a Dataproc cluster, store the data in Cloud Storage, and run SQL queries in Spark."
+    ],
+    "correct": 1,
+    "explanation": "BigQuery allows for ad hoc queries and is cost effective."
+  },
+  {
+    "id": "16",
+    "question": "You are migrating your workload from on-premises Kubernetes to Google Cloud. You want to minimize migration, operational, and infrastructure costs. What should you do?",
+    "options": [
+      "Configure GKE Autopilot.",
+      "Configure GKE Standard.",
+      "Configure GKE Enterprise.",
+      "Configure GKE fleet management."
+    ],
+    "correct": 0,
+    "explanation": "GKE Autopilot is designed to reduce the operational cost of managing clusters and optimize your clusters for production."
+  },
+  {
+    "id": "17",
+    "question": "Your company recently launched a new application, and you need to ensure that the application is working correctly with optimal performance. You also need to monitor the number of third-party licenses used by your system. You want a dashboard to display system status and issue alerts for slow performance or application unavailability. You need to implement the solution with minimal cost and effort. What should you do?",
+    "options": [
+      "Run your application using managed instance groups and set up health indicators to measure performance speed and page availability.",
+      "Use Cloud Monitoring dashboards, install custom Cloud Monitoring agents for third-party licenses, and set up license count as additional alerts.",
+      "Set up the application to send alerts on pages being slow or unavailable, send these alerts to Pub/Sub, and configure Pub/Sub to send the alerts to you.",
+      "Configure Pub/Sub to measure page performance and availability, and to issue alerts when necessary."
+    ],
+    "correct": 1,
+    "explanation": "A custom agent is the correct way to monitor non-standard information such as third-party licenses using Cloud Monitoring dashboards."
+  },
+  {
+    "id": "18",
+    "question": "You are migrating your on-premises data platform to Google Cloud. You need to migrate 2 PB of data from on-premises to Google Cloud. Your on-premises environment has a bandwidth limit of 100 Mbps that can be increased to 1000 Mbps through third-party network providers. You want to follow Google-recommended practices for the most cost-effective, and fastest way to implement the migration. What should you do?",
+    "options": [
+      "Set up Partner Interconnect and transfer the data by using Private Service Connect.",
+      "Obtain a Transfer Appliance, copy the data to it, and ship it to Google.",
+      "Set up Dedicated Interconnect and transfer the data by using Private Service Connect.",
+      "Divide your data between 100 computers, and upload each data portion to a Cloud Storage bucket. Run a script to merge the uploads together."
+    ],
+    "correct": 1,
+    "explanation": "Obtaining a Transfer Appliance follows Google recommended practices for large data sizes (2 PB) and is the most cost-effective solution to implement the migration."
+  },
+  {
+    "id": "19",
+    "question": "You are setting up billing for your project. You want to prevent excessive consumption of resources due to an error or malicious attack and prevent billing spikes or surprises. What should you do?",
+    "options": [
+      "Set up budgets and alerts in your project.",
+      "Set up quotas for the resources that your project will be using.",
+      "Set up a spending limit on the credit card used in your billing account.",
+      "Label all resources according to best practices, regularly export the billing reports, and analyze them with BigQuery."
+    ],
+    "correct": 1,
+    "explanation": "Setting up quotas will prevent resource consumption from exceeding specified limits."
+  },
+  {
+    "id": "20",
+    "question": "Your company uses BigQuery to store and analyze data. Upon submitting your query in BigQuery, the query fails with a quotaExceeded error. You need to diagnose the issue causing the error. What should you do? (Choose 2)",
+    "options": [
+      "Use the INFORMATION_SCHEMA views to analyze the underlying issue.",
+      "Search errors in Cloud Audit Logs to analyze the issue.",
+      "View errors in Cloud Monitoring to analyze the issue.",
+      "Configure Cloud Trace to analyze the issue.",
+      "Use BigQuery BI Engine to analyze the issue."
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "INFORMATION_SCHEMA views contain metadata about BigQuery resources, and Cloud Audit Logs allow users to examine the specific quota error messages."
+  }
+]

@@ -1,0 +1,550 @@
+[
+  {
+    "id": "1",
+    "question": "Which of the below mode is fully managed Kubernetes offering that eliminates the need for manual cluster management?",
+    "options": [
+      "GKE: Autopilot Mode",
+      "GKE: Standard Mode"
+    ],
+    "correct": 0,
+    "explanation": "GKE Autopilot is a fully managed mode of operation in GKE where Google manages the cluster infrastructure, node provisioning, and scaling."
+  },
+  {
+    "id": "2",
+    "question": "Which of the below service is used to create specific purpose event driven approach using small snippets of code that respond to events without a server or runtime?",
+    "options": [
+      "Cloud Run",
+      "Cloud Function",
+      "App Engine",
+      "Compute Engine"
+    ],
+    "correct": 1,
+    "explanation": "Cloud Functions is a serverless execution environment for building and connecting event-driven cloud services using small code snippets."
+  },
+  {
+    "id": "3",
+    "question": "Which of the below is a managed service from Google Cloud that allows resources to access the internet without exposing them to the outside world?",
+    "options": [
+      "Cloud NAT (Network Address Translation)",
+      "Google private access",
+      "GKE: Autopilot Mode",
+      "Private Cluster in Kubernetes"
+    ],
+    "correct": 0,
+    "explanation": "Cloud NAT enables instances without external IP addresses to access the internet for updates and patches while remaining hidden from incoming internet connections."
+  },
+  {
+    "id": "4",
+    "question": "What is a NoSQL feature that is not available in relational databases?",
+    "options": [
+      "Fixed schemas",
+      "Flexible schemas",
+      "Indexes",
+      "ACID transactions"
+    ],
+    "correct": 1,
+    "explanation": "NoSQL databases support flexible, dynamic schemas (schema-less design), whereas traditional relational databases require fixed schemas defined upfront."
+  },
+  {
+    "id": "5",
+    "question": "Which product provides a managed Hadoop cluster?",
+    "options": [
+      "Cloud Pub/Sub",
+      "BigQuery",
+      "Cloud Dataproc",
+      "Cloud Dataflow"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Dataproc is a fully managed service for running Apache Hadoop and Apache Spark clusters easily and cost-effectively."
+  },
+  {
+    "id": "6",
+    "question": "An existing application uses websockets. To help migrate the application to cloud you should:",
+    "options": [
+      "Review websocket encryption requirements with the security team.",
+      "Redesign the application to use distributed sessions instead of websockets.",
+      "Do nothing to the application. HTTP(S) load balancing natively supports websocket proxying.",
+      "Redesign the application to use HTTP streaming."
+    ],
+    "correct": 2,
+    "explanation": "Google Cloud HTTP(S) Load Balancing natively supports WebSocket proxying out of the box, requiring no app redesign."
+  },
+  {
+    "id": "7",
+    "question": "The security team has locked out SSH access to production VMs. How can operations manage the VMs?",
+    "options": [
+      "Grant operations team appropriate IAM roles to manage VMs with gcloud commands",
+      "Develop a Cloud API application for all operations actions",
+      "Develop an application that grants temporary SSH access",
+      "Configure a VPN to allow SSH access to VMs"
+    ],
+    "correct": 0,
+    "explanation": "Operations can manage VMs remotely using gcloud commands (or GCP Console) authorized via IAM roles without direct SSH login."
+  },
+  {
+    "id": "8",
+    "question": "How can application parts, owned by different project teams, communicate over RFC1918 addresses?",
+    "options": [
+      "Parts communicate using HTTPS",
+      "Communicate over global load balancers, one per project",
+      "Single project, same VPC",
+      "Shared VPC, each team's project a service of the Shared VPC project"
+    ],
+    "correct": 3,
+    "explanation": "Shared VPC allows an organization to connect resources from multiple projects to a common Virtual Private Cloud (VPC) network using internal RFC1918 addresses."
+  },
+  {
+    "id": "9",
+    "question": "Which storage service provides a globally consistent, horizontally scalable RDBMS?",
+    "options": [
+      "Cloud Firestore",
+      "Cloud Bigtable",
+      "Cloud Spanner",
+      "BigQuery"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Spanner is a fully managed, globally consistent, horizontally scalable relational database service."
+  },
+  {
+    "id": "10",
+    "question": "A managed instance group is thrashing: it keeps adding more VMs, and then shutting them down. The VMs are working properly. How would you fix it?",
+    "options": [
+      "By increasing the maximum number of VMs in the instance group",
+      "By decreasing the minimum number of VMs in the instance group",
+      "By increasing the time autoscalers consider when making decisions",
+      "By decreasing the time autoscalers consider when making decisions"
+    ],
+    "correct": 2,
+    "explanation": "Increasing the stabilization period (cool-down period or time horizon) prevents the autoscaler from rapidly fluctuating (thrashing) in response to transient load metrics."
+  },
+  {
+    "id": "11",
+    "question": "What is the Operations Suite tool to see the latency of requests for a web application in App Engine?",
+    "options": [
+      "Trace",
+      "Profiler",
+      "Debugger",
+      "Error Reporting"
+    ],
+    "correct": 0,
+    "explanation": "Cloud Trace collects latency data from App Engine applications and displays request performance traces."
+  },
+  {
+    "id": "12",
+    "question": "A microservice has intermittent problems that bursts logs. How can you spot the right time to analyze the logs as issues happen?",
+    "options": [
+      "Log into the machine running the microservice and wait for the log messages.",
+      "Look for error in Error Reporting dashboard.",
+      "Configure microservice to send traces to Cloud Trace.",
+      "Set a log metric in Cloud Logging, and alert on it past a threshold."
+    ],
+    "correct": 3,
+    "explanation": "Creating a log-based metric in Cloud Logging combined with Cloud Monitoring alert policies triggers real-time notifications when log bursts exceed threshold levels."
+  },
+  {
+    "id": "13",
+    "question": "When migrating a SQL Server application to GCP, which DBMS service may be easiest?",
+    "options": [
+      "Cloud Dataproc",
+      "Cloud Bigtable",
+      "Cloud Bigquery",
+      "Cloud SQL"
+    ],
+    "correct": 3,
+    "explanation": "Cloud SQL natively supports fully managed SQL Server engines, enabling direct migration with high compatibility."
+  },
+  {
+    "id": "14",
+    "question": "Which product uses the Apache Beam API to provide ETL services?",
+    "options": [
+      "Cloud Pub/Sub",
+      "Cloud Dataflow",
+      "Cloud Dataproc",
+      "BigQuery"
+    ],
+    "correct": 1,
+    "explanation": "Cloud Dataflow is a fully managed execution service for executing Apache Beam data processing pipelines."
+  },
+  {
+    "id": "15",
+    "question": "Which product provides a managed Apache Kafka service?",
+    "options": [
+      "Cloud Pub/Sub",
+      "BigQuery",
+      "Cloud Dataproc",
+      "Cloud Dataflow"
+    ],
+    "correct": 0,
+    "explanation": "Cloud Pub/Sub is Google Cloud's fully managed real-time messaging service, serving as the cloud-native alternative to Apache Kafka."
+  },
+  {
+    "id": "16",
+    "question": "How to avoid dropped incoming data during workload spikes - without increasing the number of VMs?",
+    "options": [
+      "Add memory to the VMs",
+      "Write to Cloud Pub/Sub and have VMs read from queue",
+      "Write to Cloud Memorystore and have VMs read from cache",
+      "Use local SSDs on VMs"
+    ],
+    "correct": 1,
+    "explanation": "Using Cloud Pub/Sub as a message queue buffers incoming high-volume spikes so subscriber VMs can process messages at their own pace without dropping data."
+  },
+  {
+    "id": "17",
+    "question": "An application is running on a managed instance group, but it is not able to serve the incoming requests. What might be the most probable reason?",
+    "options": [
+      "The application shuts down when the instance group time-to-live expires",
+      "VM shuts down when the health check fails & a new VM starts",
+      "The application shuts down when the health check fails",
+      "VM shuts down when instance group time-to-live expires; a new VM starts"
+    ],
+    "correct": 1,
+    "explanation": "If an instance health check fails, the MIG autohealing policy terminates the unhealthy VM and provisions a new one, temporarily interrupting service delivery during restart."
+  },
+  {
+    "id": "18",
+    "question": "Static web data loads slowly for users in other regions. How can you best improve performance?",
+    "options": [
+      "Scale up the size of the VMs",
+      "Distribute data using Cloud CDN",
+      "Move the VMs to a location nearer the users",
+      "Use Premium Network for VMs"
+    ],
+    "correct": 1,
+    "explanation": "Cloud CDN caches static web content at Google edge locations worldwide, drastically reducing latency for global users."
+  },
+  {
+    "id": "19",
+    "question": "An application synchronously communicates between microservices. Which approach will decouple the microservices?",
+    "options": [
+      "Have sender write to local drives; receiver mounts drives read-only",
+      "Create a Cloud Storage bucket that sender writes and receiver reads",
+      "Create a Pub/Sub topic that sender writes and receiver reads",
+      "Create a Bigtable database that sender writes and receiver reads"
+    ],
+    "correct": 2,
+    "explanation": "Publishing messages to a Cloud Pub/Sub topic provides asynchronous, loose coupling between microservice producers and consumers."
+  },
+  {
+    "id": "20",
+    "question": "What is your choice for a managed database for JSON documents?",
+    "options": [
+      "Cloud Firestore",
+      "Cloud Spanner",
+      "Cloud Filestore",
+      "Cloud Bigtable"
+    ],
+    "correct": 0,
+    "explanation": "Cloud Firestore is a fully managed NoSQL document database designed to store, sync, and query JSON-like document data."
+  },
+  {
+    "id": "21",
+    "question": "You are expanding from US to Europe. Which option routes users to the nearest healthy server?",
+    "options": [
+      "Simple network management protocol",
+      "Content delivery network",
+      "VPN",
+      "Global load balancing"
+    ],
+    "correct": 3,
+    "explanation": "Google Cloud Global Load Balancing uses Anycast IP addresses to route user traffic automatically to the nearest healthy backend instance."
+  },
+  {
+    "id": "22",
+    "question": "Can Google Cloud Load Balancing balance HTTP traffic across multiple regions?",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct": 0,
+    "explanation": "Global External Application Load Balancing balances HTTP/HTTPS traffic across backends located in multiple GCP regions worldwide."
+  },
+  {
+    "id": "23",
+    "question": "Which load-balancing option is best for a large-scale, world-wide web app with a lot of static data?",
+    "options": [
+      "TCP load balancer with SSL and CDN",
+      "HTTP/S load balancer with SSL and CDN",
+      "TCP load balancer with SSL",
+      "HTTP/S load balancer with SSL"
+    ],
+    "correct": 1,
+    "explanation": "An HTTP(S) Load Balancer integrated with Cloud CDN terminates SSL globally and caches static content close to users worldwide."
+  },
+  {
+    "id": "24",
+    "question": "VPC firewall rules are applied to traffic that is",
+    "options": [
+      "entering a VM regardless of origin",
+      "entering a VM from outside the VPC subnet",
+      "entering a VM from outside its project",
+      "entering a VM from outside the VPC network"
+    ],
+    "correct": 0,
+    "explanation": "VPC firewall rules are enforced at the VM instance level (distributed firewall) and apply to all incoming/outgoing traffic regardless of source."
+  },
+  {
+    "id": "25",
+    "question": "To connect a network between GCP projects in the same or different organizations, you should use:",
+    "options": [
+      "Dedicated Peering",
+      "Dedicated Interconnect",
+      "Carrier Peering",
+      "VPC Peering"
+    ],
+    "correct": 3,
+    "explanation": "VPC Network Peering connects VPC networks across projects or organizations so that resources communicate using internal IP addresses."
+  },
+  {
+    "id": "26",
+    "question": "To ensure that a load balancer only sends requests to virtual machines that are working, you would use",
+    "options": [
+      "Readiness probe",
+      "Health check",
+      "Liveness probe",
+      "Uptime check"
+    ],
+    "correct": 1,
+    "explanation": "Load balancing health checks determine whether VM backend instances are responsive before routing traffic to them."
+  },
+  {
+    "id": "27",
+    "question": "You want to be notified if your application is down. Which tool can provide the basis for an alert?",
+    "options": [
+      "Liveness probe",
+      "Uptime check",
+      "Readiness probe",
+      "Health check"
+    ],
+    "correct": 1,
+    "explanation": "Cloud Monitoring Uptime Checks test public or internal application availability from external locations and trigger alerts if unreachable."
+  },
+  {
+    "id": "28",
+    "question": "Customer wants to migrate to GCP, but still maintain investment in an existing Apache Spark code data pipeline. What service should he choose?",
+    "options": [
+      "BigQuery",
+      "Dataflow",
+      "Dataproc",
+      "Dataprep"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Dataproc runs native Apache Hadoop and Apache Spark jobs without requiring code rewrites."
+  },
+  {
+    "id": "29",
+    "question": "Which option will give the best network performance for a virtual machine with 2 vCPUs and 8 GB memory on the default VPC?",
+    "options": [
+      "Assign 16 vCPUs",
+      "Assign 32 GB Memory",
+      "Assign 4 Network Interfaces",
+      "Assign a Custom Machine Type"
+    ],
+    "correct": 0,
+    "explanation": "Compute Engine network egress bandwidth scales directly with the number of vCPUs assigned to a VM instance (up to maximum caps)."
+  },
+  {
+    "id": "30",
+    "question": "A client is using Cloud SQL database to serve infrequently changing lookup tables that host data used by applications. The applications will not modify the tables. As they expand into other geographic regions they want to ensure good performance. What do you recommend?",
+    "options": [
+      "Migrate to Cloud Spanner.",
+      "Read replicas.",
+      "Instance high availability configuration.",
+      "Replicate from an external server."
+    ],
+    "correct": 1,
+    "explanation": "Cross-region Cloud SQL read replicas distribute read traffic locally to geographically separated application clients to improve query response times."
+  },
+  {
+    "id": "31",
+    "question": "You need a private 1 Gbps connection between your GCP project and on-premises datacenter. The optimal choice from cost perspective is:",
+    "options": [
+      "Cloud VPN",
+      "Partner Interconnect",
+      "Direct Interconnect",
+      "Hybrid Interconnect"
+    ],
+    "correct": 1,
+    "explanation": "Partner Interconnect is cost-effective for sub-10 Gbps capacity demands (like 1 Gbps) through a service provider network."
+  },
+  {
+    "id": "32",
+    "question": "You are deploying a workload to a GKE cluster and need to pull a private Docker image from Artifact Registry. The cluster uses the default Compute Engine service account. What is the most efficient way to grant the cluster access to the registry?",
+    "options": [
+      "Change the Artifact Registry permission to 'Public'.",
+      "Grant the 'Artifact Registry Reader' role to the GKE node's service account.",
+      "Create an Image Pull Secret using your own username and password.",
+      "Enable the GKE 'Image Streaming' feature, which bypasses IAM checks."
+    ],
+    "correct": 1,
+    "explanation": "Granting roles/artifactregistry.reader to the node pool's service account seamlessly permits node daemons to pull container images."
+  },
+  {
+    "id": "33",
+    "question": "A Cloud Run application experiences 'cold starts' that are unacceptable for your users. You want to ensure at least 2 instances are always running and ready to handle traffic. Which setting should you configure?",
+    "options": [
+      "Set the maximum instances to 2.",
+      "Set the minimum instances (min-instances) to 2.",
+      "Increase the CPU limit of the container.",
+      "Change the ingress setting to 'Internal'."
+    ],
+    "correct": 1,
+    "explanation": "Configuring min-instances keeps warm container instances provisioned and ready to handle incoming requests without cold start delays."
+  },
+  {
+    "id": "34",
+    "question": "You manage a fleet of 50 Cloud SQL instances and 10 AlloyDB clusters across multiple projects. You need a single pane of glass to view security vulnerabilities and performance health across the entire database fleet. Which tool should you use?",
+    "options": [
+      "Cloud Asset Inventory",
+      "Database Center",
+      "Cloud Spanner Dashboard",
+      "Compute Engine VM Manager"
+    ],
+    "correct": 1,
+    "explanation": "Database Center in Google Cloud offers centralized health, security posture, and compliance tracking across database fleets."
+  },
+  {
+    "id": "35",
+    "question": "You need to collect both system-level metrics (CPU/RAM) and third-party application logs (Nginx) from a Compute Engine instance. What is the recommended agent to install?",
+    "options": [
+      "The Ops Agent",
+      "Legacy Stackdriver Logging Agent",
+      "The Anthos Service Mesh agent",
+      "The Cloud Trace Agent"
+    ],
+    "correct": 0,
+    "explanation": "The Google Cloud Ops Agent combines system metric collection and log ingestion into a single agent for Compute Engine VMs."
+  },
+  {
+    "id": "36",
+    "question": "You have an existing Prometheus setup for your Kubernetes workloads and want to migrate to a managed solution in Google Cloud without changing your PromQL queries. What should you deploy?",
+    "options": [
+      "Google Cloud Managed Service for Prometheus",
+      "BigQuery Omni",
+      "Cloud Debugger",
+      "Cloud Logging"
+    ],
+    "correct": 0,
+    "explanation": "Google Cloud Managed Service for Prometheus is a fully managed multi-cloud solution that natively supports PromQL queries."
+  },
+  {
+    "id": "37",
+    "question": "You are viewing a spike in error rates on a Monitoring dashboard and need help identifying the root cause. How can Gemini Cloud Assist help you in this situation?",
+    "options": [
+      "It will rewrite your application code and redeploy it to GKE.",
+      "It will automatically delete the failing resources to stop the errors.",
+      "It can summarize log entries related to the spike and suggest possible remediation steps in natural language.",
+      "It provides a physical hardware report of the data center hosting your VM."
+    ],
+    "correct": 2,
+    "explanation": "Gemini Cloud Assist analyzes diagnostic logs and metric trends to summarize root causes and offer natural language troubleshooting recommendations."
+  },
+  {
+    "id": "38",
+    "question": "When configuring the Ops Agent on a Linux VM, where do you define the specific log files the agent should monitor and the metrics it should collect?",
+    "options": [
+      "In the Google Cloud Console under the 'VM Metadata' tab.",
+      "In a YAML configuration file located at /etc/google-cloud-ops-agent/config.yaml.",
+      "By sending a API request to the Cloud Trace endpoint.",
+      "In the GKE Cluster settings under 'Workload Identity'."
+    ],
+    "correct": 1,
+    "explanation": "The Ops Agent configuration for Linux is defined locally in /etc/google-cloud-ops-agent/config.yaml."
+  },
+  {
+    "id": "39",
+    "question": "To enable 'Managed Service for Prometheus' on a GKE cluster using managed collection, what is the simplest action to take?",
+    "options": [
+      "Copy all metrics to a BigQuery table using a CronJob.",
+      "Deploy the Ops Agent to every GKE node manually.",
+      "Install a custom Prometheus server and Grafana using Helm charts.",
+      "Enable the Managed Service for Prometheus feature via the GKE cluster configuration (Console or gcloud)."
+    ],
+    "correct": 3,
+    "explanation": "Managed collection for Google Cloud Managed Service for Prometheus is enabled directly in the GKE cluster configuration."
+  },
+  {
+    "id": "40",
+    "question": "You want to limit a Cloud Run service so it never scales beyond 10 instances to prevent it from overwhelming your backend database. Which setting is appropriate?",
+    "options": [
+      "VPC Connector throughput",
+      "CPU Allocation",
+      "Max instances (max-instances)",
+      "Concurrency limit"
+    ],
+    "correct": 2,
+    "explanation": "Setting max-instances caps the maximum autoscaling ceiling of a Cloud Run service."
+  },
+  {
+    "id": "41",
+    "question": "In Database Center, you see a 'Security' recommendation suggesting that several Cloud SQL instances have overly permissive authorized networks. What is the most integrated way to investigate how to fix this using AI?",
+    "options": [
+      "Submit a support ticket to the Google Cloud security team.",
+      "Use Gemini Cloud Assist directly in the Database Center or SQL console to ask for remediation steps.",
+      "Download the logs to a local machine and run a Python script to analyze them.",
+      "Restart the database instances to reset the firewall rules."
+    ],
+    "correct": 1,
+    "explanation": "Gemini Cloud Assist directly embeds into the GCP Console to provide context-aware security remediation guidance."
+  },
+  {
+    "id": "42",
+    "question": "You need to allow a GKE cluster in Project A to pull container images from an Artifact Registry repository in Project B. Which IAM role should you grant to the GKE node's service account?",
+    "options": [
+      "roles/container.admin",
+      "roles/storage.objectViewer",
+      "roles/artifactregistry.reader",
+      "roles/artifactregistry.writer"
+    ],
+    "correct": 2,
+    "explanation": "The roles/artifactregistry.reader role grants read/pull access to Artifact Registry repositories across projects."
+  },
+  {
+    "id": "43",
+    "question": "You are configuring a Cloud Run service and want to ensure there is always at least one instance ready to handle requests to avoid cold starts. Which setting should you adjust?",
+    "options": [
+      "Concurrency",
+      "Min instances",
+      "CPU allocation",
+      "Max instances"
+    ],
+    "correct": 1,
+    "explanation": "Configuring Min instances ensures at least the specified number of warm instances remain running continuously."
+  },
+  {
+    "id": "44",
+    "question": "Your organization has hundreds of Cloud SQL instances across multiple projects. You need a centralized view to monitor the health, security posture, and compliance of the entire fleet. Which tool should you use?",
+    "options": [
+      "Database Center",
+      "Cloud Logging",
+      "Compute Engine Dashboard",
+      "Metrics Explorer"
+    ],
+    "correct": 0,
+    "explanation": "Database Center provides a unified dashboard to monitor inventory, health, security, and optimization across Google Cloud database fleets."
+  },
+  {
+    "id": "45",
+    "question": "You want to collect both system logs and performance metrics from a Linux Compute Engine instance. What is the recommended way to achieve this using the Ops Agent?",
+    "options": [
+      "Configure a Log Sink to export serial port output directly to Cloud Monitoring.",
+      "Install the Legacy Logging agent and Legacy Monitoring agent separately.",
+      "Install the Ops Agent and use the default configuration file to capture standard telemetry.",
+      "Enable the Cloud Trace API on the instance to begin metric collection."
+    ],
+    "correct": 2,
+    "explanation": "Installing the Ops Agent automatically collects standard system metrics and system log files using its default configuration."
+  },
+  {
+    "id": "46",
+    "question": "You are using Google Cloud Managed Service for Prometheus to monitor a GKE cluster. How should you deploy the collection mechanism to minimize management overhead?",
+    "options": [
+      "Enable managed collection in the GKE cluster configuration.",
+      "Use a Cloud Function to scrape metrics and write them to BigQuery.",
+      "Deploy a Sidecar container to every pod to manually export metrics.",
+      "Manually install and manage a standalone Prometheus server on a VM."
+    ],
+    "correct": 0,
+    "explanation": "Enabling managed collection delegates Prometheus scraper lifecycle and infrastructure management completely to GKE."
+  }
+]

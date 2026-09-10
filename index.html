@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GCP ACE Practice Engine</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="main-header no-print">
+      <h1>GCP ACE Practice Engine</h1>
+      <div id="quiz-meta" class="hidden">
+        <span id="timer-display">⏱️ 00:00</span>
+        <span id="progress-display">Question 0 of 0</span>
+        <button id="home-btn" class="btn-secondary" onclick="app.exitToMenu()">🏠 Exit to Menu</button>
+      </div>
+    </header>
+
+    <!-- Setup / Selection Screen -->
+    <main id="setup-screen" class="card no-print">
+      <h2>Exam Preparation Dashboard</h2>
+      <p>Select a structured mode or choose an individual question set to practice.</p>
+
+      <!-- Global Quiz Modes -->
+      <div class="mode-grid">
+        <div class="mode-card" onclick="app.startFullSet('mock')">
+          <h3>⏱️ Full Mock Exam</h3>
+          <p>60 randomized questions (weighted heavily from Practice Sets). 85% passing score required. Answers revealed at the end.</p>
+        </div>
+
+        <div class="mode-card" onclick="app.startFullSet('practice')">
+          <h3>🎯 Practice Test</h3>
+          <p>60 randomized questions. Immediate feedback and explanations shown upon submitting each question.</p>
+        </div>
+
+        <div class="mode-card" onclick="app.startFullSet('flashcard')">
+          <h3>⚡ Flashcard Study Mode</h3>
+          <p>Flip cards instantly to view answers and explanations for rapid memorization without scoring pressure.</p>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Single Set Selector -->
+      <h3>Practice Individual Sets</h3>
+      <div class="single-set-picker">
+        <select id="individual-set-select">
+          <option value="">-- Choose a Set --</option>
+        </select>
+        <button onclick="app.startIndividualSet('practice')">Practice Set</button>
+        <button onclick="app.startIndividualSet('flashcard')" class="btn-secondary">Flashcard Mode</button>
+      </div>
+    </main>
+
+    <!-- Quiz Engine Screen -->
+    <main id="quiz-screen" class="hidden no-print">
+      <div class="quiz-layout">
+        <div class="question-container card">
+          <div class="q-header">
+            <span id="source-badge" class="badge">Source</span>
+          </div>
+
+          <h3 id="q-text">Loading question...</h3>
+          <div id="options-container" class="options-list"></div>
+
+          <!-- Flashcard Flip Box -->
+          <div id="flashcard-reveal" class="hidden">
+            <button class="btn-primary" onclick="app.revealFlashcard()">Reveal Answer & Explanation</button>
+          </div>
+
+          <div id="explanation-box" class="explanation hidden">
+            <strong>Explanation:</strong>
+            <p id="explanation-text"></p>
+          </div>
+
+          <div class="nav-controls">
+            <button id="prev-btn" onclick="app.navigate(-1)">Previous</button>
+            <button id="action-btn" onclick="app.handlePrimaryAction()">Submit Answer</button>
+            <button id="next-btn" onclick="app.navigate(1)">Next</button>
+          </div>
+        </div>
+
+        <!-- Question Grid / Palette Sidebar -->
+        <aside class="palette-container card">
+          <h4>Question Palette</h4>
+          <div id="question-palette" class="palette-grid"></div>
+
+          <div class="palette-actions">
+            <button id="submit-exam-btn" class="hidden btn-danger full-width" onclick="app.finishQuiz()">Submit Final Exam</button>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Results & Print Screen -->
+    <main id="results-screen" class="card hidden">
+      <div class="results-header">
+        <h2>Exam Results & Performance Report</h2>
+        <div class="no-print">
+          <button onclick="window.print()" class="btn-primary">🖨️ Print / Save PDF</button>
+          <button onclick="app.resetToMenu()" class="btn-secondary">Return to Menu</button>
+        </div>
+      </div>
+
+      <div class="score-summary">
+        <div class="score-circle" id="score-circle">
+          <span id="final-score">0%</span>
+        </div>
+        <p id="pass-fail-msg"></p>
+        <small>Passing Benchmark: 85% (51 / 60 Correct)</small>
+      </div>
+
+      <div id="review-list" class="review-list"></div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

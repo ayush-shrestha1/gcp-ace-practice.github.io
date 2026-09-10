@@ -1,0 +1,471 @@
+[
+  {
+    "id": "1",
+    "question": "Your web application has several VM instances running within a VPC. You want to restrict communications between instances to only the VMs and ports you authorize, but you don’t want to rely on static IP addresses or subnets because the app can autoscale. How should you restrict communications?",
+    "options": [
+      "Use service accounts and configure the web application particular service accounts to have access.",
+      "Use Cloud DNS and only allow connections from authorized hostnames.",
+      "Use firewall rules based on service account or network tags attached to the compute instances",
+      "Use separate VPCs to restrict traffic"
+    ],
+    "correct": 2,
+    "explanation": "In Google Cloud VPC, firewall rules can target instances dynamically using Service Accounts or Network Tags instead of static IP addresses, allowing rules to automatically adjust as autoscaling adds or removes instances."
+  },
+  {
+    "id": "2",
+    "question": "You need to configure optimal data storage for files stored in Cloud Storage for minimal cost. The files are used in a mission-critical analytics pipeline that is used continually. The users are in Boston, MA (United States). What should you do?",
+    "options": [
+      "Configure regional storage for the region closest to the users. Configure a Nearline storage class.",
+      "Configure regional storage for the region closest to the users. Configure a Standard storage class.",
+      "Configure dual-regional storage for the dual region closest to the users. Configure a Nearline storage class.",
+      "Configure dual-regional storage for the dual region closest to the users. Configure a Standard storage class."
+    ],
+    "correct": 1,
+    "explanation": "Since the files are accessed continually, Standard Storage avoids the access and retrieval fees associated with Nearline. Regional storage in the closest location (e.g., us-east1) provides lower cost and performance optimal for Boston users."
+  },
+  {
+    "id": "3",
+    "question": "You are building an application that stores relational data from users. Users across the globe will use this application. Your CTO is concerned about the scaling requirements because the size of the user base is unknown. You need to implement a database solution that can scale with your user growth with minimum configuration changes. Which storage solution should you use?",
+    "options": [
+      "Cloud SQL",
+      "Firestore",
+      "Cloud Spanner",
+      "Bigtable"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Spanner is a fully managed, globally distributed relational database that provides ACID transactions, SQL support, and seamless horizontal scaling for global workloads with minimal configuration management."
+  },
+  {
+    "id": "4",
+    "question": "You created several resources in multiple Google Cloud projects. All projects are linked to different billing accounts. To better estimate future charges, you want to have a single visual representation of all costs incurred. You want to include new cost data as soon as possible. What should you do?",
+    "options": [
+      "Configure Billing Data Export to BigQuery and visualize the data in Data Studio.",
+      "Visit the Cost Table page to get a CSV export and visualize it using Data Studio.",
+      "Fill all resources in the Pricing Calculator to get an estimate of the monthly cost.",
+      "Use the Reports view in the Cloud Billing Console to view the desired cost information."
+    ],
+    "correct": 0,
+    "explanation": "Exporting Cloud Billing data to BigQuery aggregates cost information across multiple billing accounts into a single dataset, enabling automated visualization dashboards in Looker Studio (Data Studio)."
+  },
+  {
+    "id": "5",
+    "question": "You have a Python web application with many dependencies that requires 0.1 CPU cores and 128 MB of memory to operate in production. You want to monitor and maximize machine utilization. You also to reliably deploy new versions of the application. Which set of steps should you take?",
+    "options": [
+      "1. Create a managed instance group with f1-micro type machines. 2. Use a startup script to clone the repository, check out the production branch, install the dependencies, and start the Python app. 3. Restart the instances to automatically deploy new production releases.",
+      "1. Create a managed instance group with n1-standard-1 type machines. 2. Build a Compute Engine image from the production branch that contains all of the dependencies and automatically starts the Python app. 3. Rebuild the Compute Engine image, and update the instance template to deploy new production releases.",
+      "1. Create a Kubernetes Engine cluster with n1-standard-1 type machines. 2. Build a Docker image from the production branch with all of the dependencies, and tag it with the version number. 3. Create a Kubernetes Deployment in the staging namespace, and then promote it to the production namespace after testing.",
+      "1. Create a Kubernetes Engine cluster with n1-standard-4 type machines. 2. Build a Docker image from the master branch will all of the dependencies, and tag it with \"latest\". 3. Create a Kubernetes Deployment in the default namespace with the imagePullPolicy set to \"Always\". Restart the pods to automatically deploy new production releases."
+    ],
+    "correct": 2,
+    "explanation": "Containerizing small microservices on GKE allows Kubernetes to efficiently pack multiple small pods (0.1 CPU, 128 MB RAM) onto shared worker nodes to maximize machine utilization while promoting immutable image releases via namespaces."
+  },
+  {
+    "id": "6",
+    "question": "Your company is using BigQuery as its enterprise data warehouse. Data is distributed over several Google Cloud projects. All queries on BigQuery need to be billed on a single project. You want to make sure that no query costs are incurred on the projects that contain the data. Users should be able to query the datasets, but not edit them. How should you configure users’ access roles?",
+    "options": [
+      "Add all users to a group. Grant the group the role of BigQuery user on the billing project and BigQuery user on the projects that contain the data.",
+      "Add all users to a group. Grant the group the roles of BigQuery dataViewer on the billing project and BigQuery user on the projects that contain the data.",
+      "Add all users to a group. Grant the group the roles of BigQuery jobUser on the billing project and BigQuery dataViewer on the projects that contain the data.",
+      "Add all users to a group. Grant the group the roles of BigQuery dataViewer on the billing project and BigQuery jobUser on the projects that contain the data."
+    ],
+    "correct": 2,
+    "explanation": "Granting `BigQuery jobUser` on the designated billing project routes all query processing costs to that project. Granting `BigQuery dataViewer` on the data projects permits users to query datasets without modifying data or charging computational jobs to the data projects."
+  },
+  {
+    "id": "7",
+    "question": "Your managed instance group raised an alert stating that new instance creation has failed to create new instances. You need to maintain the number of running instances specified by the template to be able to process expected application traffic. What should you do?",
+    "options": [
+      "Create an instance template that contains valid syntax which will be used by the instance group. Delete any persistent disks with the same name as instance names.",
+      "Create an instance template that contains valid syntax that will be used by the instance group. Verify that the instance name and persistent disk name values are not the same in the template.",
+      "Verify that the instance template being used by the instance group contains valid syntax. Delete any persistent disks with the same name as instance names. Set the disks.autoDelete property to true in the instance template.",
+      "Delete the current instance template and replace it with a new instance template. Verify that the instance name and persistent disk name values are not the same in the template. Set the disks.autoDelete property to true in the instance template."
+    ],
+    "correct": 2,
+    "explanation": "Instance creation in MIGs fails when persistent disks share the exact name of deleted VM instances without auto-deletion configured. Deleting old disks and configuring `disks.autoDelete: true` in the template resolves disk naming conflicts."
+  },
+  {
+    "id": "8",
+    "question": "You have an application deployed on Kubernetes Engine using a Deployment named echo-deployment. The deployment is exposed using a Service called echoservice. You need to perform an update to the application with minimal downtime to the application. What should you do?",
+    "options": [
+      "Use kubectl set image deployment/echo-deployment <new-image>",
+      "Use the rolling update functionality of the Instance Group behind the Kubernetes cluster",
+      "Update the deployment yaml file with the new container image. Use kubectl delete deployment/echo-deployment and kubectl create -f <yaml-file>",
+      "Update the service yaml file which the new container image. Use kubectl delete service/echo-service and kubectl create -f <yaml-file>"
+    ],
+    "correct": 0,
+    "explanation": "Executing `kubectl set image deployment/...` triggers Kubernetes' native zero-downtime rolling update strategy, incrementally replacing old Pods with updated image instances."
+  },
+  {
+    "id": "9",
+    "question": "You are planning to migrate the following on-premises data management solutions to Google Cloud:\n\n• One MySQL cluster for your main database\n• Apache Kafka for your event streaming platform\n• One Cloud SQL for PostgreSQL database for your analytical and reporting needs\n\nYou want to implement Google-recommended solutions for the migration. You need to ensure that the new solutions provide global scalability and require minimal operational and infrastructure management. What should you do?",
+    "options": [
+      "Migrate from MySQL to Cloud SQL, from Kafka to Pub/Sub, and from Cloud SQL for PostgreSQL to BigQuery.",
+      "Migrate from MySQL to Cloud Spanner, from Kafka to Pub/Sub, and from Cloud SQL for PostgreSQL to BigQuery.",
+      "Migrate from MySQL to Cloud Spanner, from Kafka to Memorystore, and from Cloud SQL for PostgreSQL to Cloud SQL.",
+      "Migrate from MySQL to Cloud SQL, from Kafka to Memorystore, and from Cloud SQL for PostgreSQL to Cloud SQL."
+    ],
+    "correct": 1,
+    "explanation": "Cloud Spanner provides global scalability for transactional relational workloads (MySQL replacement), Cloud Pub/Sub provides managed serverless event streaming (Kafka replacement), and BigQuery acts as the serverless data warehouse for analytical needs."
+  },
+  {
+    "id": "10",
+    "question": "You have an application that will run on Compute Engine. You need to design an architecture that takes into account a disaster recovery plan that requires your application to fail over to another region in case of a regional outage. What should you do?",
+    "options": [
+      "Deploy the application on two Compute Engine instances in the same project but in a different region. Use the first instance to serve traffic, and use the HTTP load balancing service to fail over to the standby instance in case of adisaster.",
+      "Deploy the application on a Compute Engine instance. Use the instance to serve traffic, and use the HTTP load balancing service to fail over to an instance on your premises in case of a disaster.",
+      "Deploy the application on two Compute Engine instance groups, each in the same project but in a different region. Use the first instance group to serve traffic, and use the HTTP load balancing service to fail over to the standby instancegroup in case of a disaster.",
+      "Deploy the application on two Compute Engine instance groups, each in separate project and a different region. Use the first instance group to server traffic, and use the HTTP load balancing service to fail over to the standby instance incase of a disaster."
+    ],
+    "correct": 2,
+    "explanation": "Deploying two Managed Instance Groups across two separate regions in the same project behind a Global External HTTP Load Balancer allows seamless automatic cross-region failover."
+  },
+  {
+    "id": "11",
+    "question": "You have an application that uses Cloud Spanner as a backend database. The application has a very predictable traffic pattern. You want to automatically scale up or down the number of Spanner nodes depending on traffic. What should you do?",
+    "options": [
+      "Create a cron job that runs on a scheduled basis to review Cloud Monitoring metrics, and then resize the Spanner instance accordingly.",
+      "Create a Cloud Monitoring alerting policy to send an alert to oncall SRE emails when Cloud Spanner CPU exceeds the threshold. SREs would scale resources up or down accordingly.",
+      "Create a Cloud Monitoring alerting policy to send an alert to Google Cloud Support email when Cloud Spanner CPU exceeds your threshold. Google support would scale resources up or down accordingly.",
+      "Create a Cloud Monitoring alerting policy to send an alert to webhook when Cloud Spanner CPU is over or under your threshold. Create a Cloud Function that listens to HTTP and resizes Spanner resources accordingly."
+    ],
+    "correct": 3,
+    "explanation": "Combining Cloud Monitoring alert policies with webhook notifications to an automated Cloud Function allows serverless, event-driven node autoscaling for Cloud Spanner instances."
+  },
+  {
+    "id": "12",
+    "question": "You have found an error in your App Engine application caused by missing Cloud Datastore indexes. You have created a YAML file with the required indexes and want to deploy these new indexes to Cloud Datastore. What should you do?",
+    "options": [
+      "Point gcloud datastore create-indexes to your configuration file",
+      "Upload the configuration file the App Engine’s default Cloud Storage bucket, and have App Engine detect the new indexes",
+      "In the GCP Console, use Datastore Admin to delete the current indexes and upload the new configuration file",
+      "Create an HTTP request to the built-in python module to send the index configuration file to your application"
+    ],
+    "correct": 0,
+    "explanation": "The `gcloud datastore indexes create index.yaml` command deploys and builds index configuration definitions specified in an `index.yaml` file."
+  },
+  {
+    "id": "13",
+    "question": "You have a batch workload that runs every night and uses a large number of virtual machines (VMs). It is fault-tolerant and can tolerate some of the VMs being terminated. The current cost of VMs is too high. What should you do?",
+    "options": [
+      "Run a test using simulated maintenance events. If the test is successful, use preemptible N1 Standard VMs when running future jobs.",
+      "Run a test using simulated maintenance events. If the test is successful, use N1 Standard VMs when running future jobs.",
+      "Run a test using a managed instance group. If the test is successful, use N1 Standard VMs in the managed instance group when running future jobs.",
+      "Run a test using N1 standard VMs instead of N2. If the test is successful, use N1 Standard VMs when running future jobs."
+    ],
+    "correct": 0,
+    "explanation": "Preemptible (or Spot) VMs offer substantial cost savings for fault-tolerant batch processing. Simulating maintenance events validates application preemption recovery before production deployment."
+  },
+  {
+    "id": "14",
+    "question": "You are designing a large distributed application with 30 microservices. Each of your distributed microservices needs to connect to a database back-end. You want to store the credentials securely.Where should you store the credentials?",
+    "options": [
+      "In the source code",
+      "In an environment variable",
+      "In a secret management system",
+      "In a config file that has restricted access through ACLs"
+    ],
+    "correct": 2,
+    "explanation": "Using a dedicated Secret Management System (such as Secret Manager) enforces centralized access control, secret rotation, encryption at rest, and audit logging for sensitive database credentials."
+  },
+  {
+    "id": "15",
+    "question": "Your company wants to try out the cloud with low risk. They want to archive approximately 100 TB of their log data to the cloud and test the analytics features available to them there, while also retaining that data as a long-term disaster recovery backup.Which two steps should you take? Choose 2 answers",
+    "options": [
+      "Load logs into Google BigQuery",
+      "Load logs into Google Cloud SQL",
+      "Import logs into Google Cloud Monitoring",
+      "Insert logs into Google Cloud Bigtable",
+      "Upload log files into Google Cloud Storage"
+    ],
+    "correct": [
+      0,
+      4
+    ],
+    "explanation": "Storing raw log files in Cloud Storage provides durable, low-cost long-term disaster recovery archives, while loading logs into BigQuery enables serverless, scalable SQL analytics."
+  },
+  {
+    "id": "16",
+    "question": "Your organization has a 3-tier web application deployed in the same network on Google Cloud Platform. Each tier (web, API, and database) scales independently of the others. Network traffic should flow through the web to the API tier and then on to the database tier. Traffic should not flow between the web and the database tier. How should you configure the network?",
+    "options": [
+      "Add each tier to a different subnetwork in a separate regions",
+      "Set up software based firewalls on individual VMs",
+      "Add tags to each tier and set up routes to allow the desired traffic flow",
+      "Add tags to each tier and set up firewall rules to allow the desired traffic flow"
+    ],
+    "correct": 3,
+    "explanation": "Attaching Network Tags or Service Accounts to VMs in each tier allows Cloud NGFW rules to restrict communications strictly between adjacent tiers (Web -> API -> Database) while blocking Web -> Database."
+  },
+  {
+    "id": "17",
+    "question": "You are storing sensitive information in a Cloud Storage bucket. For legal reasons, you need to be able to record all requests that read any of the stored data. You want to make sure you comply with these requirements. What should you do?",
+    "options": [
+      "Enable the Identity Aware Proxy API on the project.",
+      "Scan the bucket using the Data Loss Prevention API.",
+      "Allow only a single Service Account access to read the data.",
+      "Enable Data Access audit logs for the Cloud Storage API."
+    ],
+    "correct": 3,
+    "explanation": "Enabling Data Access Audit Logs for Cloud Storage logs all user and service account read operations (`DATA_READ` and `ADMIN_READ`), ensuring full audit compliance."
+  },
+  {
+    "id": "18",
+    "question": "A small number of API requests to your microservices-based application take a very long time. You know that each request to the API can traverse many services. You want to know which service takes the longest in those cases.What should you do?",
+    "options": [
+      "Set timeouts on your application so that you can fail requests faster",
+      "Send custom metrics for each of your requests to Cloud Monitoring",
+      "Use Cloud Monitoring to look for insights that show when your API latencies are high",
+      "Instrument your application with Cloud Trace in order to break down the request latencies at each microservice"
+    ],
+    "correct": 3,
+    "explanation": "Cloud Trace tracks request propagation across distributed microservices, providing latency breakdowns for individual execution spans to identify bottlenecks."
+  },
+  {
+    "id": "19",
+    "question": "One of the developers on your team deployed their application in Google Container Engine with the Dockerfile below. They report that their application deployments are taking too long.You want to optimize this Dockerfile for faster deployment times without adversely affecting the app’s functionality.Which two actions should you take? Choose 2 answers.",
+    "options": [
+      "Remove Python after running pip",
+      "Remove dependencies from requirements.txt",
+      "Use a slimmed-down base image like Alpine Linux",
+      "Use larger machine types for your Google Container Engine node pools",
+      "Copy the source after the package dependencies (Python and pip) are installed"
+    ],
+    "correct": [
+      2,
+      4
+    ],
+    "explanation": "Using Alpine Linux minimizes base layer download sizes. Copying application source code *after* installing package dependencies ensures Docker reuses cached dependency layers during iterative code deployments."
+  },
+  {
+    "id": "20",
+    "question": "You want to optimize the performance of an accurate, real-time, weather-charting application. The data comes from 50,000 sensors sending 10 readings a second, in the format of a timestamp and sensor reading. Where should you store the data?",
+    "options": [
+      "Google Cloud Bigtable",
+      "Google BigQuery",
+      "Google Cloud SQL",
+      "Google Cloud Storage"
+    ],
+    "correct": 0,
+    "explanation": "Cloud Bigtable is engineered for low-latency, high-throughput time-series data streams (500,000 writes/second)."
+  },
+  {
+    "id": "21",
+    "question": "You are the team lead of a group of 10 developers. You provided each developer with an individual Google Cloud Project that they can use as their personal sandbox to experiment with different Google Cloud solutions. You want to be notified if any of the developers are spending above $500 per month on their sandbox environment. What should you do?",
+    "options": [
+      "Create a single budget for all projects and configure budget alerts on this budget.",
+      "Create a separate billing account per sandbox project and enable BigQuery billing exports. Create a Data Studio dashboard to plot the spending per billing account.",
+      "Create a budget per project and configure budget alerts on all of these budgets.",
+      "Create a single billing account for all sandbox projects and enable BigQuery billing exports. Create a Data Studio dashboard to plot the spending per project."
+    ],
+    "correct": 2,
+    "explanation": "Creating a dedicated billing budget for each individual project triggers alerting notifications whenever any single developer sandbox exceeds the $500 monthly spending threshold."
+  },
+  {
+    "id": "22",
+    "question": "You are creating a solution to remove backup files older than 90 days from your backup Cloud Storage bucket. You want to optimize ongoing Cloud Storage spend.What should you do?",
+    "options": [
+      "Write a lifecycle management rule in XML and push it to the bucket with gsutil",
+      "Schedule a cron script using gsutil ls -lr gs://backups/** to find and remove items older than 90 days",
+      "Write a lifecycle management rule in JSON and push it to the bucket with gsutil",
+      "Schedule a cron script using gsutil ls -l gs://backups/** to find and remove items older than 90 days and schedule it with cron"
+    ],
+    "correct": 2,
+    "explanation": "Object Lifecycle Management rules in Cloud Storage are configured via JSON files and uploaded using `gsutil lifecycle set [JSON_FILE] gs://[BUCKET_NAME]` to automate object deletion without running external cron jobs."
+  },
+  {
+    "id": "23",
+    "question": "Your customer is receiving reports that their recently updated Google App Engine application is taking approximately 30 seconds to load for some of their users.This behavior was not reported before the update.What strategy should you take?",
+    "options": [
+      "Open a support ticket to ask for network capture and flow data to diagnose the problem, then roll back your application",
+      "Roll back to an earlier known good release initially, then use Cloud Trace and Logging to diagnose the problem in a development/test/staging environment",
+      "Roll back to an earlier known good release, then push the release again at a quieter period to investigate. Then use Cloud Trace and Logging to diagnose the problem",
+      "Work with your ISP to diagnose the problem"
+    ],
+    "correct": 1,
+    "explanation": "SRE principles dictate restoring user service availability immediately by rolling back to a known stable release, then using Cloud Trace and Cloud Logging to analyze latency issues in staging."
+  },
+  {
+    "id": "24",
+    "question": "You write a Python script to connect to Google BigQuery from a Google Compute Engine virtual machine. The script is printing errors that it cannot connect to BigQuery.What should you do to fix the script?",
+    "options": [
+      "Update privileges of the service account that is used to run the VM",
+      "Install the latest BigQuery API client library for Python",
+      "Install the bq component for gcloud with the command gcloud components install bq.",
+      "Create a new service account with BigQuery access and execute your script with that user"
+    ],
+    "correct": 0,
+    "explanation": "Compute Engine instances use their attached service account identity to authenticate API calls. Updating the service account's IAM permissions (e.g., adding `roles/bigquery.user`) grants authorization to connect to BigQuery."
+  },
+  {
+    "id": "25",
+    "question": "You want to enable your running Google Kubernetes Engine cluster to scale as demand for your application changes.What should you do?",
+    "options": [
+      "Add additional nodes to your Kubernetes Engine cluster using the following command:gcloud container clusters resize CLUSTER_Name – -size 10",
+      "Add a tag to the instances in the cluster with the following command:gcloud compute instances add-tags INSTANCE – -tags enableautoscaling max-nodes-10",
+      "Update the existing Kubernetes Engine cluster with the following command:gcloud container clusters update mycluster – -enableautoscaling- -min-nodes=1 – -max-nodes=10",
+      "Create a new Kubernetes Engine cluster with the following command: gcloud alpha container clusters create mycluster – -enableautoscaling- -min-nodes=1 – -max-nodes=10 and redeploy your application"
+    ],
+    "correct": 2,
+    "explanation": "The `gcloud container clusters update [CLUSTER_NAME] --enable-autoscaling --min-nodes=1 --max-nodes=10` command enables cluster autoscaling on an active GKE cluster node pool."
+  },
+  {
+    "id": "26",
+    "question": "Mountkirk Games wants to set up a continuous delivery pipeline. Their architecture includes many small services that they want to be able to update and roll back quickly. Mountkirk Games has the following requirements:\nServices are deployed redundantly across multiple regions in the US and Europe\nOnly frontend services are exposed on the public internet\nThey can provide a single frontend IP for their fleet of services\nDeployment artifacts are immutable\nWhich set of products should they use?",
+    "options": [
+      "Google Cloud Storage, Google Cloud Dataflow, Google Compute Engine",
+      "Google Cloud Storage, Google App Engine, Google Network Load Balancer",
+      "Artifact Registry, Google Kubernetes Engine, Google HTTP(S) Load Balancer",
+      "Google Cloud Functions, Google Cloud Pub/Sub, Google Cloud Deployment Manager"
+    ],
+    "correct": 2,
+    "explanation": "Artifact Registry provides immutable container image builds, GKE orchestrates regional microservice deployments, and Global External HTTP(S) Load Balancing exposes a single global Anycast IP address."
+  },
+  {
+    "id": "27",
+    "question": "Your agricultural division is experimenting with fully autonomous vehicles. You want your architecture to promote strong security during vehicle operation. Which two architectures should you consider? (Choose two.)",
+    "options": [
+      "Treat every micro service call between modules on the vehicle as untrusted.",
+      "Require IPv6 for connectivity to ensure a secure address space.",
+      "Use a trusted platform module (TPM) and verify firmware and binaries on boot.",
+      "Use a functional programming language to isolate code execution cycles.",
+      "Use multiple connectivity subsystems for redundancy.",
+      "Enclose the vehicle’s drive electronics in a Faraday cage to isolate chips."
+    ],
+    "correct": [
+      0,
+      2
+    ],
+    "explanation": "Applying Zero Trust principles to internal vehicle microservices combined with hardware-based cryptographic verification (TPM and Secure Boot) delivers end-to-end security for autonomous hardware."
+  },
+  {
+    "id": "28",
+    "question": "Your company wants to standardize the creation and management of multiple Google Cloud resources using Infrastructure as Code. You want to minimize the amount of repetitive code needed to manage the environment. What should you do?",
+    "options": [
+      "Develop templates for the environment using Cloud Deployment Manager.",
+      "Use curl in a terminal to send a REST request to the relevant Google API for each individual resource.",
+      "Use the Cloud Console interface to provision and manage all related resources.",
+      "Create a bash script that contains all requirement steps as gcloud commands."
+    ],
+    "correct": 0,
+    "explanation": "Cloud Deployment Manager (and Terraform) provides declarative Infrastructure as Code (IaC) templates to standardize resource deployments and eliminate repetitive manual scripts."
+  },
+  {
+    "id": "29",
+    "question": "An AutonomousDrive company has equipped all cars with servers and sensors to collect telemetry data. Next year they want to use the data to train machine learning models. They want to store this data in the cloud while reducing costs.What should they do?",
+    "options": [
+      "Have the vehicle’s computer compress the data in hourly snapshots, and store it in a Google Cloud Storage (GCS) Nearline bucket",
+      "Push the telemetry data in real-time to a streaming dataflow job that compresses the data, and store it in Google BigQuery",
+      "Push the telemetry data in real-time to a streaming dataflow job that compresses the data, and store it in Cloud Bigtable",
+      "Have the vehicle’s computer compress the data in hourly snapshots, and store it in a GCS Coldline bucket"
+    ],
+    "correct": 3,
+    "explanation": "Compressing telemetry data into hourly local snapshots and writing directly to GCS Coldline storage minimizes streaming ingestion costs and optimizes storage fees for data accessed months later."
+  },
+  {
+    "id": "30",
+    "question": "To be compliant with European GDPR regulation, EuroCar company is required to delete data generated from its European customers after a period of 36 months when it contains personal data. This data is  stored in both Cloud Storage and BigQuery. What should you do?",
+    "options": [
+      "Create a BigQuery table for the European data, and set the table retention period to 36 months. For Cloud Storage, use gsutil to enable lifecycle management using a DELETE action with an Age condition of 36 months.",
+      "Create a BigQuery table for the European data, and set the table retention period to 36 months. For Cloud Storage, use gsutil to create a SetStorageClass to NONE action when with an Age condition of 36 months.",
+      "Create a BigQuery time-partitioned table for the European data, and set the partition expiration period to 36 months. For Cloud Storage, use gsutil to enable lifecycle management using a DELETE action with an Age condition of 36months.",
+      "Create a BigQuery time-partitioned table for the European data, and set the partition period to 36 months. For Cloud Storage, use gsutil to create a SetStorageClass to NONE action with an Age condition of 36 months."
+    ],
+    "correct": 2,
+    "explanation": "Configuring partition expiration on time-partitioned BigQuery tables automatically purges data older than 36 months. Configuring Cloud Storage Object Lifecycle Management with a `DELETE` rule at 36 months ensures complete compliance."
+  },
+  {
+    "id": "31",
+    "question": "An organization has a separate folder for production projects. How to assure that logs from all production projects (existing and created in the future) will be collected and made available for Security team? Security team is not interested in viewing non-production logs.",
+    "options": [
+      "Create Pub/Sub-based replication mechanism for logs generated in each of the existing / new projects to a central logging project.",
+      "Configure aggregated sink on folder level.",
+      "Configure logs aggregation on production projects level",
+      "Re-route logs to on-premises logging software"
+    ],
+    "correct": 1,
+    "explanation": "An aggregated Log Router sink created at the folder level automatically inherits and exports logs from all current and newly created child projects beneath that folder."
+  },
+  {
+    "id": "32",
+    "question": "You are running a data warehouse on BigQuery. A partner company is offering a recommendation engine based on the data in your data warehouse. The partner company is also running their application on Google Cloud. They manage the resources in their own project, but they need access to the BigQuery dataset in your project. You want to provide the partner company with access to the dataset. What should you do?",
+    "options": [
+      "Create a Service Account in your own project, and grant this Service Account access to BigQuery in your project.",
+      "Create a Service Account in your own project, and ask the partner to grant this Service Account access to BigQuery in their project.",
+      "Ask the partner to create a Service Account in their project, and have them give the Service Account access to BigQuery in their project.",
+      "Ask the partner to create a Service Account in their project, and grant their Service Account access to the BigQuery dataset in your project."
+    ],
+    "correct": 3,
+    "explanation": "Allowing the partner company to create a Service Account within their own project and granting that specific Service Account IAM dataset permissions in your project maintains clear security boundaries."
+  },
+  {
+    "id": "33",
+    "question": "A company wants to create a policy that limits the possibility to create cloud resources to regions where it's physically present. How would you enforce such a policy?",
+    "options": [
+      "By using custom Terraform validators for each resource creation.",
+      "By configuring IAM Conditions.",
+      "By configuring alert when such resources are created in disallowed region.",
+      "Bu configuring Organization policy blocking resource creation in certain regions."
+    ],
+    "correct": 3,
+    "explanation": "Organization Policies allow administrators to restrict resource creation locations using location constraints (`constraints/gcp.resourceLocations`) across the resource hierarchy."
+  },
+  {
+    "id": "34",
+    "question": "Users have reported serious performance problems with an application running on several VMs grouped in MIG. Metrics state that on every machine single application process occupies 100% of computing power. Additionally MIG has already reached its upper limit of instances and cannot expand more. On the other hand no issues were detected in neighbouring components, especially there is no performance degradation of a database service used by this application. What would you recommend to quickly resolve the problem?",
+    "options": [
+      "Plan staggered restart of VMs within this group",
+      "Login to each VM via ssh and restart the application process",
+      "Increase upper limit of number of instances within given MIG",
+      "Change the MIG scaling metric to be based on memory usage instead of CPU usage"
+    ],
+    "correct": 2,
+    "explanation": "When all instances in a MIG are at 100% CPU and the group has hit its maximum instance count limit, increasing the upper instance limit immediately allows the autoscaler to provision additional instances."
+  },
+  {
+    "id": "35",
+    "question": "Development team is performing development tests of an application built in microservice architecture. In particular they want to test how the application behaves in case of unavailability of a single microservice that other services rely upon. How such a test may be performed?",
+    "options": [
+      "Manually deleting proper cluster’s node",
+      "Using Istio - configure traffic management rules so that the given microservice is not called at all",
+      "Using Istio Fault Injection mechanism to simulate unavailability of given service?",
+      "Use taints on chosen nodes / pods"
+    ],
+    "correct": 2,
+    "explanation": "Istio Fault Injection allows developers to simulate microservice outages (such as injecting HTTP error status codes or delays) without disrupting real cluster infrastructure."
+  },
+  {
+    "id": "36",
+    "question": "You are developing a financial trading application that will be used globally. Data is stored and queried using a relational structure, and clients from all over the world should get the exact identical state of the data. The application will be deployed in multiple regions to provide the lowest latency to end users. You need to select a storage option for the application data while minimizing latency. What should you do?",
+    "options": [
+      "Use Cloud Bigtable for data storage.",
+      "Use Cloud SQL for data storage.",
+      "Use Cloud Spanner for data storage.",
+      "Use Firestore for data storage."
+    ],
+    "correct": 2,
+    "explanation": "Cloud Spanner offers globally distributed, relational data storage with strong external consistency (ACID) and low-latency multi-region read/write access."
+  },
+  {
+    "id": "37",
+    "question": "The EHR Sales employees are a remote-based workforce that travels to different locations to do their job. Regardless of the location, they need to access web-based tools located in the EHR data center. EHR is retiring the current VPN infrastructure and needs to move the web-based sales tools to a BeyondCorp access model in GCP. Each sales employee has a Google Workspace account and uses that for SSO. What should you do?",
+    "options": [
+      "Create an Identity-Aware Proxy (IAP) connector that points to the sales tool application.",
+      "Create a Google groups for the sales tool application, and upgrade that group to a security group.",
+      "Deploy and external HTTP(S) load balancer and create a custom Cloud Armor policy for the sales tool application.",
+      "Grant the predefined App Engine viewer role for every sales employee who needs access to the sales web tool."
+    ],
+    "correct": 0,
+    "explanation": "Identity-Aware Proxy (IAP) implements the BeyondCorp zero-trust model, enabling secure user-level access to internal web tools without requiring VPN infrastructure."
+  },
+  {
+    "id": "38",
+    "question": "You are creating an application that will run on Google Kubernetes Engine. You have identified MongoDB as the most suitable database system for your application and want to deploy a managed MongoDB environment that provides a support SLA. What should you do?",
+    "options": [
+      "Create a Cloud Bigtable cluster, and use the HBase API.",
+      "Deploy MongoDB Atlas from the Google Cloud Marketplace",
+      "Download a MongoDB installation package, and run it on Compute Engine instances.",
+      "Download a MongoDB installation package, and run it on a Managed Instance Group."
+    ],
+    "correct": 1,
+    "explanation": "Deploying MongoDB Atlas directly from the Google Cloud Marketplace provides a fully managed MongoDB environment complete with enterprise vendor support SLAs."
+  }
+]

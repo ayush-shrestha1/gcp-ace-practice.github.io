@@ -1,0 +1,378 @@
+[
+  {
+    "id": "1",
+    "question": "An IT company wants to analyse its real time data of one of its department. This data needs to be tracked in real time and do analysis on that. Which of the below will be best suited for this?",
+    "options": [
+      "Bigtable",
+      "Bigquery",
+      "Cloud SQL",
+      "Cloud Storage"
+    ],
+    "correct": 0,
+    "explanation": "Bigtable is optimized for high-throughput, low-latency, real-time data ingestion and time-series operational analysis."
+  },
+  {
+    "id": "2",
+    "question": "Which of the two storage services are best use for OLTP workload use cases in processing data using query language? (Choose two)",
+    "options": [
+      "Cloud SQL",
+      "Cloud Spanner",
+      "Bigquery",
+      "Datastore"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "Cloud SQL and Cloud Spanner are fully managed relational database systems built specifically for OLTP workloads with full SQL query support."
+  },
+  {
+    "id": "3",
+    "question": "You are the project owner of a GCP project and want to delegate control to colleagues to manage buckets and files in Cloud Storage. You want to follow Google-recommended practices. Which IAM roles should you grant your colleagues?",
+    "options": [
+      "Project Editor",
+      "Storage Admin",
+      "Storage Object Admin",
+      "Storage Object Creator"
+    ],
+    "correct": 1,
+    "explanation": "Storage Admin (roles/storage.admin) provides full control over buckets and objects, allowing colleagues to manage both bucket settings and files directly without granting unnecessary project-wide Editor access."
+  },
+  {
+    "id": "4",
+    "question": "Which service completes the CI/CD pipeline?",
+    "options": [
+      "Cloud Storage",
+      "Pub/Sub",
+      "Cloud Deploy",
+      "Cloud Build",
+      "Dataproc"
+    ],
+    "correct": 3,
+    "explanation": "Cloud Build is Google Cloud's serverless CI/CD platform that executes automated builds, tests, and deployments."
+  },
+  {
+    "id": "5",
+    "question": "How to test a risky update to an App Engine application with some small percentage of live traffic (Canary Release)?",
+    "options": [
+      "Deploy a new version, use traffic splitting to test a percentage.",
+      "Create a separate isolated test project and onboard users.",
+      "Create a second App Engine project, then redirect a subset of users.",
+      "Deploy as default temporarily, then roll it back."
+    ],
+    "correct": 0,
+    "explanation": "App Engine supports native traffic splitting, allowing you to route a precise percentage of live user traffic to a newly deployed app version."
+  },
+  {
+    "id": "6",
+    "question": "Release failures keep causing rollbacks in a web application. Fixes to the QA process reduced rollbacks by 80%. What additional steps can you take?",
+    "options": [
+      "Fragment the monolithic platform into microservices.",
+      "Remove the platform’s dependency on relational database systems.",
+      "Replace the platform’s relational database systems with a NoSQL database.",
+      "Remove the QA environment. Start executing canary releases."
+    ],
+    "correct": 0,
+    "explanation": "Monolithic deployments carry high blast radius risk. Breaking a monolith into independent microservices minimizes blast radius and isolates failure domain scope during updates."
+  },
+  {
+    "id": "7",
+    "question": "A car reservation system has long-running transactions. Which one of the following deployment methods should be avoided?",
+    "options": [
+      "Introduce a blue-green deployment model.",
+      "Introduce a rolling deployment model.",
+      "Introduce a pipeline deployment model.",
+      "Execute canary releases."
+    ],
+    "correct": 1,
+    "explanation": "Rolling deployments update instances gradually over time, which disrupts long-running transactions or leads to version mismatches between backends during multi-step state processing."
+  },
+  {
+    "id": "8",
+    "question": "How to implement back-out/rollback plan for website with 100s of VMs, when the site has frequent critical updates?",
+    "options": [
+      "Create a snapshot of each VM prior to update, in case of failure.",
+      "Use managed instance groups with the “update-instances” command when starting a rolling update.",
+      "Create a Nearline copy of static data in Cloud Storage.",
+      "Only deploy changes using Deployment Manager templates."
+    ],
+    "correct": 1,
+    "explanation": "Managed Instance Groups (MIGs) support automated rolling updates and instant automated rollbacks to target instance templates if health checks fail during updates."
+  },
+  {
+    "id": "9",
+    "question": "Last week a region had a 1% failure rate in web tier VMs. How should you respond?",
+    "options": [
+      "Monitor the application for a 5% failure rate",
+      "Halt all development until the application issue can be found and fixed.",
+      "Perform a root cause analysis to prevent similar failures in future.",
+      "Duplicate the application on-premises to compensate for failures in the cloud"
+    ],
+    "correct": 2,
+    "explanation": "Following SRE postmortem best practices, performing a Blameless Root Cause Analysis (RCA) helps identify failure vectors and prevents recurrence in production."
+  },
+  {
+    "id": "10",
+    "question": "An application communicates synchronously between microservices. Which approach will decouple the microservices?",
+    "options": [
+      "Have sender write to local drives; receiver mounts drives read-only",
+      "Create a Bigtable database that sender writes and receiver reads",
+      "Create a Cloud Storage bucket that sender writes and receiver reads",
+      "Create a Pub/Sub topic that sender writes and receiver reads"
+    ],
+    "correct": 3,
+    "explanation": "Cloud Pub/Sub introduces asynchronous messaging queues that decouple producers and consumers, isolating performance bottlenecks."
+  },
+  {
+    "id": "11",
+    "question": "What would be your initial action to quickly address a MySQL dbms running slowly on an n1-standard-8 VM with 50 GB SSD?",
+    "options": [
+      "Increase the VM’s memory to 64 GB",
+      "Migrate the database to BigQuery",
+      "Dynamically resize the SSD to 500 GB",
+      "Create a new VM running PostgreSQL"
+    ],
+    "correct": 2,
+    "explanation": "In Google Cloud Compute Engine, Persistent Disk IOPS and throughput caps scale linearly with disk size; expanding a 50 GB disk to 500 GB immediately increases I/O performance limits without downtime."
+  },
+  {
+    "id": "12",
+    "question": "Which best describes an SLO?",
+    "options": [
+      "a measurable description of an application feature",
+      "a contract with customer that guarantees service quality",
+      "a target measure you want your service to achieve",
+      "a measurable KPI for your microservice"
+    ],
+    "correct": 2,
+    "explanation": "A Service Level Objective (SLO) is a target goal or range of service level performance (measured by SLIs) set by a service team."
+  },
+  {
+    "id": "13",
+    "question": "The basic unit of deployment in Kubernetes is:",
+    "options": [
+      "a pod",
+      "a container",
+      "a service",
+      "a node"
+    ],
+    "correct": 0,
+    "explanation": "A Pod is the smallest, basic deployable computing unit in Kubernetes, containing one or more co-located containers."
+  },
+  {
+    "id": "14",
+    "question": "Which command is used to create a Kubernetes cluster?",
+    "options": [
+      "kubectl cluster create",
+      "gcloud kubernetes clusters create",
+      "kubectl node create",
+      "gcloud container clusters create"
+    ],
+    "correct": 3,
+    "explanation": "The gcloud container clusters create [CLUSTER_NAME] command is the official Google Cloud SDK command to provision GKE Kubernetes clusters."
+  },
+  {
+    "id": "15",
+    "question": "Which command starts a selected number of pods and manages their lifecycle?",
+    "options": [
+      "kubectl create deployment",
+      "kubectl create pod",
+      "kubectl exec",
+      "kubectl run"
+    ],
+    "correct": 0,
+    "explanation": "kubectl create deployment builds a Kubernetes Deployment controller that maintains and manages desired pod replicas across cluster nodes."
+  },
+  {
+    "id": "16",
+    "question": "To improve availability, in addition to redundancy and code reviews, you choose to:",
+    "options": [
+      "Use Bigtable to collect application performance data",
+      "Use monitoring to alert on changes in application performance",
+      "Use access controls",
+      "Use managed services for all compute requirements"
+    ],
+    "correct": 1,
+    "explanation": "Automated monitoring and alerting allow operations teams to detect degraded performance early and respond before full availability outages occur."
+  },
+  {
+    "id": "17",
+    "question": "An incident has occurred. What is the highest priority?",
+    "options": [
+      "Identify the root cause",
+      "Assign blame",
+      "Start mitigation",
+      "Start a postmortem"
+    ],
+    "correct": 2,
+    "explanation": "According to Incident Response principles, the immediate highest priority is service mitigation and restoring customer availability before starting root cause investigation."
+  },
+  {
+    "id": "18",
+    "question": "What is Binary Authorization?",
+    "options": [
+      "Tool that scans container registry for vulnerabilities",
+      "Tool that signs containers with the identity of an authorized developer",
+      "Security package that ensures validity of VM boot stack",
+      "Control that ensures only trusted containers are deployed"
+    ],
+    "correct": 3,
+    "explanation": "Binary Authorization is a deploy-time security control in Google Cloud that enforces signature verifications to ensure only trusted container images are deployed to GKE or Cloud Run."
+  },
+  {
+    "id": "19",
+    "question": "According to SRE philosophy, the most important feature of any system is:",
+    "options": [
+      "Performance",
+      "Consistency",
+      "Reliability",
+      "Accuracy"
+    ],
+    "correct": 2,
+    "explanation": "In Site Reliability Engineering (SRE) practice, reliability is fundamental; an application cannot deliver features or performance if it is completely inaccessible or offline."
+  },
+  {
+    "id": "20",
+    "question": "A company wants to connect cloud applications to an Oracle database in its data center. Requirements are a maximum of 5 Gbps of data and an end-to-end Service Level Agreement (SLA) of 99%.",
+    "options": [
+      "Implement a high-throughput Cloud VPN connection.",
+      "Cloud Router with VPN.",
+      "Dedicated Interconnect.",
+      "Partner Interconnect."
+    ],
+    "correct": 3,
+    "explanation": "Partner Interconnect connects on-premises environments to Google Cloud through a service provider network with flexible bandwidths (sub-10 Gbps up to 10 Gbps) and supported SLAs."
+  },
+  {
+    "id": "21",
+    "question": "How to check the cost of running a BigQuery query before it's triggered?",
+    "options": [
+      "Add \"ESTIMATE\" clause at the end of the query.",
+      "Check how much data will be processed and provide this amount to GCP calculator.",
+      "This can't be done - you will only see it in the billing report at the end of the month.",
+      "Search for \"price\" section in the query metadata."
+    ],
+    "correct": 1,
+    "explanation": "BigQuery performs dry runs or displays estimated bytes to be scanned in the console before execution, allowing you to multiply data processed by price rates or plug it into the Google Cloud Pricing Calculator."
+  },
+  {
+    "id": "22",
+    "question": "A developer needs to run a script that requires the permissions of a specific Service Account without downloading a long-lived JSON key. Which IAM role must you grant to the developer's user account on the target Service Account to allow them to perform impersonation?",
+    "options": [
+      "roles/iam.serviceAccountUser",
+      "roles/iam.serviceAccountTokenCreator",
+      "roles/editor",
+      "roles/iam.securityAdmin"
+    ],
+    "correct": 1,
+    "explanation": "Granting roles/iam.serviceAccountTokenCreator allows a user to mint short-lived OAuth access tokens and impersonate the target service account securely."
+  },
+  {
+    "id": "23",
+    "question": "You need to provide a temporary link to an external contractor so they can upload a large file to a private Cloud Storage bucket. The link should expire in 30 minutes. Which type of short-lived credential is best suited for this task?",
+    "options": [
+      "OAuth2 Access Token",
+      "Service Account JSON Key",
+      "Signed URL",
+      "Google Cloud ID Token"
+    ],
+    "correct": 2,
+    "explanation": "A Signed URL gives temporary time-limited write or read access to specific Cloud Storage objects without requiring the recipient to possess Google Cloud credentials."
+  },
+  {
+    "id": "24",
+    "question": "Your team is deploying an application on GKE that needs to access BigQuery. You want to follow the security best practice of avoiding the use of downloaded JSON Service Account keys. Which GKE feature should you implement?",
+    "options": [
+      "Node Authorization",
+      "VPC Service Controls",
+      "Cloud KMS Key Management",
+      "Workload Identity"
+    ],
+    "correct": 3,
+    "explanation": "Workload Identity links Kubernetes Service Accounts to IAM Google Cloud Service Accounts, eliminating the security risks associated with exported long-lived JSON keys."
+  },
+  {
+    "id": "25",
+    "question": "You are creating a short-lived access token for a Service Account using the gcloud CLI. By default, what is the maximum lifetime allowed for this token unless specifically configured otherwise in the organization policy?",
+    "options": [
+      "15 minutes",
+      "7 days",
+      "24 hours",
+      "1 hour"
+    ],
+    "correct": 3,
+    "explanation": "OAuth 2.0 access tokens generated for Google Cloud Service Accounts have a default maximum validity duration of 1 hour (60 minutes)."
+  },
+  {
+    "id": "26",
+    "question": "When configuring Workload Identity on GKE, you must establish a relationship between two different service accounts. Which two identities are being linked?",
+    "options": [
+      "A Google User Account and a Google Cloud Service Account.",
+      "A Google Cloud Service Account and a Kubernetes Service Account.",
+      "A GKE Node Service Account and a Compute Engine Default Service Account.",
+      "A Kubernetes Cluster Role and an IAM Custom Role."
+    ],
+    "correct": 1,
+    "explanation": "Workload Identity connects a native Kubernetes Service Account (KSA) inside the cluster with an IAM Google Cloud Service Account (GSA) at the GCP level."
+  },
+  {
+    "id": "27",
+    "question": "A developer needs to act as a service account to run a specific script without downloading a permanent JSON key. Which IAM role must be granted to the developer on the service account to allow impersonation?",
+    "options": [
+      "Security Reviewer (roles/iam.securityReviewer)",
+      "Service Account User (roles/iam.serviceAccountUser)",
+      "Service Account Admin (roles/iam.serviceAccountAdmin)",
+      "Service Account Token Creator (roles/iam.serviceAccountTokenCreator)"
+    ],
+    "correct": 3,
+    "explanation": "roles/iam.serviceAccountTokenCreator permits users to generate short-lived credentials and impersonate service accounts securely."
+  },
+  {
+    "id": "28",
+    "question": "You want to generate a credential for a service account that automatically expires after 1 hour. Which type of credential should you create?",
+    "options": [
+      "SSH Key",
+      "API Key",
+      "Service Account JSON Key",
+      "OAuth 2.0 Access Token"
+    ],
+    "correct": 3,
+    "explanation": "OAuth 2.0 Access Tokens are short-lived authorization tokens that expire automatically after a standard 1-hour window."
+  },
+  {
+    "id": "29",
+    "question": "What is the Google-recommended method for allowing a GKE application to securely access Google Cloud services like Cloud Storage?",
+    "options": [
+      "Grant the GKE Node's default service account access to the entire project.",
+      "Download a service account JSON key and store it as a Kubernetes Secret.",
+      "Hardcode the service account credentials directly into the application's environment variables.",
+      "Use Workload Identity to map a Kubernetes Service Account to a Google Cloud Service Account."
+    ],
+    "correct": 3,
+    "explanation": "Workload Identity is the Google-recommended mechanism for delegating fine-grained IAM permissions to GKE pods without key management overhead."
+  },
+  {
+    "id": "30",
+    "question": "When configuring Workload Identity, which IAM policy binding must be added to the Google Cloud Service Account (GSA)?",
+    "options": [
+      "Grant the GSA the 'roles/container.developer' role.",
+      "Allow the GSA to access the GKE cluster's API server.",
+      "Allow the GSA to act as the Project Editor.",
+      "Allow the Kubernetes Service Account (KSA) to act as the GSA via the Workload Identity User role."
+    ],
+    "correct": 3,
+    "explanation": "Binding roles/iam.workloadIdentityUser to the GSA authorizes the mapped Kubernetes Service Account (KSA) to act as the GSA."
+  },
+  {
+    "id": "31",
+    "question": "A Cloud Engineer is using the gcloud CLI to impersonate a service account for a single command. Which flag should they append to the command?",
+    "options": [
+      "--impersonate-service-account=[ACCOUNT_EMAIL]",
+      "--service-account=[ACCOUNT_NAME]",
+      "--use-short-lived-credentials",
+      "--identity-delegation=[ACCOUNT_EMAIL]"
+    ],
+    "correct": 0,
+    "explanation": "The --impersonate-service-account flag instructs the gcloud CLI tool to mint a temporary token and execute the command under the identity of the specified Service Account email."
+  }
+]

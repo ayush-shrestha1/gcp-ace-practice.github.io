@@ -1,0 +1,440 @@
+[
+  {
+    "id": "1",
+    "question": "What we can do to ensure our system is highly available while using compute engine resources? (Choose two)",
+    "options": [
+      "Regional MIGs",
+      "Load Balancers",
+      "Using dynamic IP",
+      "Using static IP"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "Regional Managed Instance Groups (MIGs) distribute VM instances across multiple availability zones in a region, while Cloud Load Balancers distribute traffic across healthy instances, together ensuring high availability for Compute Engine resources."
+  },
+  {
+    "id": "2",
+    "question": "An IT company wants to have a backup of its data in another region apart from the region its primary data is present. What kind of Disaster Recovery type is this?",
+    "options": [
+      "Cold",
+      "Warm",
+      "Hot",
+      "None of the mentioned"
+    ],
+    "correct": 0,
+    "explanation": "Maintaining static backup copies in a secondary region without active standby infrastructure running is characteristic of a Cold Disaster Recovery pattern."
+  },
+  {
+    "id": "3",
+    "question": "My applications needs a container service to deploy its code. Which of the below services will be best suited? (Choose three)",
+    "options": [
+      "GKE",
+      "App Engine",
+      "Cloud Run",
+      "Compute Engine"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Google Kubernetes Engine (GKE), App Engine (Flexible/Standard with containers), and Cloud Run are all container deployment platforms in Google Cloud."
+  },
+  {
+    "id": "4",
+    "question": "In my company, I have a team of developers who wants to focus on code.They have no knowledge about the cloud infrastructure. Which serverless and managed services will be ideal for them? (Choose three)",
+    "options": [
+      "Cloud Functions",
+      "App Engine",
+      "Cloud Run",
+      "GKE"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "Cloud Functions, App Engine, and Cloud Run are fully managed serverless compute platforms that abstract away underlying infrastructure management so developers can focus strictly on code."
+  },
+  {
+    "id": "5",
+    "question": "A company have a very strict budget from the management for their application development. Which services will be best for them so that they can be billed for the resources they use? (Choose two)",
+    "options": [
+      "Compute Engine",
+      "Kubernetes Engine",
+      "Cloud Run",
+      "App Engine"
+    ],
+    "correct": [
+      2,
+      3
+    ],
+    "explanation": "Cloud Run and App Engine (Standard) are serverless platforms that scale down to zero, ensuring you are billed strictly for requests and compute time used rather than paying for idle provisioned infrastructure."
+  },
+  {
+    "id": "6",
+    "question": "Which solution can be used to trigger a Cloud Function, so it can ingest and process an image in the image tagging pipeline?",
+    "options": [
+      "Firestore",
+      "Cloud Bigtable",
+      "Dataflow",
+      "Pub/Sub"
+    ],
+    "correct": 3,
+    "explanation": "Cloud Pub/Sub provides asynchronous event-driven messaging that natively triggers Cloud Functions when new messages or event notifications (such as Cloud Storage object notifications) are published."
+  },
+  {
+    "id": "7",
+    "question": "What is the best-practice security strategy for PII data on Cloud Storage?",
+    "options": [
+      "Read-only access to users, and default ACL on bucket",
+      "Signed URL with expiration",
+      "No Cloud IAM roles to users, and granular ACLs on bucket",
+      "Public access, random names, and share URLs in confidence"
+    ],
+    "correct": 2,
+    "explanation": "Restricting broad project-level IAM access and applying granular bucket/object-level Access Control Lists (or Uniform Bucket-Level Access with explicit conditional policies) ensures strict least-privilege protection for sensitive PII data."
+  },
+  {
+    "id": "8",
+    "question": "A cron job checks a Cloud Storage bucket every 10 min for new files. You can improve response time by:",
+    "options": [
+      "Using a Cloud Function",
+      "Using a Kubernetes pod",
+      "Running the cron job every minute",
+      "Using an App Engine Flexible application"
+    ],
+    "correct": 0,
+    "explanation": "Replacing a polling cron job with Cloud Storage event triggers bound directly to a Cloud Function processes new files immediately upon upload near real-time."
+  },
+  {
+    "id": "9",
+    "question": "What's the easiest way to host a static web site in GCP?",
+    "options": [
+      "Deploy it to App Engine.",
+      "Use GCS bucket for storage and create global a Load Balancer with GCS bucket as a backend.",
+      "Use GCP Marketplace to deploy a CMS, eg. Wordpress.",
+      "Deploy a single VM and install a web server there."
+    ],
+    "correct": 1,
+    "explanation": "Hosting static files in a Cloud Storage bucket configured for web hosting behind a Cloud Load Balancer (with optional Cloud CDN) is the simplest serverless approach for static websites."
+  },
+  {
+    "id": "10",
+    "question": "Which is an advantage of App Engine Standard over App Engine Flexible?",
+    "options": [
+      "Allows ephemeral disk",
+      "Supports 3rd party binaries",
+      "Scales to zero",
+      "SSH access"
+    ],
+    "correct": 2,
+    "explanation": "App Engine Standard automatically scales down to zero instances when there is no incoming traffic, eliminating baseline compute charges, whereas App Engine Flexible maintains at least one running VM instance."
+  },
+  {
+    "id": "11",
+    "question": "How do you give a virtual machine greater I/O performance for its attached persistent disk without rebuilding the VM?",
+    "options": [
+      "Update the disk metadata, including labels",
+      "Change the type of disk to local SSD",
+      "Change the access controls of the disk",
+      "Increase the size of the disk"
+    ],
+    "correct": 3,
+    "explanation": "Compute Engine Persistent Disk IOPS and throughput scale linearly with the disk size. Dynamically increasing disk size instantly increases I/O performance without requiring VM recreation."
+  },
+  {
+    "id": "12",
+    "question": "You have a new stateless Python web app; you can't predict the load. Which compute option would be optimal?",
+    "options": [
+      "Kubernetes Engine",
+      "Cloud Functions",
+      "App Engine",
+      "Compute Engine"
+    ],
+    "correct": 2,
+    "explanation": "App Engine (or Cloud Run) provides rapid automatic autoscaling and scale-to-zero capabilities for unpredictable web traffic without infrastructure management."
+  },
+  {
+    "id": "13",
+    "question": "Migrating to Google Cloud: in the current on-premises environment, VMs have a NFS storage mounted for accessing shared storage. What native GCP service can be used for this use-case?",
+    "options": [
+      "Cloud Storage",
+      "A relational database",
+      "A document database",
+      "Cloud Filestore"
+    ],
+    "correct": 3,
+    "explanation": "Cloud Filestore is Google Cloud's fully managed Network Attached Storage (NAS) offering that natively supports the NFSv3 protocol."
+  },
+  {
+    "id": "14",
+    "question": "What's a cost-effective way to run non-critical Apache Spark jobs on Dataproc?",
+    "options": [
+      "Set up a cluster in high availability mode with high-memory machine types. Add 10 additional local SSDs.",
+      "Set up a cluster in high availability mode with default machine types. Add 10 additional preemptible worker nodes.",
+      "Set up a cluster in standard mode with high-memory machine types. Add 10 additional preemptible worker nodes.",
+      "Set up a cluster in standard mode with the default machine types. Add 10 additional local SSDs."
+    ],
+    "correct": 2,
+    "explanation": "Using standard cluster mode along with secondary preemptible (Spot) worker nodes for batch Spark processing significantly reduces compute costs for fault-tolerant jobs."
+  },
+  {
+    "id": "15",
+    "question": "Source data is streamed in bursts and must be transformed before use. What services would you use?",
+    "options": [
+      "Use Cloud Bigtable for fast input and cbt for ETL.",
+      "Ingest data to Cloud Storage. Use Dataproc for ETL.",
+      "Use Pub/Sub to buffer the data, and then use BigQuery for ETL.",
+      "Use Pub/Sub to buffer the data, and then use Dataflow for ETL."
+    ],
+    "correct": 3,
+    "explanation": "Cloud Pub/Sub buffers bursty streaming messages, and Cloud Dataflow executes scalable real-time streaming pipeline transformations (ETL)."
+  },
+  {
+    "id": "16",
+    "question": "What are three Google Cloud services commonly used together in data engineering solutions?",
+    "options": [
+      "Dataproc, Cloud SQL, BigQuery.",
+      "Pub/Sub, Dataflow, BigQuery.",
+      "Pub/Sub,Google Kubernetes Engine, Cloud Spanner.",
+      "Cloud Bigtable, Dataproc, Cloud Spanner."
+    ],
+    "correct": 1,
+    "explanation": "Pub/Sub (ingestion), Dataflow (processing/ETL), and BigQuery (analytics storage) form the classic Google Cloud streaming data pipeline pattern."
+  },
+  {
+    "id": "17",
+    "question": "You have deployed an application to Kubernetes Engine, and are using the Cloud SQL proxy container to make the Cloud SQL database available to the services running on Kubernetes. You are notified that the application is reporting database connection issues. Your company policies require a post-mortem. What should you do?",
+    "options": [
+      "Use gcloud sql instances restart.",
+      "Validate that the Service Account used by the Cloud SQL proxy container still has the Cloud Build Editor role.",
+      "In the GCP Console, navigate to Cloud Logging. Consult logs for Kubernetes Engine and Cloud SQL.",
+      "In the GCP Console, navigate to Cloud SQL. Restore the latest backup. Use kubectl to restart all pods."
+    ],
+    "correct": 2,
+    "explanation": "Reviewing Cloud Logging output for GKE container stdout/stderr and Cloud SQL connection events provides the diagnostic data required for troubleshooting and post-mortem analysis."
+  },
+  {
+    "id": "18",
+    "question": "Your company is running a stateless application on a Compute Engine instance. The application is used heavily during regular business hours and lightly outside of business hours. Users are reporting that the application is slow during peak hours. You need to optimize the application’s performance. What should you do?",
+    "options": [
+      "Create a snapshot of the existing disk. Create an instance template from the snapshot. Create an autoscaled managed instance group from the instance template.",
+      "Create a snapshot of the existing disk. Create a custom image from the snapshot. Create an autoscaled managed instance group from the custom image.",
+      "Create a custom image from the existing disk. Create an instance template from the custom image. Create an autoscaled managed instance group from the custom image.",
+      "Create an instance template from the existing disk. Create a custom image from the instance template. Create an autoscaled managed instance group from the custom image."
+    ],
+    "correct": 2,
+    "explanation": "The standard workflow for creating an autoscaling Managed Instance Group (MIG) is: create a custom golden image from the source disk -> create an instance template referencing that custom image -> create an autoscaled MIG from the instance template."
+  },
+  {
+    "id": "19",
+    "question": "You created a new project, but due to an org policy restrictions, no VPC was created. What are the effects of such a project, without a VPC? (choose 2)",
+    "options": [
+      "You can still create all GCP resources as normal",
+      "You can't create a GCE VM",
+      "You cannot create a Cloud Function",
+      "You cannot create a GCS bucket",
+      "You cannot create a GKE cluster"
+    ],
+    "correct": [
+      1,
+      4
+    ],
+    "explanation": "Both Compute Engine virtual machines and GKE Kubernetes clusters require an underlying Virtual Private Cloud (VPC) network interface to be provisioned."
+  },
+  {
+    "id": "20",
+    "question": "You are running a cluster on Kubernetes Engine to serve a web application. Users are reporting that a specific part of the application is not responding anymore. You notice that all pods of your deployment keep restarting after 2 seconds. The application writes logs to standard output. You want to inspect the logs to find the cause of the issue. Which approach can you take?",
+    "options": [
+      "Review the Cloud Logging for each Compute Engine instance that is serving as a node in the cluster.",
+      "Review the Cloud Logging for the specific Kubernetes Engine container that is serving the unresponsive part of the application.",
+      "Connect to the cluster using gcloud credentials and connect to a container in one of the pods to read the logs.",
+      "Review the Serial Port logs for each Compute Engine instance that is serving as a node in the cluster."
+    ],
+    "correct": 1,
+    "explanation": "Cloud Logging automatically collects stdout/stderr output from GKE container pods, allowing you to view crash logs even if pods restart rapidly."
+  },
+  {
+    "id": "21",
+    "question": "You are using a single Cloud SQL instance to serve your application from a specific zone. You want to introduce high availability. What should you do?",
+    "options": [
+      "Create a read replica instance in a different region",
+      "Create a regional instance in a different region",
+      "Create a read replica instance in the same region, but in a different zone",
+      "Change your existing Cloud SQL instance into a regional instance"
+    ],
+    "correct": 3,
+    "explanation": "Enabling High Availability (HA) on a Cloud SQL instance converts it into a regional instance with automatic synchronous replication to a standby instance in a secondary zone within the same region."
+  },
+  {
+    "id": "22",
+    "question": "Your company wants to start using Google Cloud resources but wants to retain their on-premises Active Directory domain controller for identity management. What should you do?",
+    "options": [
+      "Use the Admin Directory API to authenticate against the Active Directory domain controller.",
+      "Use Google Cloud Directory Sync to synchronize Active Directory usernames with cloud identities and configure SAML SSO.",
+      "Use Cloud Identity-Aware Proxy configured to use the on-premises Active Directory domain controller as an identity provider.",
+      "Use Compute Engine to create an Active Directory (AD) domain controller that is a replica of the on-premises AD domain controller using Google Cloud Directory Sync."
+    ],
+    "correct": 1,
+    "explanation": "Google Cloud Directory Sync (GCDS) synchronizes AD users and groups into Cloud Identity, while SAML Single Sign-On delegates user password authentication directly to Active Directory / ADFS."
+  },
+  {
+    "id": "23",
+    "question": "You are designing an application for use only during business hours. For the minimum viable product release, you’d like to use a managed product that automatically \"scales to zero\" so you don’t incur costs when there is no activity. Which primary compute resource should you choose?",
+    "options": [
+      "Cloud Functions",
+      "Google Compute Engine",
+      "Google Kubernetes Engine",
+      "AppEngine flexible environment"
+    ],
+    "correct": 0,
+    "explanation": "Cloud Functions is a fully managed serverless product that scales to zero automatically when idle, eliminating computing costs outside business hours."
+  },
+  {
+    "id": "24",
+    "question": "The development team has provided you with a Kubernetes Deployment file. You have no infrastructure yet and need to deploy the application. What should you do?",
+    "options": [
+      "Use gcloud to create a Kubernetes cluster. Use Deployment Manager to create the deployment.",
+      "Use gcloud to create a Kubernetes cluster. Use kubectl to create the deployment.",
+      "Use kubectl to create a Kubernetes cluster. Use Deployment Manager to create the deployment.",
+      "Use kubectl to create a Kubernetes cluster. Use kubectl to create the deployment."
+    ],
+    "correct": 1,
+    "explanation": "`gcloud container clusters create` provisions the GKE infrastructure, and `kubectl apply -f deployment.yaml` deploys the Kubernetes manifest into the cluster."
+  },
+  {
+    "id": "25",
+    "question": "An application in a new GCP project needs to read data from a Datastore database located in a legacy GCP project. Following the principle of least privilege, how should you configure IAM access?",
+    "options": [
+      "Create Service Accounts in both projects and assign them corresponding projects’ owner role",
+      "Create a Service Account (which application will use) in the new project and grant it Org Admin role",
+      "Create a Service Account (which application will use) in the new project and grant it roles/datastore.user role in the Datastore project",
+      "Create a Service Account in the legacy project and grant it roles/datastore.user role"
+    ],
+    "correct": 2,
+    "explanation": "Creating a service account for the application in its home project and binding `roles/datastore.user` to that service account directly in the target Datastore project adheres to least privilege cross-project access."
+  },
+  {
+    "id": "26",
+    "question": "You are creating a new service account to be used by an application running on Compute Engine. The application only needs to write data to a specific Cloud Storage bucket. Following the principle of least privilege, how should you configure the IAM policy?",
+    "options": [
+      "Grant the service account the 'roles/storage.objectCreator' role on the specific bucket only.",
+      "Add the service account to a Google Group that has 'Owner' permissions.",
+      "Grant the service account the 'roles/storage.admin' role at the project level.",
+      "Grant the service account the 'roles/editor' role at the project level."
+    ],
+    "correct": 0,
+    "explanation": "Granting `roles/storage.objectCreator` at the bucket resource level allows writing objects to that target bucket without exposing broader project-level permissions."
+  },
+  {
+    "id": "27",
+    "question": "An administrator needs to attach a custom service account to a new Compute Engine instance during creation. Which IAM role must the administrator possess on the service account itself to perform this action?",
+    "options": [
+      "roles/iam.serviceAccountAdmin",
+      "roles/iam.roleViewer",
+      "roles/compute.instanceAdmin",
+      "roles/iam.serviceAccountUser"
+    ],
+    "correct": 3,
+    "explanation": "The `roles/iam.serviceAccountUser` role grants permissions to attach a service account to a compute resource like a VM."
+  },
+  {
+    "id": "28",
+    "question": "You need to allow a developer to run a migration script as a privileged service account, but you want to avoid generating or distributing a static JSON key file. What is the most secure method to achieve this?",
+    "options": [
+      "Grant the developer the 'roles/iam.serviceAccountTokenCreator' role on the service account to allow impersonation.",
+      "Email the developer a base64-encoded string of the service account key.",
+      "Hardcode the service account credentials into the migration script.",
+      "Temporarily grant the developer the 'Owner' role for the duration of the script execution."
+    ],
+    "correct": 0,
+    "explanation": "`roles/iam.serviceAccountTokenCreator` allows a user to dynamically generate short-lived OAuth access tokens for account impersonation without downloading key files."
+  },
+  {
+    "id": "29",
+    "question": "When creating a user-managed service account via the gcloud command-line tool, what is the correct format for the automatically generated email address associated with the account?",
+    "options": [
+      "[PROJECT_ID]-compute@developer.gserviceaccount.com",
+      "[ACCOUNT_NAME]@[PROJECT_ID].iam.gserviceaccount.com",
+      "[ACCOUNT_NAME]@google.com",
+      "admin@[PROJECT_ID].cloud.google"
+    ],
+    "correct": 1,
+    "explanation": "User-managed service accounts follow the email address syntax `[ACCOUNT_NAME]@[PROJECT_ID].iam.gserviceaccount.com`."
+  },
+  {
+    "id": "30",
+    "question": "You want to audit which users have the ability to manage the IAM permissions of a specific service account. Where should you look to find the policy that controls who can change the 'Service Account's' own IAM policy?",
+    "options": [
+      "The organization's default 'Editor' role definition.",
+      "The Cloud Audit Logs specifically filtered for 'Write' actions.",
+      "The IAM policy specifically attached to that individual Service Account resource.",
+      "The Project-level IAM policy."
+    ],
+    "correct": 2,
+    "explanation": "Service accounts are resources in GCP that have their own resource-level IAM policies determining who can impersonate or modify that specific service account."
+  },
+  {
+    "id": "31",
+    "question": "Which of the following is the most efficient way to create a new service account named 'data-processor' in your project using the Google Cloud CLI?",
+    "options": [
+      "gcloud compute instances create data-processor --service-account",
+      "gcloud auth login data-processor",
+      "gcloud iam service-accounts create data-processor",
+      "gcloud iam roles create data-processor"
+    ],
+    "correct": 2,
+    "explanation": "The `gcloud iam service-accounts create [SA_NAME]` command creates user-managed service accounts in the active project."
+  },
+  {
+    "id": "32",
+    "question": "You need to give a service account the ability to read objects from a specific Cloud Storage bucket, and nothing else. Which role adheres best to the principle of least privilege?",
+    "options": [
+      "roles/editor",
+      "roles/storage.admin",
+      "roles/storage.objectViewer",
+      "roles/viewer"
+    ],
+    "correct": 2,
+    "explanation": "`roles/storage.objectViewer` provides read-only access to storage objects and bucket contents without granting management or broad project viewer permissions."
+  },
+  {
+    "id": "33",
+    "question": "You are creating a new Compute Engine instance. What is the process for assigning a specific non-default service account to this VM during creation?",
+    "options": [
+      "The VM automatically uses the project's Owner identity unless a JSON key is uploaded.",
+      "Assign the 'Service Account User' role to the VM's hardware ID in the IAM console.",
+      "Specify the service account email in the 'Identity and API access' section of the instance configuration.",
+      "Instances always use the Compute Engine default service account and cannot be changed."
+    ],
+    "correct": 2,
+    "explanation": "During VM instance setup in the Console or via gcloud `--service-account`, you specify the service account email in the 'Identity and API access' configuration."
+  },
+  {
+    "id": "34",
+    "question": "A developer needs to run a local script that authenticates as a service account named 'app-deployer' without using a service account key. Which role should you grant the developer on that specific service account?",
+    "options": [
+      "roles/iam.securityAdmin",
+      "roles/iam.serviceAccountUser",
+      "roles/iam.serviceAccountTokenCreator",
+      "roles/iam.workloadIdentityUser"
+    ],
+    "correct": 2,
+    "explanation": "`roles/iam.serviceAccountTokenCreator` permits minting OAuth access tokens to impersonate the service account without requiring static key files."
+  },
+  {
+    "id": "35",
+    "question": "When managing the IAM permissions of a service account, where should you apply a role binding to allow that service account to manage Pub/Sub topics across the entire project?",
+    "options": [
+      "Inside the code of the application using the service account.",
+      "At the Service Account level in the IAM console.",
+      "At the Project level in the IAM console.",
+      "In the metadata of the VM instance where the service account is attached."
+    ],
+    "correct": 2,
+    "explanation": "To grant a service account permissions to manage resources across an entire project, the IAM role binding must be applied at the Project level."
+  }
+]

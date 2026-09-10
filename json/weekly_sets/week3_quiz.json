@@ -1,0 +1,524 @@
+[
+  {
+    "id": "1",
+    "question": "Cymbal Superstore wants to edit their Cloud SQL instance that they created earlier. Which of the below can be changed in the future?",
+    "options": [
+      "Public IP",
+      "Machine Type",
+      "Authorized network",
+      "Storage type"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "explanation": "In Cloud SQL, Public IP, Machine Type, and Authorized Networks can be modified after creation. However, Storage type (e.g., SSD vs HDD) cannot be changed once the instance is created."
+  },
+  {
+    "id": "2",
+    "question": "Which of the below is correct for the scenario when you want to prevent individual objects from being deleted or overwritten by placing metadata flags on the objects you want to retain?",
+    "options": [
+      "Retention policy",
+      "Object Versioning",
+      "Object Hold",
+      "Object Replicas"
+    ],
+    "correct": 2,
+    "explanation": "An Object Hold is a metadata flag placed on an individual object to prevent it from being deleted or overwritten until the hold is removed."
+  },
+  {
+    "id": "3",
+    "question": "Cymbal Superstore’s wants to migrate its e-commerce solution relational backend. They want the data to be global availability and low latency. Which of the below should be perfect in this scenario?",
+    "options": [
+      "Cloud Spanner",
+      "Cloud SQL",
+      "Bigtable",
+      "Bigquery"
+    ],
+    "correct": 0,
+    "explanation": "Cloud Spanner is a fully managed, globally scalable relational database designed for high availability, transactional consistency, and low-latency global workloads."
+  },
+  {
+    "id": "4",
+    "question": "Which of the following services will help Cymbal Superstore’s to get the truck location in near real-time data in its transportation management solution? (Choose three)",
+    "options": [
+      "Pub/Sub",
+      "Dataflow",
+      "Dataproc",
+      "Bigdata for analytics"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "explanation": "Pub/Sub ingests near real-time location streaming data, Dataflow processes the streaming data pipeline, and BigQuery (Bigdata analytics) stores and analyzes the streaming insights."
+  },
+  {
+    "id": "5",
+    "question": "Which of the below services will help Cymbal Superstore’s supply chain solution to create a containerized application and do cluster configuration and monitoring of that application?",
+    "options": [
+      "Google Kubernetes Engine",
+      "Cloud Run",
+      "App Engine",
+      "Cloud function"
+    ],
+    "correct": 0,
+    "explanation": "Google Kubernetes Engine (GKE) is designed specifically for running, managing, configuring, and monitoring containerized applications in Kubernetes clusters."
+  },
+  {
+    "id": "6",
+    "question": "MyCompany would like to know whenever someone accesses data stored in GCS bucket in one of the critical projects. How can they configure it?",
+    "options": [
+      "They don't have to - audit logs are on by default in GCP.",
+      "They need to reach out to Google support to provide this data.",
+      "They can activate data access audit logging for GCS.",
+      "They have to activate \"Audit Data\" API."
+    ],
+    "correct": 2,
+    "explanation": "Data Access audit logs (which track reading or modifying customer-provided data) are disabled by default due to high volume, but can be enabled explicitly in IAM for Cloud Storage."
+  },
+  {
+    "id": "7",
+    "question": "In Cloud Storage, how would you store data to be accessed not more than once a month and not needed after five years?",
+    "options": [
+      "Standard Storage class, lifecycle policy to delete after 5 years",
+      "Nearline class, lifecycle policy change to Coldline after 5 years",
+      "Standard Storage class, lifecycle policy change to Coldline after 5 years",
+      "Nearline class, lifecycle policy to delete after 5 years"
+    ],
+    "correct": 3,
+    "explanation": "Nearline Storage is ideal for data accessed at most once a month, and Object Lifecycle Management can be configured to delete the data automatically after 5 years (1825 days)."
+  },
+  {
+    "id": "8",
+    "question": "Which service is best for a multi-petabyte database for analysts that only know SQL? The database must be available 24 x 7?",
+    "options": [
+      "Cloud Storage",
+      "BigQuery",
+      "Firebase",
+      "Cloud SQL"
+    ],
+    "correct": 1,
+    "explanation": "BigQuery is a serverless, highly available data warehouse designed for multi-petabyte analytics using standard SQL."
+  },
+  {
+    "id": "9",
+    "question": "Which Cloud IAM roles would you assign for security auditors requiring visibility across all projects?",
+    "options": [
+      "Org admin, project browser",
+      "Project owner, network admin",
+      "Org viewer, project owner",
+      "Org viewer, project viewer"
+    ],
+    "correct": 3,
+    "explanation": "Combining Organization Viewer and Project Viewer provides complete read-only visibility across the organization hierarchy and resources without modifying permissions."
+  },
+  {
+    "id": "10",
+    "question": "What is the cheapest per-byte storage offered by Google Cloud?",
+    "options": [
+      "Cloud BigTable",
+      "Cloud Firestore",
+      "Cloud SQL",
+      "Cloud Storage"
+    ],
+    "correct": 3,
+    "explanation": "Cloud Storage (specifically Archive class) offers the lowest per-gigabyte/per-byte storage cost among Google Cloud storage services."
+  },
+  {
+    "id": "11",
+    "question": "Regulations require encrypting data at rest. Which Google Cloud services can be used?",
+    "options": [
+      "Any of the managed databases except BigQuery",
+      "Any GCP storage service",
+      "Google Cloud storage",
+      "Any GCP storage service except Cloud Filestore"
+    ],
+    "correct": 1,
+    "explanation": "Google Cloud automatically encrypts all customer content at rest by default across all GCP storage and database services."
+  },
+  {
+    "id": "12",
+    "question": "Which storage class should be used to save logs for forensics, which will be accessed at most once a quarter.",
+    "options": [
+      "Coldline",
+      "Standard",
+      "Archive",
+      "Nearline"
+    ],
+    "correct": 0,
+    "explanation": "Coldline Storage is designed for reading or modifying data at most once a quarter (90 days)."
+  },
+  {
+    "id": "13",
+    "question": "What is the Operations Suite tool to see the latency of requests for a web application in App Engine?",
+    "options": [
+      "Trace",
+      "Profiler",
+      "Debugger",
+      "Error Reporting"
+    ],
+    "correct": 0,
+    "explanation": "Cloud Trace is a distributed tracing system that collects latency data from App Engine applications to help analyze request performance."
+  },
+  {
+    "id": "14",
+    "question": "How to arrange a low-cost, one-way and one-time migration of two 100-TB file servers to Google Cloud? data will be frequently accessed from a single region.",
+    "options": [
+      "Use Transfer Appliance. Transfer to a Cloud Storage Standard bucket.",
+      "Use Transfer Appliance. Transfer to a Cloud Storage Nearline bucket.",
+      "Use Storage Transfer Service. Transfer to a Cloud Storage Standard bucket.",
+      "Use Storage Transfer Service. Transfer to a Cloud Storage Coldline bucket."
+    ],
+    "correct": 2,
+    "explanation": "Storage Transfer Service provides an automated, low-cost online data transfer mechanism from file systems or cloud sources directly to a Cloud Storage Standard bucket for frequent access."
+  },
+  {
+    "id": "15",
+    "question": "In Cloud Storage, how can you minimize the cost of storing security video files that are processed repeatedly for 30 days?",
+    "options": [
+      "Nearline Storage, then move to Coldline Storage after 30 days",
+      "Standard Storage, then delete after 30 days",
+      "Standard Storage, then move to Coldline Storage or Archive Storage after 30 days",
+      "Keep the files in Standard Storage"
+    ],
+    "correct": 2,
+    "explanation": "Standard Storage avoids retrieval fees during frequent processing for the first 30 days. Afterwards, lifecycle rules move the data to Coldline or Archive for low-cost long-term storage."
+  },
+  {
+    "id": "16",
+    "question": "What is the term we use to describe general ease and efficiency of moving data from one cloud provider to another or back to on-premises?",
+    "options": [
+      "Mobility",
+      "Elasticity",
+      "Obfuscation",
+      "Portability"
+    ],
+    "correct": 3,
+    "explanation": "Portability refers to the ability to easily move data, applications, and workloads between different cloud environments or cloud and on-premises systems without lock-in."
+  },
+  {
+    "id": "17",
+    "question": "Which abstraction is use to administer user access in Cloud IAM?",
+    "options": [
+      "Privileges, an abstraction of access rights",
+      "Leases, an abstraction of periodic entitlements",
+      "Credentials, an abstraction of an authorization token",
+      "Roles, an abstraction of job roles"
+    ],
+    "correct": 3,
+    "explanation": "Cloud IAM uses Roles—collections of permissions grouped together—to administer and grant fine-grained permissions to users and service accounts."
+  },
+  {
+    "id": "18",
+    "question": "Can IAM child policies override access granted at the parent level?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "correct": 1,
+    "explanation": "In Google Cloud IAM, policies are unioned across the resource hierarchy. Permission granted at a parent node cannot be revoked or overridden at a child level."
+  },
+  {
+    "id": "19",
+    "question": "Customer would like to arrange regular, cost-effective backups of multi-TB databases from another cloud to Google Cloud, including monthly DR drills. What services should be used?",
+    "options": [
+      "Use Transfer Appliance. Transfer to Cloud Storage Nearline bucket.",
+      "Use Transfer Appliance. Transfer to Cloud Storage Coldline bucket.",
+      "Use Storage Transfer Service. Transfer to Cloud Storage Nearline bucket.",
+      "Use Storage Transfer Service. Transfer to Cloud Storage Coldline bucket."
+    ],
+    "correct": 2,
+    "explanation": "Storage Transfer Service handles ongoing online transfers, and Nearline Storage accommodates monthly disaster recovery access drills cost-effectively without incurring higher retrieval penalty costs."
+  },
+  {
+    "id": "20",
+    "question": "An application has the following data requirements. 1. It requires strongly consistent transactions. 2. Total data will be less than 500 GB. 3. The data does not need to be streaming or real time. Which data technology would fit these requirements?",
+    "options": [
+      "BigQuery",
+      "Cloud Bigtable",
+      "Cloud SQL",
+      "Memorystore"
+    ],
+    "correct": 2,
+    "explanation": "Cloud SQL supports strongly consistent ACID transactions and easily fits data sizes under 500 GB."
+  },
+  {
+    "id": "21",
+    "question": "A company needs a flexible storage solution for a vast amount of time-series data that will be ingested from millions of connected devices. What GCP service would you recommend?",
+    "options": [
+      "Cloud Storage",
+      "Cloud Spanner",
+      "BigTable",
+      "Memorystore"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Bigtable is optimized for massive throughput, scale, and high-performance time-series ingestion from IoT devices."
+  },
+  {
+    "id": "22",
+    "question": "GlobalBank wants to build an online transactional processing application that requires a relational database with petabyte-scale data. What GCS storage service should they choose?",
+    "options": [
+      "Cloud SQL",
+      "BigTable",
+      "BigQuery",
+      "Cloud Spanner"
+    ],
+    "correct": 3,
+    "explanation": "Cloud Spanner provides relational schema, ACID compliance, and scales seamlessly to petabytes of data across global regions."
+  },
+  {
+    "id": "23",
+    "question": "You're requested to distribute and synchronize a GCS storage bucket between multiple regions for increased availability. What's the easiest way to do it?",
+    "options": [
+      "Deploy separate buckets in different regions and use \"bucket-to-bucket\" replication functionality.",
+      "Deploy separate buckets in different regions and schedule an rsync process between them.",
+      "Deploy a single dual or multi-region bucket.",
+      "Deploy separate buckets in different regions, then schedule backup and restore job between them."
+    ],
+    "correct": 2,
+    "explanation": "Creating a dual-region or multi-region bucket automatically replicates and synchronizes objects asynchronously across regions."
+  },
+  {
+    "id": "24",
+    "question": "Which storage service would you use to store large video files?",
+    "options": [
+      "BigQuery",
+      "Cloud Storage",
+      "Cloud Bigtable",
+      "Cloud Firestore"
+    ],
+    "correct": 1,
+    "explanation": "Cloud Storage is an object storage service built to store unstructured binary data such as large media and video files."
+  },
+  {
+    "id": "25",
+    "question": "In order to fulfill a compliance requirement, you defined a retention policy on one of GCS buckets and you executed \"gsutil retention lock gs://BUCKET_NAME\" command. You now need to modify some objects from the bucket that did not expire yet and you get an error. How do you resolve it?",
+    "options": [
+      "You need to manually remove the lock from the bucket and update the policy so that the object can be modified.",
+      "You need to contact the GCP support to remove the lock for you.",
+      "You can't remove the object until they fulfill the expiration policy.",
+      "You need to use --force parameter when executing the \"gsutil rm\" command."
+    ],
+    "correct": 2,
+    "explanation": "Once a retention policy is locked, it cannot be removed or reduced. Objects under the retention policy cannot be overwritten or deleted until the retention duration expires."
+  },
+  {
+    "id": "26",
+    "question": "You need to launch a fleet of Compute Engine instances for a batch processing job that can be interrupted. You want to minimize costs. Which availability policy should you configure during instance creation?",
+    "options": [
+      "Set the instance to 'Sole-tenant' node affinity.",
+      "Disable 'Automatic Restart' and set the VM to 'Terminate' on host maintenance.",
+      "Set the provisioning model to 'Spot' and the termination action to 'Delete'.",
+      "Enable 'High Availability' and set 'On-host maintenance' to 'Terminate'."
+    ],
+    "correct": 2,
+    "explanation": "Spot VMs provide significant cost discounts for fault-tolerant batch workloads that tolerate preemptive interruption."
+  },
+  {
+    "id": "27",
+    "question": "Your security team requires that all SSH access to VM instances be managed through IAM roles rather than manual metadata-based SSH keys. What is the most effective way to implement this across your project?",
+    "options": [
+      "Block project-wide SSH keys and enable OS Login at the project metadata level.",
+      "Generate a new SSH key pair for every developer and upload them to each VM instance individually.",
+      "Use the 'gcloud compute ssh' command without any additional configuration.",
+      "Configure a VPC Firewall rule to only allow traffic on port 22 from specific IP addresses."
+    ],
+    "correct": 0,
+    "explanation": "OS Login ties SSH access directly to IAM permissions, replacing traditional project-level or instance-level public SSH keys."
+  },
+  {
+    "id": "28",
+    "question": "You want to automate the process of applying security patches to a group of Linux VMs running on Compute Engine. Which component of VM Manager should you use to schedule and monitor these updates?",
+    "options": [
+      "Instance Groups Auto-healing",
+      "Patch Management (Patch Deployments)",
+      "OS Policy Assignment",
+      "OS Inventory Management"
+    ],
+    "correct": 1,
+    "explanation": "Patch Management within VM Manager allows you to schedule automated operating system patch deployments across Linux and Windows VMs."
+  },
+  {
+    "id": "29",
+    "question": "You have a Docker image stored in Artifact Registry and need to deploy it as a scalable web service on an existing GKE cluster. Which 'kubectl' command and resource type is the standard way to ensure a specific number of replicas are always running?",
+    "options": [
+      "kubectl apply -f [FILENAME].yaml where the file defines a Deployment resource.",
+      "kubectl create configmap [NAME] --from-file=[IMAGE_URL]",
+      "kubectl run [NAME] --image=[IMAGE_URL]",
+      "kubectl expose deployment [NAME] --port=80 --type=LoadBalancer"
+    ],
+    "correct": 0,
+    "explanation": "Applying a Deployment manifest file defines the desired state, manage replica sets, and orchestrates container lifecycle on GKE."
+  },
+  {
+    "id": "30",
+    "question": "You are configuring a Compute Engine instance and need to ensure it automatically restarts if the underlying hardware fails, but remains terminated if the OS itself initiates a shutdown. Which setting should you adjust?",
+    "options": [
+      "Set 'Preemptibility' to 'On'.",
+      "Set 'Automatic Restart' to 'Off'.",
+      "Set 'Automatic Restart' to 'On' and 'On-host maintenance' to 'Migrate'.",
+      "Enable 'Confidential Computing'."
+    ],
+    "correct": 2,
+    "explanation": "Enabling 'Automatic Restart' ensures Compute Engine restarts the instance if host hardware crashes or fails."
+  },
+  {
+    "id": "31",
+    "question": "A developer needs access to a VM that has OS Login enabled. You have already granted them the 'roles/compute.osLogin' IAM role. What additional step is required for them to log in if the VM uses a service account for its identity?",
+    "options": [
+      "No additional steps are needed; 'roles/compute.osLogin' is sufficient for all instances.",
+      "Manually add the developer's public SSH key to the VM's custom metadata.",
+      "Grant the 'roles/owner' role at the project level.",
+      "Grant the developer the 'roles/iam.serviceAccountUser' role on the service account associated with the VM."
+    ],
+    "correct": 3,
+    "explanation": "When an instance uses a custom service account, OS Login authentication checks that the user has `roles/iam.serviceAccountUser` privileges on that service account."
+  },
+  {
+    "id": "32",
+    "question": "Your company is moving from a legacy network to Google Cloud. You need to create a VPC that allows for full control over subnet IP ranges and regions. Which VPC type and configuration should you use?",
+    "options": [
+      "Custom mode VPC with manually defined subnets.",
+      "A Default VPC with all firewall rules deleted.",
+      "A Shared VPC hosted in a service project.",
+      "Auto mode VPC with default subnets."
+    ],
+    "correct": 0,
+    "explanation": "Custom mode VPCs grant explicit control over subnet creation, IP CIDR ranges, and target regions."
+  },
+  {
+    "id": "33",
+    "question": "You need to allow traffic from a specific set of web servers to a database server. Instead of using IP addresses, which change frequently, you want to use the identity of the instances in your Cloud NGFW policy. What is the best attribute to use for 'Target' and 'Source' in this rule?",
+    "options": [
+      "Network Tags",
+      "VPC Subnet Ranges",
+      "Service Accounts",
+      "Instance Names"
+    ],
+    "correct": 2,
+    "explanation": "Filtering firewall rules by Service Accounts provides secure identity-based access control that scales independently of instance IP changes."
+  },
+  {
+    "id": "34",
+    "question": "Your organization requires a dedicated, physical connection between your on-premises data center and Google Cloud for high-volume data transfer with low latency. Which connectivity solution should you implement?",
+    "options": [
+      "Dedicated Interconnect",
+      "VPC Network Peering",
+      "Carrier Peering",
+      "Cloud VPN (HA VPN)"
+    ],
+    "correct": 0,
+    "explanation": "Dedicated Interconnect provides a direct, dedicated physical connection between an on-premises network and Google's network."
+  },
+  {
+    "id": "35",
+    "question": "You are deploying a global web application that requires SSL termination and needs to route traffic to the closest available region to minimize latency for users. Which load balancer should you choose?",
+    "options": [
+      "Global External Application Load Balancer",
+      "External Network Passthrough Load Balancer",
+      "Regional Internal Proxy Load Balancer",
+      "Regional External Application Load Balancer"
+    ],
+    "correct": 0,
+    "explanation": "The Global External Application Load Balancer provides Anycast IP routing, global HTTP(S) SSL termination, and latency-based routing."
+  },
+  {
+    "id": "36",
+    "question": "You are cost-optimizing a development environment. You have instances that do not require the high-performance global routing of the Google network and only need to send traffic to the internet. Which Network Service Tier should you select to reduce costs?",
+    "options": [
+      "Premium Tier",
+      "Standard Tier",
+      "VPC Service Controls Tier",
+      "Global Tier"
+    ],
+    "correct": 1,
+    "explanation": "Standard Tier routes outbound traffic over public transit ISP networks rather than Google's premium global backbone, lowering bandwidth expenses."
+  },
+  {
+    "id": "37",
+    "question": "A security policy requires that all egress traffic from a specific subnet to the internet must be blocked, except for traffic going to a specific external update server on port 443. How should you configure the Cloud NGFW egress rules?",
+    "options": [
+      "Delete all ingress rules for that subnet.",
+      "Create a priority 1000 rule to Allow port 443 to the specific IP, and rely on the implied allow egress rule.",
+      "Create a priority 100 rule to Allow port 443 to the specific IP, and a priority 2000 rule to Deny all egress traffic to 0.0.0.0/0.",
+      "Change the subnet to 'Private Google Access' only."
+    ],
+    "correct": 2,
+    "explanation": "Firewall rules evaluate by priority (lowest number first). A higher-priority Allow rule for the specific IP/port overrides a lower-priority blanket Deny rule."
+  },
+  {
+    "id": "38",
+    "question": "You are launching a Compute Engine instance for a batch processing job that is fault-tolerant. You want to minimize costs. Which availability policy should you use?",
+    "options": [
+      "Sole-tenant nodes.",
+      "Spot (or Preemptible) instances.",
+      "Instances with 'Automatic Restart' disabled.",
+      "On-demand instances with 'On Host Maintenance' set to Migrate."
+    ],
+    "correct": 1,
+    "explanation": "Spot/Preemptible instances offer heavy cost discounts for stateless, fault-tolerant workloads."
+  },
+  {
+    "id": "39",
+    "question": "You want to manage SSH access to your project's VM instances using IAM roles instead of manually managing individual SSH keys. Which feature should you enable?",
+    "options": [
+      "OS Login",
+      "Project-wide SSH Keys",
+      "Identity-Aware Proxy (IAP)",
+      "Shielded VMs"
+    ],
+    "correct": 0,
+    "explanation": "OS Login ties user SSH authentication directly to Google Cloud IAM organization credentials."
+  },
+  {
+    "id": "40",
+    "question": "You need to ensure that a fleet of Windows and Linux VMs have the latest security patches applied automatically. Which Google Cloud service should you configure?",
+    "options": [
+      "Artifact Registry",
+      "Cloud Logging",
+      "Compute Engine Autoscaler",
+      "VM Manager"
+    ],
+    "correct": 3,
+    "explanation": "VM Manager's Patch Management suite automates operating system patching and compliance across multi-OS fleets."
+  },
+  {
+    "id": "41",
+    "question": "Which Google Cloud CLI command is used to retrieve credentials for a GKE cluster so that you can use 'kubectl' to deploy your application?",
+    "options": [
+      "gcloud container clusters get-credentials [CLUSTER_NAME]",
+      "gcloud compute instances add-metadata [INSTANCE_NAME]",
+      "kubectl config set-cluster [CLUSTER_NAME]",
+      "gcloud auth login"
+    ],
+    "correct": 0,
+    "explanation": "`gcloud container clusters get-credentials` fetches endpoint context and auth tokens for `kubectl` configuration."
+  },
+  {
+    "id": "42",
+    "question": "You have a Docker image stored in Artifact Registry. You want to deploy this to a GKE cluster. Which Kubernetes object should you create to define the desired state of your application, including the number of replicas?",
+    "options": [
+      "Pod",
+      "ConfigMap",
+      "Deployment",
+      "Service"
+    ],
+    "correct": 2,
+    "explanation": "A Deployment object manages pod replicas, declarative updates, and self-healing in Kubernetes."
+  },
+  {
+    "id": "43",
+    "question": "A team member needs to SSH into a VM where OS Login is enabled. They have the 'compute.osLogin' IAM role. What is the final step they must take to connect?",
+    "options": [
+      "Request the root password for the VM from the administrator.",
+      "Simply run 'gcloud compute ssh [INSTANCE_NAME]'.",
+      "Disable the firewall rule for port 22.",
+      "Manually generate an SSH key pair and upload the public key to the VM's metadata."
+    ],
+    "correct": 1,
+    "explanation": "With OS Login enabled and `roles/compute.osLogin` granted, executing `gcloud compute ssh` automatically manages SSH key creation and connection."
+  }
+]

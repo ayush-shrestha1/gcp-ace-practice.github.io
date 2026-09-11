@@ -10,10 +10,13 @@
   <div class="app-container">
     <header class="main-header no-print">
       <h1>GCP ACE Practice Engine</h1>
-      <div id="quiz-meta" class="hidden">
-        <span id="timer-display">⏱️ 00:00</span>
-        <span id="progress-display">Question 0 of 0</span>
-        <button id="home-btn" class="btn-secondary" onclick="app.exitToMenu()">🏠 Exit to Menu</button>
+      <div id="header-actions">
+        <button id="theme-toggle-btn" class="btn-secondary" onclick="app.toggleDarkMode()">🌙 Dark Mode</button>
+        <div id="quiz-meta" class="hidden">
+          <span id="timer-display">⏱️ 00:00</span>
+          <span id="progress-display">Question 0 of 0</span>
+          <button id="home-btn" class="btn-secondary" onclick="app.exitToMenu()">🏠 Exit to Menu</button>
+        </div>
       </div>
     </header>
 
@@ -59,6 +62,7 @@
         <div class="question-container card">
           <div class="q-header">
             <span id="source-badge" class="badge">Source</span>
+            <span id="question-type-badge" class="badge-type">Single Choice</span>
           </div>
 
           <h3 id="q-text">Loading question...</h3>
@@ -87,7 +91,7 @@
           <div id="question-palette" class="palette-grid"></div>
 
           <div class="palette-actions">
-            <button id="submit-exam-btn" class="hidden btn-danger full-width" onclick="app.finishQuiz()">Submit Final Exam</button>
+            <button id="submit-exam-btn" class="btn-danger full-width" onclick="app.finishQuiz()">Finish & View Results</button>
           </div>
         </aside>
       </div>
@@ -108,7 +112,7 @@
           <span id="final-score">0%</span>
         </div>
         <p id="pass-fail-msg"></p>
-        <small>Passing Benchmark: 85% (51 / 60 Correct)</small>
+        <small>Passing Benchmark: 85%</small>
       </div>
 
       <div id="review-list" class="review-list"></div>

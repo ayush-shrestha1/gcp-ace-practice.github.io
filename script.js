@@ -17,7 +17,7 @@ class GCPQuizEngine {
     this.weeklyPool = [];
     this.activeQuestions = [];
     this.currentIndex = 0;
-    this.userAnswers = {};
+    this.userAnswers = {}; // Maps qIdx to array of chosen option indices: [0, 2]
     this.submittedAnswers = {};
     this.mode = 'practice';
     this.timer = null;
@@ -27,8 +27,26 @@ class GCPQuizEngine {
   }
 
   async init() {
+    if (localStorage.getItem('gcp_theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      this.updateThemeButton();
+    }
     this.populateDropdown();
     await this.loadAllQuestions();
+  }
+
+  toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('gcp_theme', isDark ? 'dark' : 'light');
+    this.updateThemeButton();
+  }
+
+  updateThemeButton() {
+    const btn = document.getElementById('theme-toggle-btn');
+    if (btn) {
+      btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
   }
 
   populateDropdown() {
@@ -97,6 +115,24 @@ class GCPQuizEngine {
     return 'Section 1: Setting up Environment';
   }
 
+  isMultiAnswer(q) {
+    return Array.isArray(q.correct) && q.correct.length > 1;
+  }
+
+  isQuestionCorrect(qIdx) {
+    const q = this.activeQuestions[qIdx];
+    if (!q) return false;
+
+    const userSelected = this.userAnswers[qIdx] || [];
+    if (userSelected.length === 0) return false;
+
+    const chosenOriginals = userSelected.map(optIdx => q.shuffledOptions[optIdx].originalIndex).sort((a, b) => a - b);
+    const correctOriginals = (Array.isArray(q.correct) ? q.correct : [q.correct]).sort((a, b) => a - b);
+
+    if (chosenOriginals.length !== correctOriginals.length) return false;
+    return chosenOriginals.every((val, idx) => val === correctOriginals[idx]);
+  }
+
   startFullSet(mode) {
     this.mode = mode;
     if (this.allQuestions.length === 0) {
@@ -159,11 +195,7 @@ class GCPQuizEngine {
       const shuffledOptions = this.shuffle(optionsWithIdx);
       return {
         ...q,
-        shuffledOptions,
-        newCorrectIndex: shuffledOptions.findIndex(o => {
-          if (Array.isArray(q.correct)) return q.correct.includes(o.originalIndex);
-          return o.originalIndex === q.correct;
-        })
+        shuffledOptions
       };
     });
 
@@ -172,13 +204,14 @@ class GCPQuizEngine {
     document.getElementById('quiz-screen').classList.remove('hidden');
     document.getElementById('quiz-meta').classList.remove('hidden');
 
+    const submitBtn = document.getElementById('submit-exam-btn');
     if (this.mode === 'mock') {
       this.startTimer(120 * 60);
       document.getElementById('action-btn').classList.add('hidden');
-      document.getElementById('submit-exam-btn').classList.remove('hidden');
+      submitBtn.textContent = 'Submit Final Exam';
     } else {
       document.getElementById('action-btn').classList.remove('hidden');
-      document.getElementById('submit-exam-btn').classList.add('hidden');
+      submitBtn.textContent = 'Finish & View Results';
     }
 
     this.renderQuestion();
@@ -189,8 +222,15 @@ class GCPQuizEngine {
     const q = this.activeQuestions[this.currentIndex];
     if (!q) return;
 
+    const isMulti = this.isMultiAnswer(q);
+    const correctCount = Array.isArray(q.correct) ? q.correct.length : 1;
+
     document.getElementById('progress-display').textContent = `Question ${this.currentIndex + 1} of ${this.activeQuestions.length}`;
     document.getElementById('source-badge').textContent = q.sourceLabel;
+    
+    const typeBadge = document.getElementById('question-type-badge');
+    typeBadge.textContent = isMulti ? `Select ${correctCount} Options` : 'Single Choice';
+
     document.getElementById('q-text').textContent = q.question;
 
     const optionsContainer = document.getElementById('options-container');
@@ -198,6 +238,7 @@ class GCPQuizEngine {
 
     const isSubmitted = !!this.submittedAnswers[this.currentIndex];
     const isFlashcard = this.mode === 'flashcard';
+    const userSelected = this.userAnswers[this.currentIndex] || [];
 
     if (isFlashcard) {
       document.getElementById('flashcard-reveal').classList.remove('hidden');
@@ -208,18 +249,24 @@ class GCPQuizEngine {
 
     q.shuffledOptions.forEach((opt, idx) => {
       const btn = document.createElement('button');
-      btn.className = `option-btn ${this.userAnswers[this.currentIndex] === idx ? 'selected' : ''}`;
+      const isSelected = userSelected.includes(idx);
+      btn.className = `option-btn ${isSelected ? 'selected' : ''}`;
 
       if (isSubmitted || (isFlashcard && this.submittedAnswers[this.currentIndex])) {
-        const isCorrect = Array.isArray(q.correct) 
-          ? q.correct.includes(opt.originalIndex) 
+        const isOptCorrect = Array.isArray(q.correct)
+          ? q.correct.includes(opt.originalIndex)
           : opt.originalIndex === q.correct;
 
-        if (isCorrect) btn.classList.add('correct');
-        else if (idx === this.userAnswers[this.currentIndex]) btn.classList.add('incorrect');
+        if (isOptCorrect) {
+          btn.classList.add('correct');
+        } else if (isSelected) {
+          btn.classList.add('incorrect');
+        }
       }
 
-      btn.textContent = `${String.fromCharCode(65 + idx)}) ${opt.text}`;
+      const prefix = isMulti ? (isSelected ? '☑ ' : '☐ ') : '';
+      btn.textContent = `${prefix}${String.fromCharCode(65 + idx)}) ${opt.text}`;
+      
       btn.onclick = () => {
         if (!isSubmitted) this.selectOption(idx);
       };
@@ -238,13 +285,28 @@ class GCPQuizEngine {
   }
 
   selectOption(idx) {
-    this.userAnswers[this.currentIndex] = idx;
+    const q = this.activeQuestions[this.currentIndex];
+    const isMulti = this.isMultiAnswer(q);
+    let current = this.userAnswers[this.currentIndex] || [];
+
+    if (isMulti) {
+      if (current.includes(idx)) {
+        current = current.filter(i => i !== idx);
+      } else {
+        current.push(idx);
+      }
+    } else {
+      current = [idx];
+    }
+
+    this.userAnswers[this.currentIndex] = current;
     this.renderQuestion();
   }
 
   handlePrimaryAction() {
     if (this.mode === 'practice') {
-      if (this.userAnswers[this.currentIndex] === undefined) {
+      const userSelected = this.userAnswers[this.currentIndex] || [];
+      if (userSelected.length === 0) {
         alert("Please select an answer first.");
         return;
       }
@@ -282,8 +344,21 @@ class GCPQuizEngine {
     const nodes = document.querySelectorAll('.p-node');
     nodes.forEach((node, idx) => {
       node.className = 'p-node';
+      
       if (idx === this.currentIndex) node.classList.add('current');
-      if (this.userAnswers[idx] !== undefined) node.classList.add('answered');
+
+      const isSubmitted = !!this.submittedAnswers[idx];
+      const isAnswered = (this.userAnswers[idx] || []).length > 0;
+
+      if (isSubmitted) {
+        if (this.isQuestionCorrect(idx)) {
+          node.classList.add('palette-correct');
+        } else {
+          node.classList.add('palette-incorrect');
+        }
+      } else if (isAnswered) {
+        node.classList.add('answered');
+      }
     });
   }
 
@@ -304,22 +379,19 @@ class GCPQuizEngine {
   }
 
   finishQuiz() {
-    if (this.mode === 'mock') {
-      const confirmSubmit = confirm("Are you sure you want to submit your final exam now?");
-      if (!confirmSubmit) return;
-    }
+    const confirmMsg = this.mode === 'mock' 
+      ? "Are you sure you want to submit your final exam now?" 
+      : "Are you sure you want to end practice mode and view your overall score?";
+    
+    const confirmSubmit = confirm(confirmMsg);
+    if (!confirmSubmit) return;
 
     if (this.timer) clearInterval(this.timer);
     let correctCount = 0;
 
-    this.activeQuestions.forEach((q, idx) => {
-      const userChoice = this.userAnswers[idx];
-      if (userChoice !== undefined) {
-        const chosenOriginalIdx = q.shuffledOptions[userChoice].originalIndex;
-        const isCorrect = Array.isArray(q.correct)
-          ? q.correct.includes(chosenOriginalIdx)
-          : chosenOriginalIdx === q.correct;
-        if (isCorrect) correctCount++;
+    this.activeQuestions.forEach((_, idx) => {
+      if (this.isQuestionCorrect(idx)) {
+        correctCount++;
       }
     });
 
@@ -352,13 +424,8 @@ class GCPQuizEngine {
       }
       domainStats[q.domain].total++;
 
-      const userChoice = this.userAnswers[idx];
-      if (userChoice !== undefined) {
-        const chosenOriginalIdx = q.shuffledOptions[userChoice].originalIndex;
-        const isCorrect = Array.isArray(q.correct)
-          ? q.correct.includes(chosenOriginalIdx)
-          : chosenOriginalIdx === q.correct;
-        if (isCorrect) domainStats[q.domain].correct++;
+      if (this.isQuestionCorrect(idx)) {
+        domainStats[q.domain].correct++;
       }
     });
 
@@ -386,11 +453,8 @@ class GCPQuizEngine {
     contentHtml += '<h3 style="margin-top:2rem;">Detailed Answer Breakdown</h3>';
 
     this.activeQuestions.forEach((q, qIdx) => {
-      const userChoice = this.userAnswers[qIdx];
-      const chosenOriginalIdx = userChoice !== undefined ? q.shuffledOptions[userChoice].originalIndex : null;
-      const isCorrect = userChoice !== undefined && (
-        Array.isArray(q.correct) ? q.correct.includes(chosenOriginalIdx) : chosenOriginalIdx === q.correct
-      );
+      const userSelected = this.userAnswers[qIdx] || [];
+      const isCorrect = this.isQuestionCorrect(qIdx);
 
       let optionsHtml = '<ul class="review-options">';
       q.shuffledOptions.forEach((opt, optIdx) => {
@@ -401,12 +465,14 @@ class GCPQuizEngine {
           ? q.correct.includes(opt.originalIndex)
           : opt.originalIndex === q.correct;
 
+        const isUserChoice = userSelected.includes(optIdx);
+
         if (isOptCorrect) {
           badgeClass = 'badge-correct';
           tag = ' (Correct Answer)';
         }
-        if (optIdx === userChoice) {
-          if (!isCorrect) badgeClass = 'badge-incorrect';
+        if (isUserChoice) {
+          if (!isOptCorrect) badgeClass = 'badge-incorrect';
           tag += ' 👈 Your Choice';
         }
 
@@ -416,7 +482,7 @@ class GCPQuizEngine {
 
       contentHtml += `
         <div class="review-card ${isCorrect ? 'review-correct' : 'review-incorrect'}">
-          <div style="display:flex; justify-content:space-between;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
             <h4>Q${qIdx + 1}: ${q.question}</h4>
             <span class="badge">${q.sourceLabel}</span>
           </div>

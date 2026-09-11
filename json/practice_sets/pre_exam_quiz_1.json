@@ -403,7 +403,7 @@
       "By using custom Terraform validators for each resource creation.",
       "By configuring IAM Conditions.",
       "By configuring alert when such resources are created in disallowed region.",
-      "Bu configuring Organization policy blocking resource creation in certain regions."
+      "By configuring Organization policy blocking resource creation in certain regions."
     ],
     "correct": 3,
     "explanation": "Organization Policies allow administrators to restrict resource creation locations using location constraints (`constraints/gcp.resourceLocations`) across the resource hierarchy."

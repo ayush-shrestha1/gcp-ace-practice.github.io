@@ -1,0 +1,54 @@
+[
+  {
+    "id": "1",
+    "question": "You work for an international company and manage many GCE instances using SSH and RDP protocols. For security reasons, management asks you that VMs can no longer have external IPs. How can you fulfil this request, while still being able to manage those VMs?",
+    "options": [
+      "Use Bastion Hosts",
+      "Use NAT instances",
+      "Use IAP TCP Forwarding",
+      "Use Security Command Center"
+    ],
+    "correct": 2,
+    "explanation": "Identity-Aware Proxy (IAP) TCP forwarding allows users to establish secure SSH and RDP connections to Compute Engine instances without requiring public IP addresses."
+  },
+  {
+    "id": "2",
+    "question": "Your existing application runs on Ubuntu Linux VMs in an on-premises hypervisor. You want to deploy the application to Google Cloud with minimal refactoring. What should you do?",
+    "options": [
+      "Set up a Google Kubernetes Engine (GKE) cluster, and then create a deployment with an autoscaler.",
+      "Isolate the core features that the application provides. Use Cloud Run to deploy each feature independently as a microservice.",
+      "Use X or Partner Interconnect to connect the on-premises network where your application is running to your VPC. Configure an endpoint for a global external HTTP(S) load balancer that connects to the existing VMs.",
+      "Write Terraform scripts to deploy the application as Compute Engine instances."
+    ],
+    "correct": 3,
+    "explanation": "Rehosting existing VM workloads directly onto Compute Engine using Infrastructure as Code (Terraform) implements a lift-and-shift migration strategy with minimal application refactoring."
+  },
+  {
+    "id": "3",
+    "question": "How to implement back-out/rollback plan for website with 100s of VMs, when the site has frequent critical updates?",
+    "options": [
+      "Create a Nearline copy of static data in Cloud Storage.",
+      "Create a snapshot of each VM prior to update, in case of failure.",
+      "Use managed instance groups with the \"update-instances\" command when starting a rolling update.",
+      "Only deploy changes using Deployment Manager templates."
+    ],
+    "correct": 2,
+    "explanation": "Managed Instance Groups (MIGs) support automated rolling updates and instant automated rollbacks to target instance templates if health checks fail during deployments."
+  },
+  {
+    "id": "4",
+    "question": "One of the developers on your team deployed their application in Google Container Engine with the Dockerfile below. They report that their application deployments are taking too long. You want to optimize this Dockerfile for faster deployment times without adversely affecting the app's functionality. Which two actions should you take? Choose 2 answers.\n\nFROM ubuntu: 16.04\nCOPY /src\nRUN apt-get update && apt-get install -y python python-pip\nRUN pip install -r requirements.txt",
+    "options": [
+      "Remove Python after running pip",
+      "Remove dependencies from requirements.txt",
+      "Use a slimmed-down base image like Alpine Linux",
+      "Use larger machine types for your Google Container Engine node pools",
+      "Copy the source after the package dependencies (Python and pip) are installed"
+    ],
+    "correct": [
+      2,
+      4
+    ],
+    "explanation": "Using a lightweight base image (like Alpine) reduces total image layer size. Copying the application source code after installing package dependencies ensures Docker reuses cached dependency layers across builds."
+  }
+]

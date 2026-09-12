@@ -1,0 +1,134 @@
+[
+  {
+    "id": "1",
+    "question": "You want to set up a Google Kubernetes Engine cluster. Verifiable node identity and integrity are required for the cluster, and nodes cannot be accessed from the internet. You want to reduce the task of managing your cluster, and you want to follow Google-recommended practices. What should you do?",
+    "options": [
+      "Deploy a private autopilot cluster",
+      "Deploy a public autopilot cluster",
+      "Deploy a standard public cluster and enable shielded nodes",
+      "Deploy a standard private cluster and enable shielded nodes"
+    ],
+    "correct": 0,
+    "explanation": "GKE Autopilot clusters automatically enable Shielded GKE Nodes (verifiable node identity and integrity) while minimizing management overhead. Deploying as a private cluster prevents internet access to nodes."
+  },
+  {
+    "id": "2",
+    "question": "Your company requires that Google Cloud products are created with a specific configuration to comply with your company's security policies. You need to implement a mechanism that will allow software engineers at your company to deploy and update Google Cloud products in a preconfigured and approved manner. What should you do?",
+    "options": [
+      "Create Java packages that utilize the Google Cloud Client Libraries for Java to configure Google Cloud products. Store and share the packages in a source code repository.",
+      "Create bash scripts that utilize the Google Cloud CLI to configure Google Cloud products. Store and share the bash scripts in a source code repository.",
+      "Use the Google Cloud APIs by using curl to configure Google Cloud products. Store and share the curl commands in a source code repository.",
+      "Create Terraform modules that utilize the Google Cloud Terraform Provider to configure Google Cloud products. Store and share the modules in a source code repository."
+    ],
+    "correct": 3,
+    "explanation": "Creating reusable Terraform modules allows organizations to standardize Infrastructure as Code (IaC) blueprints that meet security compliance guidelines and can be shared across engineering teams."
+  },
+  {
+    "id": "3",
+    "question": "Cymbal Superstore's sales department has a medium-sized MySQL database. This database includes user-defined functions and is used internally by the marketing department at Cymbal Superstore HQ. The sales department asks you to migrate the database to Google Cloud in the most timely and economical way. What should you do?",
+    "options": [
+      "Find a MySQL machine image in Cloud Marketplace and configure it to meet your needs.",
+      "Implement a database instance using Cloud SQL, back up your local data, and restore it to the new instance.",
+      "Configure a Compute Engine VM with an N2 machine type, install MySQL, and restore your data to the new instance.",
+      "Use gcloud to implement a Compute Engine instance with an E2-standard-8 machine type, install, and configure MySQL."
+    ],
+    "correct": 2,
+    "explanation": "Cloud SQL MySQL does not support custom MySQL User Defined Functions (UDFs). Self-hosting MySQL on a Compute Engine VM provides full database privileges needed to run custom UDFs."
+  },
+  {
+    "id": "4",
+    "question": "The backend of Cymbal Superstore's e-commerce system consists of managed instance groups. You need to update the operating system of the instances in an automated way using minimal resources.",
+    "options": [
+      "Create a new instance template. Click Update VMs. Set the update type to Opportunistic. Click Start.",
+      "Create a new instance template, then click Update VMs. Set the update type to PROACTIVE. Click Start.",
+      "Create a new instance template. Click Update VMs. Set max surge to 5. Click Start.",
+      "Abandon each of the instances in the managed instance group. Delete the instance template, replace it with a new one, and recreate the instances in the managed group."
+    ],
+    "correct": 1,
+    "explanation": "Setting the MIG update type to PROACTIVE automatically rolls out new instance template updates across VM instances immediately."
+  },
+  {
+    "id": "5",
+    "question": "The development team for the supply chain project is ready to start building their new cloud app using a small Kubernetes cluster for the pilot. The cluster should only be available to team members and does not need to be highly available. The developers also need the ability to change the cluster architecture as they deploy new capabilities. How would you implement this?",
+    "options": [
+      "Implement an autopilot cluster in us-central1-a with a default pool and an Ubuntu image.",
+      "Implement a private standard zonal cluster in us-central1-a with a default pool and an Ubuntu image.",
+      "Implement a private standard regional cluster in us-central1 with a default pool and container-optimized image type.",
+      "Implement an autopilot cluster in us-central1 with an Ubuntu image type."
+    ],
+    "correct": 1,
+    "explanation": "A Standard zonal cluster allows developers full low-level architectural control to modify node pools and node configurations. Making it private ensures internal-only access."
+  },
+  {
+    "id": "6",
+    "question": "You need to quickly deploy a containerized web application on Google Cloud. You know the services you want to be exposed. You do not want to manage infrastructure. You only want to pay when requests are being handled and need support for custom packages.",
+    "options": [
+      "App Engine Flexible",
+      "App Engine Standard",
+      "Cloud Run",
+      "Cloud Functions"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Run allows quick deployment of arbitrary containerized applications with custom system dependencies while scaling down to zero so you only pay during active request processing."
+  },
+  {
+    "id": "7",
+    "question": "You need to analyze and act on files being added to a Cloud Storage bucket. Your programming team is proficient in Python. The analysis you need to do takes at most 5 minutes. You implement a Cloud Function to accomplish your processing and specify a trigger resource pointing to your bucket.",
+    "options": [
+      "--trigger-event google.storage.object.finalize",
+      "--trigger-event google.storage.object.create",
+      "--trigger-event google.storage.object.change",
+      "--trigger-event google.storage.object.add"
+    ],
+    "correct": 0,
+    "explanation": "The `--trigger-event google.storage.object.finalize` event fires whenever a new object is successfully uploaded and created in the target Cloud Storage bucket."
+  },
+  {
+    "id": "8",
+    "question": "Cymbal Superstore asks you to implement Cloud SQL as a database backend to their supply chain application. You want to configure automatic failover in case of a zone outage. You decide to use the gcloud sql instances create command set to accomplish this. Which gcloud command line argument is required to configure the stated failover capability as you create the required instances?",
+    "options": [
+      "--availability-type",
+      "--replica-type",
+      "--secondary-zone",
+      "--master-instance-name"
+    ],
+    "correct": 0,
+    "explanation": "Setting `--availability-type=REGIONAL` in `gcloud sql instances create` provisions a high-availability Cloud SQL instance with automatic cross-zone failover."
+  },
+  {
+    "id": "9",
+    "question": "Cymbal Superstore's marketing department needs to load some slowly changing data into BigQuery. The data arrives hourly in a Cloud Storage bucket. You want to minimize cost and implement this in the fewest steps.",
+    "options": [
+      "Implement a bq load command in a command line script and schedule it with cron.",
+      "Read the data from your bucket by using the BigQuery streaming API in a program.",
+      "Create a Cloud Function to push data to BigQuery through a Dataflow pipeline.",
+      "Use the BigQuery data transfer service to schedule a transfer between your bucket and BigQuery."
+    ],
+    "correct": 3,
+    "explanation": "BigQuery Data Transfer Service provides a native, low-cost, zero-code way to schedule automated recurring data loads from Cloud Storage into BigQuery tables."
+  },
+  {
+    "id": "10",
+    "question": "Which Virtual Private Cloud (VPC) network type allows you to fully control IP ranges and the definition of regional subnets?",
+    "options": [
+      "Default Project network",
+      "Auto mode network",
+      "Custom mode network",
+      "An auto mode network converted to a custom network"
+    ],
+    "correct": 2,
+    "explanation": "Custom mode VPC networks grant explicit control over defining subnet boundaries, IP CIDR ranges, and target regions without auto-generating subnets."
+  },
+  {
+    "id": "11",
+    "question": "What action does the terraform apply command perform?",
+    "options": [
+      "Downloads the latest version of the terraform provider.",
+      "Verifies syntax of terraform config file.",
+      "Shows a preview of resources that will be created.",
+      "Sets up resources requested in the terraform config file."
+    ],
+    "correct": 3,
+    "explanation": "`terraform apply` executes the necessary provisioning and modification operations to align real-world infrastructure state with the defined Terraform configuration files."
+  }
+]

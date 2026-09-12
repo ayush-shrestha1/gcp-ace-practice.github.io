@@ -1,0 +1,86 @@
+[
+  {
+    "id": "1",
+    "question": "You need to configure access to Cloud Spanner from the GKE cluster that is supporting Cymbal Superstore's ecommerce microservices application. You want to specify an account type to set the proper permissions. What should you do?",
+    "options": [
+      "Assign permissions to a Google account referenced by the application.",
+      "Assign permissions through a Google Workspace account referenced by the application.",
+      "Assign permissions through service account referenced by the application.",
+      "Assign permissions through a Cloud Identity account referenced by the application."
+    ],
+    "correct": 2,
+    "explanation": "Applications running on GKE or Google Cloud should authenticate using Service Accounts (specifically via Workload Identity on GKE) to interact securely with Google Cloud services like Cloud Spanner."
+  },
+  {
+    "id": "2",
+    "question": "You are trying to assign roles to the dev and prod projects of Cymbal Superstore's e-commerce app but are receiving an error when you try to run set-iam policy. The projects are organized into an ecommerce folder in the Cymbal Superstore organizational hierarchy. You want to follow best practices for the permissions you need while respecting the practice of least privilege.",
+    "options": [
+      "Ask your administrator for resourcemanager.projects.setIamPolicy roles for each project.",
+      "Ask your administrator for the roles/resourcemanager.folderIamAdmin for the ecommerce folder.",
+      "Ask your administrator for the roles/resourcemanager.organizationAdmin for Cymbal Superstore.",
+      "Ask your administrator for the roles/iam.securityAdmin role in IAM."
+    ],
+    "correct": 1,
+    "explanation": "Granting Folder IAM Admin (`roles/resourcemanager.folderIamAdmin`) on the `ecommerce` folder grants IAM management permissions for all child projects in that folder without over-granting organization-wide privileges."
+  },
+  {
+    "id": "3",
+    "question": "You have a custom role implemented for administration of the dev/test environment for Cymbal Superstore's transportation management application. You are developing a pilot to use Cloud Run instead of Cloud Functions. You want to ensure your administrators have the correct access to the new resources. What should you do?",
+    "options": [
+      "Make the change to the custom role locally and run an update on the custom role.",
+      "Delete the custom role and recreate a new custom role with required permissions.",
+      "Copy the existing role, add the new permissions to the copy, and delete the old role.",
+      "Create a new role with needed permissions and migrate users to it."
+    ],
+    "correct": 0,
+    "explanation": "Google Cloud custom roles can be updated directly in place (e.g. via `gcloud iam roles update`), allowing assigned users to immediately receive the updated permissions without requiring role deletion or re-assignment."
+  },
+  {
+    "id": "4",
+    "question": "Which of the scenarios below is an example of a situation where you should use a service account?",
+    "options": [
+      "To directly access user data",
+      "For development environments",
+      "For interactive analysis",
+      "For individual GKE pods"
+    ],
+    "correct": 3,
+    "explanation": "Service Accounts provide non-human authentication for workloads and applications, such as binding IAM permissions to individual GKE Pods via Workload Identity."
+  },
+  {
+    "id": "5",
+    "question": "Cymbal Superstore is implementing a mobile app for end users to track deliveries that are en route to them. The app needs to access data about truck location from Pub/Sub using Google recommended practices.",
+    "options": [
+      "API key",
+      "OAuth 2.0 client",
+      "Environment provided service account",
+      "Service account key"
+    ],
+    "correct": 3,
+    "explanation": "Service Account keys provide a mechanism for authenticating external application clients to Google Cloud APIs like Pub/Sub."
+  },
+  {
+    "id": "6",
+    "question": "You are configuring audit logging for Cloud Storage. You want to know when objects are added to a bucket. Which type of audit log entry should you monitor?",
+    "options": [
+      "Admin Activity log entries",
+      "ADMIN_READ log entries",
+      "DATA READ log entries",
+      "DATA_WRITE log entries"
+    ],
+    "correct": 3,
+    "explanation": "Creating or adding objects to a Cloud Storage bucket is a data modification operation categorized under Data Access `DATA_WRITE` audit log entries."
+  },
+  {
+    "id": "7",
+    "question": "Which Cloud Audit log is disabled by default with a few exceptions?",
+    "options": [
+      "Admin Activity audit logs",
+      "Data Access audit logs",
+      "System Event audit logs",
+      "Policy Denied audit logs"
+    ],
+    "correct": 1,
+    "explanation": "Data Access audit logs (except for BigQuery) are disabled by default because they generate high log volumes and can incur significant storage costs."
+  }
+]

@@ -1,0 +1,129 @@
+[
+  {
+    "id": "1",
+    "question": "You want to view a description of your available snapshots using the command line interface (CLI). What gcloud command should you use?",
+    "options": [
+      "gcloud compute snapshots list",
+      "gcloud snapshots list",
+      "gcloud compute snapshots get",
+      "gcloud compute list snapshots"
+    ],
+    "correct": 0,
+    "explanation": "The `gcloud compute snapshots list` command displays a summary list and descriptions of available persistent disk snapshots in your project."
+  },
+  {
+    "id": "2",
+    "question": "You have a scheduled snapshot you are trying to delete, but the operation returns an error. What should you do?",
+    "options": [
+      "Delete the downstream incremental snapshots before deleting the main reference.",
+      "Delete the object the snapshot was created from.",
+      "Detach the snapshot schedule before deleting it.",
+      "Restore the snapshot to a persistent disk before deleting it."
+    ],
+    "correct": 2,
+    "explanation": "To delete a snapshot schedule or a snapshot tied to a resource policy, you must first detach the snapshot schedule from the persistent disk."
+  },
+  {
+    "id": "3",
+    "question": "Which of the following tasks are part of the process when configuring a managed instance group? (Pick two.)",
+    "options": [
+      "Defining Health checks.",
+      "Providing Number of instances.",
+      "Specifying Persistent disks.",
+      "Choosing instance Machine type.",
+      "Configuring the operating system."
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "When configuring a Managed Instance Group (MIG), you specify the number of instances (target size or autoscaling policy) and define autohealing health checks. Machine types and disk operating systems are specified in the Instance Template."
+  },
+  {
+    "id": "4",
+    "question": "Cymbal Superstore's GKE cluster requires an internal http(s) load balancer. You are creating the configuration files required for this resource. What should you do?",
+    "options": [
+      "Annotate your ingress object with an ingress.class of \"gce.\"",
+      "Configure your service object with a type: Load Balancer.",
+      "Annotate your service object with a neg reference.",
+      "Implement custom static routes in your VPC."
+    ],
+    "correct": 2,
+    "explanation": "Container-native load balancing on GKE uses Network Endpoint Groups (NEGs). Annotating the Service with `cloud.google.com/neg` allows internal HTTP(S) load balancers to route traffic directly to individual Pod endpoints."
+  },
+  {
+    "id": "5",
+    "question": "What Kubernetes object provides access to logic running in your cluster via endpoints that you define?",
+    "options": [
+      "Pod templates",
+      "Pods",
+      "Services",
+      "Deployments"
+    ],
+    "correct": 2,
+    "explanation": "A Kubernetes Service defines a logical set of Pods and an abstraction layer to expose them via stable network IP addresses and port endpoints."
+  },
+  {
+    "id": "6",
+    "question": "What is the declarative way to initialize and update Kubernetes objects?",
+    "options": [
+      "kubectl apply",
+      "kubectl create",
+      "kubectl replace",
+      "kubectl run"
+    ],
+    "correct": 0,
+    "explanation": "`kubectl apply` is the declarative management tool used to initialize, update, and reconcile Kubernetes objects based on configuration manifest files."
+  },
+  {
+    "id": "7",
+    "question": "You have a Cloud Run service with a database backend. You want to limit the number of connections to your database. What should you do?",
+    "options": [
+      "Set Min instances.",
+      "Set Max instances.",
+      "Set CPU Utilization.",
+      "Set Concurrency settings."
+    ],
+    "correct": 1,
+    "explanation": "Setting `max-instances` caps the maximum number of container instances Cloud Run can scale up to, thereby limiting the total potential database connections."
+  },
+  {
+    "id": "8",
+    "question": "You want to implement a lifecycle rule that changes your storage type from standard to nearline after a specific date. Which parameters should you configure? (Pick two.)",
+    "options": [
+      "Age",
+      "CreatedBefore",
+      "MatchesStorageClass",
+      "IsLive",
+      "NumberofNewer Versions"
+    ],
+    "correct": [
+      1,
+      2
+    ],
+    "explanation": "`CreatedBefore` sets the calendar date threshold for target objects, and `MatchesStorageClass` restricts the lifecycle rule execution strictly to standard storage class objects."
+  },
+  {
+    "id": "9",
+    "question": "Cymbal Superstore has a subnetwork called mysubnet with an IP range of 10.1.2.0/24. You need to expand this subnet to include enough IP addresses for around 2000 users or devices.",
+    "options": [
+      "gcloud compute networks subnets expand-ip-range mysubnet --region us-central1 --prefix-length 20",
+      "gcloud networks subnets expand-ip-range mysubnet --region us-central1 --prefix-length 21",
+      "gcloud compute networks subnets expand-ip-range mysubnet --region us-central1 --prefix-length 21",
+      "gcloud compute networks subnets expand-ip-range mysubnet --region us-central1 --prefix-length 22"
+    ],
+    "correct": 2,
+    "explanation": "A CIDR prefix length of /21 provides 2,048 IP addresses, satisfying the requirement for ~2,000 devices. The full gcloud CLI group command is `gcloud compute networks subnets expand-ip-range`."
+  },
+  {
+    "id": "10",
+    "question": "Cymbal Superstore's supply chain management system has been deployed and is working well. You are tasked with monitoring the system's resources so you can react quickly to any problems. You want to ensure the CPU usage of each of your Compute Engine instances in us-central1 remains below 60%. You want an incident created if it exceeds this value for 5 minutes. You need to configure the proper alerting policy for this scenario.",
+    "options": [
+      "Choose resource type of VM instance and metric of CPU utilization, condition trigger all time series violates, condition is above, threshold is .60 for 5 minutes.",
+      "Choose resource type of VM instance, and metric of CPU utilization, condition trigger if any time series violates, condition is below, threshold is .60 for 5 minutes.",
+      "Choose resource type of VM instance and metric of CPU utilization, condition trigger if any time series violates, condition is above, threshold is .60 for 5 minutes."
+    ],
+    "correct": 2,
+    "explanation": "To alert when any individual VM instance exceeds 60% CPU utilization for 5 minutes, configure the alert policy trigger to fire if 'any time series violates', condition 'is above', threshold '0.60' (60%), and duration '5 minutes'."
+  }
+]

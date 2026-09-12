@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "question": "Which storage class is designed for long term storage has a 365 day minimum storage agreement, and a lower storage price as compared to other storage types?",
+    "options": [
+      "Standard Storage",
+      "Cold Line Storage",
+      "Nearline Storage",
+      "Archive storage"
+    ],
+    "correct": 3,
+    "explanation": "Archive Storage is designed for long-term data archiving with a 365-day minimum storage duration requirement and the lowest monthly storage cost among Cloud Storage classes."
+  },
+  {
+    "id": "2",
+    "question": "Which serverless option is based on developing and executing small snippets of code?",
+    "options": [
+      "Cloud Functions",
+      "Cloud Run",
+      "BigQuery",
+      "Dataflow"
+    ],
+    "correct": 0,
+    "explanation": "Cloud Functions is a serverless execution environment that runs small code snippets in response to events without needing server or runtime management."
+  }
+]

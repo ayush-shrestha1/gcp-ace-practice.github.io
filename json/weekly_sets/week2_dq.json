@@ -1,0 +1,133 @@
+[
+  {
+    "id": "1",
+    "question": "Stella is a new member of a team in your company who has been put in charge of monitoring VM instances in the organization. Stella will need the required permissions to perform this role. How should you grant her those permissions?",
+    "options": [
+      "Assign Stella a roles/compute.viewer role.",
+      "Assign Stella compute.instances.get permissions on all of the projects she needs to monitor.",
+      "Add Stella to a Google Group in your organization. Bind that group to roles/compute.viewer.",
+      "Assign the \"viewer\" policy to Stella."
+    ],
+    "correct": 2,
+    "explanation": "Google-recommended IAM best practice is to assign predefined roles (like `roles/compute.viewer`) to a Google Group rather than assigning permissions directly to individual user accounts."
+  },
+  {
+    "id": "2",
+    "question": "How are resource hierarchies organized in Google Cloud?",
+    "options": [
+      "Organization, Project, Resource, Folder.",
+      "Organization, Folder, Project, Resource.",
+      "Project, Organization, Folder, Resource.",
+      "Resource, Folder, Organization, Project."
+    ],
+    "correct": 1,
+    "explanation": "Google Cloud resource hierarchy flows top-down: Organization -> Folder -> Project -> Resource."
+  },
+  {
+    "id": "3",
+    "question": "What Google Cloud project attributes can be changed after project creation?",
+    "options": [
+      "The Project ID.",
+      "The Project Name.",
+      "The Project Number.",
+      "The Create Timestamp."
+    ],
+    "correct": 1,
+    "explanation": "The Project Name can be changed at any time after creation, whereas the Project ID and Project Number are globally unique and immutable."
+  },
+  {
+    "id": "4",
+    "question": "Jane will manage objects in Cloud Storage for the Cymbal Superstore. She needs to have access to the proper permissions for every project across the organization.",
+    "options": [
+      "Assign Jane the roles/storage.objectCreator on every project.",
+      "Assign Jane the roles/viewer on each project and the roles/storage.objectCreator for each bucket.",
+      "Assign Jane the roles/editor at the organizational level.",
+      "Add Jane to a group that has the roles/storage.objectAdmin role assigned at the organizational level."
+    ],
+    "correct": 3,
+    "explanation": "Assigning `roles/storage.objectAdmin` to a Google Group at the Organization node automatically grants inherited object management permissions across all child projects and buckets."
+  },
+  {
+    "id": "5",
+    "question": "You need to add new groups of employees in Cymbal Superstore's production environment. You need to consider Google's recommendation of using least privilege. What should you do?",
+    "options": [
+      "Grant the most restrictive basic role to most services, grant predefined or custom roles as necessary.",
+      "Grant predefined and custom roles that provide necessary permissions and grant basic roles only where needed.",
+      "Grant the least restrictive basic roles to most services and grant predefined and custom roles only when necessary.",
+      "Grant custom roles to individual users and implement basic roles at the resource level."
+    ],
+    "correct": 1,
+    "explanation": "Predefined and custom roles offer fine-grained permissions adhering to the principle of least privilege, whereas Basic roles (Owner, Editor, Viewer) grant overly broad permissions."
+  },
+  {
+    "id": "6",
+    "question": "The Operations Department at Cymbal Superstore wants to provide managers access to information about VM usage without allowing them to make changes that would affect the state. You assign them the Compute Engine Viewer role. Which two permissions will they receive? (Choose two)",
+    "options": [
+      "compute.images.list",
+      "compute.images.get",
+      "compute.images.create",
+      "compute.images.setIAM",
+      "compute.images.update"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "The Compute Engine Viewer (`roles/compute.viewer`) role provides read-only permissions like `list` and `get`, but excludes state-changing permissions like `create`, `setIAM`, or `update`."
+  },
+  {
+    "id": "7",
+    "question": "How are billing accounts applied to projects in Google Cloud? (Pick two)",
+    "options": [
+      "Set up Cloud Billing to pay for usage costs in Google Cloud projects and Google Workspace accounts.",
+      "A project and its resources can be tied to more than one billing account.",
+      "A billing account can be linked to one or more projects.",
+      "A project and its resources can only be tied to one billing account.",
+      "If your project only uses free resources you don't need a link to an active billing account."
+    ],
+    "correct": [
+      2,
+      3
+    ],
+    "explanation": "A Google Cloud project can only be linked to a single Cloud Billing account at any given time, but one billing account can fund multiple projects."
+  },
+  {
+    "id": "8",
+    "question": "Fiona is the billing administrator for the project associated with Cymbal Superstore's eCommerce application. Jeffrey, marketing department lead, wants to receive emails related to budget alerts. Jeffrey should have access to no additional billing information. What should you do?",
+    "options": [
+      "Change the budget alert default threshold rules to include Jeffrey as a recipient.",
+      "Use Cloud Monitoring notification channels to send Jeffrey an email alert.",
+      "Add Jeffrey and Fiona to the budget scope custom email delivery dialog.",
+      "Send alerts to a Pub/Sub topic that Jeffrey is subscribed to."
+    ],
+    "correct": 1,
+    "explanation": "Linking Cloud Billing budget alerts to Cloud Monitoring notification channels allows sending email notifications to external stakeholders without granting them IAM Billing permissions."
+  },
+  {
+    "id": "9",
+    "question": "Pick two choices that provide a command line interface to Google Cloud. (Choose two)",
+    "options": [
+      "Google Cloud Console",
+      "Cloud Shell",
+      "Cloud Console Mobile App",
+      "Cloud SDK"
+    ],
+    "correct": [
+      1,
+      3
+    ],
+    "explanation": "Cloud Shell (browser-accessible shell) and Cloud SDK (local command-line suite containing `gcloud`, `gsutil`, and `bq`) both provide CLI access to Google Cloud."
+  },
+  {
+    "id": "10",
+    "question": "You want to use the Cloud Shell to copy files to your Cloud Storage bucket. Which Cloud SDK command should you use?",
+    "options": [
+      "gcloud",
+      "gsutil",
+      "bq",
+      "Cloud Storage Browser"
+    ],
+    "correct": 1,
+    "explanation": "The `gsutil` CLI tool (and `gcloud storage`) is specifically built for managing and transferring files to and from Cloud Storage buckets."
+  }
+]

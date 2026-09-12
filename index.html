@@ -41,17 +41,22 @@
           <h3>⚡ Flashcard Study Mode</h3>
           <p>Flip cards instantly to view answers and explanations for rapid memorization without scoring pressure.</p>
         </div>
+
+        <div class="mode-card" onclick="app.startFullSet('all')">
+          <h3>📚 All Questions Mode</h3>
+          <p>Practice every question in the entire database in a single randomized session with immediate feedback.</p>
+        </div>
       </div>
 
       <hr class="divider" />
 
-      <!-- Single Set Selector -->
-      <h3>Practice Individual Sets</h3>
+      <!-- Single Set / Group Selector -->
+      <h3>Practice Individual Sets & Groups</h3>
       <div class="single-set-picker">
         <select id="individual-set-select">
-          <option value="">-- Choose a Set --</option>
+          <option value="">-- Choose a Set or Group --</option>
         </select>
-        <button onclick="app.startIndividualSet('practice')">Practice Set</button>
+        <button onclick="app.startIndividualSet('practice')">Practice Mode</button>
         <button onclick="app.startIndividualSet('flashcard')" class="btn-secondary">Flashcard Mode</button>
       </div>
     </main>

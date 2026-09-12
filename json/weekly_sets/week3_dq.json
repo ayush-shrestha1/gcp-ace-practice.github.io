@@ -1,0 +1,138 @@
+[
+  {
+    "id": "1",
+    "question": "You want to select and configure a cost-effective solution for relational data on Google Cloud Platform. You are working with a small set of operational data in one geographic location. You need to support point-in-time recovery. What should you do?",
+    "options": [
+      "Select Cloud SQL (MySQL). Verify that the enable binary logging option is selected.",
+      "Select Cloud SQL (MySQL). Select the create failover replicas option.",
+      "Select Cloud Spanner. Set up your instance with 2 nodes.",
+      "Select Cloud Spanner. Set up your instance as multi-regional."
+    ],
+    "correct": 0,
+    "explanation": "Cloud SQL (MySQL) with binary logging enabled supports point-in-time recovery (PITR) for single-region relational operational data cost-effectively."
+  },
+  {
+    "id": "2",
+    "question": "The projected amount of cloud storage required for Cymbal Superstore to enable users to post pictures for project reviews is 10 TB of immediate access storage in the US and 30 TB of storage for historical posts in a bucket located near Cymbal Superstore's headquarters. The contents of this bucket will need to be accessed once every 30 days. You want to estimate the cost of these storage resources to ensure this is economically feasible.",
+    "options": [
+      "Use the pricing calculator to estimate the costs for 10 TB of regional standard storage, 30 TB of regional Coldline storage, and egress charges for reads from storage.",
+      "Use the pricing calculator to estimate the price for 10 TB of regional standard storage, 30 TB of regional Nearline storage, and ingress charges for posts to the bucket.",
+      "Use the pricing calculator to estimate the price for 10 TB of multi-region standard storage, 30 TB for regional Coldline storage, and ingress charges for posts to the bucket.",
+      "Use the pricing calculator to estimate the price for 10 TB of multi-region standard storage, 30 TB for regional Nearline, and egress charges for reads from the bucket."
+    ],
+    "correct": 3,
+    "explanation": "Multi-region Standard storage is best for US-wide immediate access, while regional Nearline storage fits data accessed once every 30 days. Estimating costs must account for read egress charges."
+  },
+  {
+    "id": "3",
+    "question": "Cymbal Superstore decides to migrate their supply chain application to Google Cloud. You need to configure specific operating system dependencies. What should you do?",
+    "options": [
+      "Implement an application using containers on Cloud Run.",
+      "Implement an application using code on App Engine.",
+      "Implement an application using containers on Google Kubernetes Engine.",
+      "Implement an application using virtual machines on Compute Engine."
+    ],
+    "correct": 3,
+    "explanation": "Compute Engine virtual machines provide full OS-level access, allowing custom operating system dependencies to be configured."
+  },
+  {
+    "id": "4",
+    "question": "Cymbal Superstore decides to pilot a cloud application for their point of sale system in their flagship store. You want to focus on code and develop your solution quickly, and you want your code to be portable.",
+    "options": [
+      "SSH into a Compute Engine VM and execute your code.",
+      "Package your code to a container image and post it to Cloud Run.",
+      "Implement a deployment manifest and run kubectl apply on it in Google Kubernetes Engine.",
+      "Code your solution in Cloud Functions."
+    ],
+    "correct": 1,
+    "explanation": "Packaging code as a container and deploying to Cloud Run allows rapid development while keeping the application fully container-portable across platforms."
+  },
+  {
+    "id": "5",
+    "question": "An application running on a highly-customized version of Ubuntu needs to be migrated to Google Cloud. You need to do this in the least amount of time with minimal code changes.",
+    "options": [
+      "Create Compute Engine Virtual Machines and migrate the app to that infrastructure.",
+      "Deploy the existing application to App Engine.",
+      "Deploy your application in a container image to Cloud Run.",
+      "Implement a Kubernetes cluster and create pods to enable your app."
+    ],
+    "correct": 0,
+    "explanation": "Lift-and-shift migration to Compute Engine virtual machines supports custom OS distributions with minimal code refactoring and fastest deployment speed."
+  },
+  {
+    "id": "6",
+    "question": "You want to deploy a microservices application. You need full control of how you manage containers, reliability, and autoscaling, but don't want or need to manage the control plane. Which compute option should you use?",
+    "options": [
+      "Cloud Run",
+      "App Engine",
+      "Google Kubernetes Engine",
+      "Compute Engine"
+    ],
+    "correct": 2,
+    "explanation": "Google Kubernetes Engine (GKE) abstracts control plane management while offering complete control over container orchestration, Pod autoscaling, and reliability."
+  },
+  {
+    "id": "7",
+    "question": "Cymbal Superstore needs to analyze whether they met quarterly sales projections. Analysts assigned to run this query are familiar with SQL.",
+    "options": [
+      "BigQuery",
+      "Cloud SQL",
+      "Cloud Spanner",
+      "Cloud Firestore"
+    ],
+    "correct": 0,
+    "explanation": "BigQuery is a serverless enterprise data warehouse designed for SQL-based analytical queries across large datasets."
+  },
+  {
+    "id": "8",
+    "question": "Cymbal Superstore's supply chain application frequently analyzes large amounts of data to inform business processes and operational dashboards.",
+    "options": [
+      "Multi-regional",
+      "Regional",
+      "Nearline",
+      "Coldline"
+    ],
+    "correct": 1,
+    "explanation": "Regional storage co-locates analytical data near compute resources to reduce network latency and lower costs for frequent data processing."
+  },
+  {
+    "id": "9",
+    "question": "Cymbal Superstore has a need to populate visual dashboards with historical time-based data. This is an analytical use-case.",
+    "options": [
+      "BigQuery",
+      "Cloud Storage",
+      "Cloud Firestore",
+      "Cloud SQL",
+      "Cloud Bigtable"
+    ],
+    "correct": [
+      0,
+      4
+    ],
+    "explanation": "BigQuery and Cloud Bigtable both support analytical queries and time-series visualization for historical dashboard reporting."
+  },
+  {
+    "id": "10",
+    "question": "Cymbal Superstore is piloting an update to its ecommerce app for the flagship store in Minneapolis, Minnesota. The app is implemented as a three-tier web service with traffic originating from the local area and resources dedicated for it in us-central1. You need to configure a secure, low-cost network load-balancing architecture for it.",
+    "options": [
+      "Implement a premium tier pass-through external https load balancer connected to the web tier as the frontend and a regional internal load balancer between the web tier and backend.",
+      "Implement a proxied external TCP/UDP network load balancer connected to the web tier as the frontend and a premium network tier ssl load balancer between the web tier and the backend.",
+      "Configure a standard tier proxied external https load balancer connected to the web tier as a frontend and a regional internal load balancer between the web tier and the backend.",
+      "Configure a proxied SSL load balancer connected to the web tier as the frontend and a standard tier internal TCP/UDP load balancer between the web tier and the backend."
+    ],
+    "correct": 2,
+    "explanation": "Standard Tier External HTTPS Load Balancing provides a low-cost frontend for regional/local traffic, while Regional Internal Load Balancing secures traffic between web and backend tiers."
+  },
+  {
+    "id": "11",
+    "question": "What Google Cloud load balancing option runs at Layer 7 of the TCP stack?",
+    "options": [
+      "Global http(s)",
+      "Global SSL Proxy",
+      "Global TCP Proxy",
+      "Regional Network"
+    ],
+    "correct": 0,
+    "explanation": "HTTP(S) Load Balancing operates at Layer 7 (Application layer) of the OSI/TCP model, enabling content-based routing and SSL termination."
+  }
+]

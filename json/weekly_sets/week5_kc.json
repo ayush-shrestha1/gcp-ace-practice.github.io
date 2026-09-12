@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "question": "What GKE object implements an http(s) load balancer?",
+    "options": [
+      "Service",
+      "Pod",
+      "Deployment",
+      "Ingress"
+    ],
+    "correct": 3,
+    "explanation": "In Google Kubernetes Engine (GKE), an Ingress object automatically provisions and configures a Google Cloud HTTP(S) Load Balancer to route external HTTP(S) traffic to internal services."
+  },
+  {
+    "id": "2",
+    "question": "Which Cloud Run autoscaling setting should you set if you want to limit cost?",
+    "options": [
+      "Min Instances",
+      "Max instances",
+      "Concurrency settings",
+      "CPU utilization"
+    ],
+    "correct": 1,
+    "explanation": "Setting Max instances caps the maximum number of container instances that Cloud Run can scale up to, preventing cost overruns and unexpected billing spikes."
+  }
+]

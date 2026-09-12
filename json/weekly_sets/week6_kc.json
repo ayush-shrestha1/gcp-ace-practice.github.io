@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "question": "What kind of account is meant for machine-to-machine communication in Google Cloud?",
+    "options": [
+      "User Account",
+      "Google Workspace account",
+      "Service Account",
+      "Cloud Identity account"
+    ],
+    "correct": 2,
+    "explanation": "Service Accounts are special non-human accounts designed for applications, workloads, and machine-to-machine communication in Google Cloud."
+  },
+  {
+    "id": "2",
+    "question": "You are authenticating an application to service APIs. Both resources are internal to the Google Cloud environment. What type of credentials should you use?",
+    "options": [
+      "User account credentials",
+      "Locally stored keys",
+      "API keys",
+      "Temporary credentials"
+    ],
+    "correct": 3,
+    "explanation": "When authenticating workloads internal to Google Cloud, using short-lived temporary credentials (such as Application Default Credentials via attached Service Accounts) avoids key management risks and adheres to security best practices."
+  }
+]

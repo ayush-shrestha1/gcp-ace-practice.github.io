@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "question": "Which data storage service is a unique globally available, horizontally scalable database with relational semantics?",
+    "options": [
+      "BigQuery",
+      "Cloud SQL",
+      "Cloud Spanner",
+      "Bigtable"
+    ],
+    "correct": 2,
+    "explanation": "Cloud Spanner is a fully managed, globally available relational database that provides horizontal scaling along with ACID transactions and relational SQL semantics."
+  },
+  {
+    "id": "2",
+    "question": "Which services are based on logic implemented in containers? (Pick two.)",
+    "options": [
+      "Cloud Functions",
+      "Cloud Run",
+      "Google Kubernetes Engine",
+      "Compute Engine",
+      "Managed instance groups"
+    ],
+    "correct": [
+      1,
+      2
+    ],
+    "explanation": "Cloud Run and Google Kubernetes Engine (GKE) are container-native execution environments in Google Cloud designed specifically to run and scale application logic packaged inside container images."
+  }
+]

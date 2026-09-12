@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "question": "Which Google Cloud interface allows for scripting actions in a set of command line executables?",
+    "options": [
+      "Google Cloud Console",
+      "Cloud Shell",
+      "Cloud Console Mobile",
+      "REST API"
+    ],
+    "correct": 1,
+    "explanation": "Cloud Shell provides a browser-based Linux terminal environment pre-packaged with the Google Cloud SDK (gcloud, gsutil, bq) for running and scripting command-line executables."
+  },
+  {
+    "id": "2",
+    "question": "What is the lowest level basic role that gives you permissions to change resource state?",
+    "options": [
+      "Owner",
+      "Administrator",
+      "Viewer",
+      "Editor"
+    ],
+    "correct": 3,
+    "explanation": "Among Google Cloud's basic (primitive) roles—Viewer, Editor, and Owner—the Editor role is the minimum role that permits modifying or changing the state of resources. The Viewer role is strictly read-only."
+  }
+]

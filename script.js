@@ -1,23 +1,32 @@
 const FILE_MANIFEST = [
   { path: 'json/default.json', label: 'Default Questions', type: 'weekly' },
-  { path: 'json/practice_sets/pre_exam_quiz_1.json', label: 'Practice: Pre-Exam 1', type: 'practice' },
-  { path: 'json/practice_sets/pre_exam_quiz_2.json', label: 'Practice: Pre-Exam 2', type: 'practice' },
-  { path: 'json/practice_sets/sample_quiz.json', label: 'Practice: Sample Quiz', type: 'practice' },
-  { path: 'json/weekly_sets/week2_quiz.json', label: 'Weekly: Week 2', type: 'weekly' },
-  { path: 'json/weekly_sets/week3_quiz.json', label: 'Weekly: Week 3', type: 'weekly' },
-  { path: 'json/weekly_sets/week4_quiz.json', label: 'Weekly: Week 4', type: 'weekly' },
-  { path: 'json/weekly_sets/week5_quiz.json', label: 'Weekly: Week 5', type: 'weekly' },
-  { path: 'json/weekly_sets/week6_quiz.json', label: 'Weekly: Week 6', type: 'weekly' }
+  { path: 'json/practice_sets/pre_exam_quiz_1.json', label: 'Pre-Exam 1', type: 'practice' },
+  { path: 'json/practice_sets/pre_exam_quiz_2.json', label: 'Pre-Exam 2', type: 'practice' },
+  { path: 'json/practice_sets/sample_quiz.json', label: 'Sample Quiz', type: 'practice' },
+  { path: 'json/weekly_sets/week1_quiz.json', label: 'Week 1 Quiz', type: 'weekly' },
+  { path: 'json/weekly_sets/week2_dq.json', label: 'Week 2 Diagnostic Questions', type: 'dq' },
+  { path: 'json/weekly_sets/week2_kc.json', label: 'Week 2 Knowledge Check', type: 'kc' },
+  { path: 'json/weekly_sets/week2_quiz.json', label: 'Week 2 Quiz', type: 'weekly' },
+  { path: 'json/weekly_sets/week3_dq.json', label: 'Week 3 Diagnostic Questions', type: 'dq' },
+  { path: 'json/weekly_sets/week3_kc.json', label: 'Week 3 Knowledge Check', type: 'kc' },
+  { path: 'json/weekly_sets/week3_quiz.json', label: 'Week 3 Quiz', type: 'weekly' },
+  { path: 'json/weekly_sets/week4_dq.json', label: 'Week 4 Diagnostic Questions', type: 'dq' },
+  { path: 'json/weekly_sets/week4_kc.json', label: 'Week 4 Knowledge Check', type: 'kc' },
+  { path: 'json/weekly_sets/week4_quiz.json', label: 'Week 4 Quiz', type: 'weekly' },
+  { path: 'json/weekly_sets/week5_dq.json', label: 'Week 5 Diagnostic Questions', type: 'dq' },
+  { path: 'json/weekly_sets/week5_kc.json', label: 'Week 5 Knowledge Check', type: 'kc' },
+  { path: 'json/weekly_sets/week5_quiz.json', label: 'Week 5 Quiz', type: 'weekly' },
+  { path: 'json/weekly_sets/week6_dq.json', label: 'Week 6 Diagnostic Questions', type: 'dq' },
+  { path: 'json/weekly_sets/week6_kc.json', label: 'Week 6 Knowledge Check', type: 'kc' },
+  { path: 'json/weekly_sets/week6_quiz.json', label: 'Week 6 Quiz', type: 'weekly' }
 ];
 
 class GCPQuizEngine {
   constructor() {
     this.allQuestions = [];
-    this.practicePool = [];
-    this.weeklyPool = [];
     this.activeQuestions = [];
     this.currentIndex = 0;
-    this.userAnswers = {}; // Maps qIdx to array of chosen option indices: [0, 2]
+    this.userAnswers = {};
     this.submittedAnswers = {};
     this.mode = 'practice';
     this.timer = null;
@@ -31,8 +40,8 @@ class GCPQuizEngine {
       document.body.classList.add('dark-mode');
       this.updateThemeButton();
     }
-    this.populateDropdown();
     await this.loadAllQuestions();
+    this.populateDropdown();
   }
 
   toggleDarkMode() {
@@ -52,34 +61,77 @@ class GCPQuizEngine {
   populateDropdown() {
     const select = document.getElementById('individual-set-select');
     if (!select) return;
-    FILE_MANIFEST.forEach((item, idx) => {
+    select.innerHTML = '<option value="">-- Choose a Set or Group --</option>';
+
+    // Group Options
+    const groupOptgroup = document.createElement('optgroup');
+    groupOptgroup.label = '⚡ Combined Question Groups';
+    const groups = [
+      { value: 'group:kc', label: 'ALL Knowledge Checks (KC)' },
+      { value: 'group:dq', label: 'ALL Diagnostic Questions (DQ)' },
+      { value: 'group:weekly', label: 'ALL Weekly Quizzes' },
+      { value: 'group:practice', label: 'ALL Practice Sets' }
+    ];
+    groups.forEach(g => {
       const opt = document.createElement('option');
-      opt.value = idx;
-      opt.textContent = item.label;
-      select.appendChild(opt);
+      opt.value = g.value;
+      opt.textContent = g.label;
+      groupOptgroup.appendChild(opt);
+    });
+    select.appendChild(groupOptgroup);
+
+    // Individual Sets Categorized
+    const categories = [
+      { key: 'practice', label: 'Practice Sets' },
+      { key: 'dq', label: 'Diagnostic Questions (DQ)' },
+      { key: 'kc', label: 'Knowledge Checks (KC)' },
+      { key: 'weekly', label: 'Weekly Quizzes' }
+    ];
+
+    categories.forEach(cat => {
+      const og = document.createElement('optgroup');
+      og.label = `📁 ${cat.label}`;
+      const items = FILE_MANIFEST.filter(item => item.type === cat.key);
+      items.forEach(item => {
+        const globalIdx = FILE_MANIFEST.indexOf(item);
+        const opt = document.createElement('option');
+        opt.value = globalIdx;
+        opt.textContent = item.label;
+        og.appendChild(opt);
+      });
+      if (items.length > 0) {
+        select.appendChild(og);
+      }
     });
   }
 
-  async loadAllQuestions() {
+async loadAllQuestions() {
+    this.allQuestions = [];
+    const seenQuestions = new Set(); // Stores normalized question text to detect duplicates
+
     for (const file of FILE_MANIFEST) {
       try {
         const res = await fetch(file.path);
         if (!res.ok) continue;
         const data = await res.json();
         
-        const taggedData = data.map(q => ({
-          ...q,
-          sourceLabel: file.label,
-          sourceType: file.type,
-          domain: this.classifyQuestion(q)
-        }));
+        const taggedData = [];
+        data.forEach(q => {
+          // Normalize text by trimming and converting to lowercase
+          const normalizedText = q.question.trim().toLowerCase();
+
+          if (!seenQuestions.has(normalizedText)) {
+            seenQuestions.add(normalizedText);
+            taggedData.push({
+              ...q,
+              sourceLabel: file.label,
+              sourceType: file.type,
+              domain: this.classifyQuestion(q)
+            });
+          }
+        });
 
         this.allQuestions.push(...taggedData);
-        if (file.type === 'practice') {
-          this.practicePool.push(...taggedData);
-        } else {
-          this.weeklyPool.push(...taggedData);
-        }
       } catch (e) {
         console.warn(`Could not load file: ${file.path}`);
       }
@@ -95,23 +147,18 @@ class GCPQuizEngine {
   classifyQuestion(q) {
     const content = (q.question + ' ' + (q.options ? q.options.join(' ') : '') + ' ' + (q.explanation || '')).toLowerCase();
     
-    // Section 5: Access & Security
     if (content.match(/iam|role|permission|service account|workload identity|secret manager|audit log|kms|key|encrypt|signed url|access control|binary authorization|organization policy|firewall/i)) {
       return 'Section 5: Access & Security';
     }
-    // Section 4: Ensuring Successful Operation
     if (content.match(/monitor|logging|stackdriver|alert|metric|autoscal|health check|backup|snapshot|troubleshoot|quota|billing alert|cost|trace|debugger/i)) {
       return 'Section 4: Ensuring Successful Operation';
     }
-    // Section 3: Deploying & Implementing
     if (content.match(/deploy|cloud build|gke|kubernetes|container|cloud function|cloud run|terraform|deployment manager|ci\/cd|pipeline|mig|instance group/i)) {
       return 'Section 3: Deploying & Implementing';
     }
-    // Section 2: Planning & Configuring
     if (content.match(/plan|calculator|pricing|storage class|nearline|coldline|archive|cloud sql|spanner|bigtable|firestore|subnet|vpc|load balancer|redis|memorystore/i)) {
       return 'Section 2: Planning & Configuring';
     }
-    // Section 1: Setting up Environment
     return 'Section 1: Setting up Environment';
   }
 
@@ -134,7 +181,7 @@ class GCPQuizEngine {
   }
 
   startFullSet(mode) {
-    this.mode = mode;
+    this.mode = mode === 'all' ? 'practice' : mode;
     if (this.allQuestions.length === 0) {
       alert('Questions are still loading or failed to load. Please verify your web server/file paths.');
       return;
@@ -162,6 +209,9 @@ class GCPQuizEngine {
       }
 
       this.prepareQuizState(mockQuestions);
+    } else if (mode === 'all') {
+      const shuffled = this.shuffle([...this.allQuestions]);
+      this.prepareQuizState(shuffled);
     } else {
       const shuffled = this.shuffle([...this.allQuestions]);
       this.prepareQuizState(shuffled.slice(0, Math.min(60, shuffled.length)));
@@ -169,17 +219,25 @@ class GCPQuizEngine {
   }
 
   startIndividualSet(mode) {
-    const selectIdx = document.getElementById('individual-set-select').value;
-    if (selectIdx === "") {
-      alert("Please select a question set first.");
+    const selectVal = document.getElementById('individual-set-select').value;
+    if (selectVal === "") {
+      alert("Please select a question set or group first.");
       return;
     }
-    const file = FILE_MANIFEST[selectIdx];
     this.mode = mode;
+    let filtered = [];
 
-    const filtered = this.allQuestions.filter(q => q.sourceLabel === file.label);
+    if (selectVal.startsWith('group:')) {
+      const groupType = selectVal.split(':')[1];
+      filtered = this.allQuestions.filter(q => q.sourceType === groupType);
+    } else {
+      const selectIdx = parseInt(selectVal, 10);
+      const file = FILE_MANIFEST[selectIdx];
+      filtered = this.allQuestions.filter(q => q.sourceLabel === file.label);
+    }
+
     if (filtered.length === 0) {
-      alert("No questions found for the selected set.");
+      alert("No questions found for the selected option.");
       return;
     }
     this.prepareQuizState(filtered);

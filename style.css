@@ -1067,3 +1067,10 @@ button:hover {
     border-color: #333333 !important;
   }
 }
+
+/* Explicitly align quiz options and buttons to the left */
+.options-list,
+.option-btn {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}

@@ -4,60 +4,110 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GCP ACE Practice Engine</title>
+  <!-- Google Fonts & Material Symbols CDN -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="app-container">
+    <!-- Top Navigation Header Bar -->
     <header class="main-header no-print">
-      <h1>GCP ACE Practice Engine</h1>
+      <div class="brand-title" onclick="app.exitToMenu()" style="cursor: pointer;">
+        <h1>GCP ACE Engine</h1>
+      </div>
       <div id="header-actions">
-        <button id="theme-toggle-btn" class="btn-secondary" onclick="app.toggleDarkMode()">🌙 Dark Mode</button>
+        <!-- Active Quiz Meta (Timer & Progress) -->
         <div id="quiz-meta" class="hidden">
-          <span id="timer-display">⏱️ 00:00</span>
+          <span id="timer-display"><span class="material-symbols-outlined">timer</span> 00:00</span>
           <span id="progress-display">Question 0 of 0</span>
-          <button id="home-btn" class="btn-secondary" onclick="app.exitToMenu()">🏠 Exit to Menu</button>
         </div>
+        <!-- Unified Navbar Action Buttons -->
+        <button id="home-btn" class="btn-secondary hidden" onclick="app.exitToMenu()">
+          <span class="material-symbols-outlined">Logout</span> Exit
+        </button>
+        <button id="theme-toggle-btn" class="btn-secondary" onclick="app.toggleDarkMode()">
+          <span class="material-symbols-outlined">dark_mode</span> Dark
+        </button>
       </div>
     </header>
 
-    <!-- Setup / Selection Screen -->
+    <!-- Setup / Redesigned Home Screen -->
     <main id="setup-screen" class="card no-print">
-      <h2>Exam Preparation Dashboard</h2>
-      <p>Select a structured mode or choose an individual question set to practice.</p>
+      <div class="hero-banner">
+        <span class="hero-tag">Google Cloud Associate Cloud Engineer</span>
+        <h2>Certification Practice & Mastery Engine</h2>
+        <p>A lightweight, comprehensive study system covering real scenario questions, decision trees, and exam keywords.</p>
+      </div>
 
-      <!-- Global Quiz Modes -->
+      <div class="section-title">
+        <span class="material-symbols-outlined">quiz</span> Core Examination Modes
+      </div>
+
+      <!-- Main Prep Modes Grid -->
       <div class="mode-grid">
         <div class="mode-card" onclick="app.startFullSet('mock')">
-          <h3>⏱️ Full Mock Exam</h3>
-          <p>60 randomized questions (weighted heavily from Practice Sets). 85% passing score required. Answers revealed at the end.</p>
+          <div class="mode-header">
+            <span class="material-symbols-outlined mode-icon">timer</span>
+            <span class="mode-badge">Simulated</span>
+          </div>
+          <h3>Full Mock Exam</h3>
+          <p>60 randomized questions (weighted by domain). 120-minute timer. 85% passing score.</p>
         </div>
 
         <div class="mode-card" onclick="app.startFullSet('practice')">
-          <h3>🎯 Practice Test</h3>
-          <p>60 randomized questions. Immediate feedback and explanations shown upon submitting each question.</p>
-        </div>
-
-        <div class="mode-card" onclick="app.startFullSet('flashcard')">
-          <h3>⚡ Flashcard Study Mode</h3>
-          <p>Flip cards instantly to view answers and explanations for rapid memorization without scoring pressure.</p>
+          <div class="mode-header">
+            <span class="material-symbols-outlined mode-icon">task_alt</span>
+            <span class="mode-badge">Interactive</span>
+          </div>
+          <h3>Practice Test</h3>
+          <p>60 randomized questions with immediate answer checks and detailed explanations.</p>
         </div>
 
         <div class="mode-card" onclick="app.startFullSet('all')">
-          <h3>📚 All Questions Mode</h3>
-          <p>Practice every question in the entire database in a single randomized session with immediate feedback.</p>
+          <div class="mode-header">
+            <span class="material-symbols-outlined mode-icon">library_books</span>
+            <span class="mode-badge">Comprehensive</span>
+          </div>
+          <h3>All Questions Mode</h3>
+          <p>Practice every question in the entire database in a single randomized session.</p>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 2rem;">
+        <span class="material-symbols-outlined">auto_stories</span> Learning & Cheat Sheet Tools
+      </div>
+
+      <div class="mode-grid">
+        <div class="mode-card mode-card-highlight" onclick="app.openStudyGuide()">
+          <div class="mode-header">
+            <span class="material-symbols-outlined mode-icon">menu_book</span>
+            <span class="mode-badge highlight-badge">High Yield</span>
+          </div>
+          <h3>Exam Study Guide & Cheat Sheet</h3>
+          <p>Explore decision matrices, keyword triggers, scenarios, IAM role maps, and CLI commands.</p>
+        </div>
+
+        <div class="mode-card" onclick="app.startFullSet('flashcard')">
+          <div class="mode-header">
+            <span class="material-symbols-outlined mode-icon">style</span>
+            <span class="mode-badge">Rapid Review</span>
+          </div>
+          <h3>Flashcard Study Mode</h3>
+          <p>Flip cards instantly to memorize answers and key explanations without scoring pressure.</p>
         </div>
       </div>
 
       <hr class="divider" />
 
       <!-- Single Set / Group Selector -->
-      <h3>Practice Individual Sets & Groups</h3>
+      <h3><span class="material-symbols-outlined icon-inline">folder_open</span> Targeted Set & Group Practice</h3>
       <div class="single-set-picker">
         <select id="individual-set-select">
           <option value="">-- Choose a Set or Group --</option>
         </select>
-        <button onclick="app.startIndividualSet('practice')">Practice Mode</button>
-        <button onclick="app.startIndividualSet('flashcard')" class="btn-secondary">Flashcard Mode</button>
+        <button class="btn-primary" onclick="app.startIndividualSet('practice')">Start Practice Mode</button>
+        <button class="btn-secondary" onclick="app.startIndividualSet('flashcard')">Start Flashcards</button>
       </div>
     </main>
 
@@ -102,13 +152,53 @@
       </div>
     </main>
 
+    <!-- Study Guide & Reference Center Screen -->
+    <main id="guide-screen" class="card hidden">
+      <div class="guide-header">
+        <div>
+          <h2><span class="material-symbols-outlined icon-inline">menu_book</span> GCP ACE Exam Study Guide</h2>
+          <p class="guide-subtitle">Decision matrices, keyword mappings, high-yield scenarios, and flashcard decks.</p>
+        </div>
+      </div>
+
+      <!-- Search & Tab Controls -->
+      <div class="guide-toolbar no-print">
+        <input type="text" id="guide-search-input" placeholder="🔍 Search keywords, IAM roles, scenarios, commands..." oninput="app.filterGuideContent()" />
+        <div class="guide-tabs">
+          <button class="guide-tab-btn active" onclick="app.switchGuideTab('keywords', this)">
+            <span class="material-symbols-outlined">key</span> Keywords
+          </button>
+          <button class="guide-tab-btn" onclick="app.switchGuideTab('matrices', this)">
+            <span class="material-symbols-outlined">account_tree</span> Decision Trees
+          </button>
+          <button class="guide-tab-btn" onclick="app.switchGuideTab('scenarios', this)">
+            <span class="material-symbols-outlined">quiz</span> Scenarios
+          </button>
+          <button class="guide-tab-btn" onclick="app.switchGuideTab('traps', this)">
+            <span class="material-symbols-outlined">warning</span> Gotchas
+          </button>
+          <button class="guide-tab-btn" onclick="app.switchGuideTab('roles', this)">
+            <span class="material-symbols-outlined">badge</span> IAM Roles
+          </button>
+          <button class="guide-tab-btn" onclick="app.switchGuideTab('deck', this)">
+            <span class="material-symbols-outlined">style</span> Flashcards
+          </button>
+          <button class="guide-tab-btn" onclick="app.switchGuideTab('cli', this)">
+            <span class="material-symbols-outlined">terminal</span> CLI Commands
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div id="guide-tab-content" class="guide-content-area"></div>
+    </main>
+
     <!-- Results & Print Screen -->
     <main id="results-screen" class="card hidden">
       <div class="results-header">
         <h2>Exam Results & Performance Report</h2>
         <div class="no-print">
-          <button onclick="window.print()" class="btn-primary">🖨️ Print / Save PDF</button>
-          <button onclick="app.resetToMenu()" class="btn-secondary">Return to Menu</button>
+          <button onclick="app.printResults()" class="btn-primary">🖨️ Print / Save PDF</button>
         </div>
       </div>
 
@@ -122,6 +212,18 @@
 
       <div id="review-list" class="review-list"></div>
     </main>
+
+    <!-- Universal Material Pop-up Modal -->
+    <div id="modal-backdrop" class="modal-backdrop hidden no-print">
+      <div class="modal-card">
+        <h3 id="modal-title">Notice</h3>
+        <p id="modal-message"></p>
+        <div id="modal-actions" class="modal-actions">
+          <button id="modal-cancel-btn" class="btn-secondary hidden">Cancel</button>
+          <button id="modal-confirm-btn" class="btn-primary">OK</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>

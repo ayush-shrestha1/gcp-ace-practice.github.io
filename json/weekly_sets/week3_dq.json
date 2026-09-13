@@ -85,7 +85,7 @@
   },
   {
     "id": "8",
-    "question": "Cymbal Superstore's supply chain application frequently analyzes large amounts of data to inform business processes and operational dashboards.",
+    "question": "Cymbal Superstore's supply chain application frequently analyzes large amounts of data to inform business processes and operational dashboards.What storage option would make sense for this use case?",
     "options": [
       "Multi-regional",
       "Regional",
